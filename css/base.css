@@ -196,3 +196,104 @@ footer {
   section { padding: 80px 22px; }
   footer { padding: 28px 22px; flex-direction: column; text-align: center; }
 }
+
+/* Footer Nav */
+.footer-nav {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  justify-content: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+}
+.footer-nav a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text2);
+  letter-spacing: 0.06em;
+  transition: color 0.3s var(--ease);
+}
+.footer-nav a:hover { color: var(--orange); }
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex; }
+  .nav-cta { display: none; }
+}
+
+/* Mobile Nav Overlay */
+.mobile-nav-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(7,7,7,0.96);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+}
+.mobile-nav-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.mobile-nav-close {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  color: var(--text);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.mobile-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+.mobile-nav-link {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  padding: 8px 24px;
+  transition: color 0.3s var(--ease);
+}
+.mobile-nav-link:hover { color: var(--orange); }
+.nav-cta-mobile {
+  font-size: 18px !important;
+  margin-top: 24px;
+  padding: 14px 32px !important;
+  background: var(--grad-text);
+  color: #0a0a0a !important;
+  border-radius: 999px;
+}
+

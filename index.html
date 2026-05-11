@@ -135,6 +135,9 @@
           <a href="pages/resume.html" class="nav-link">Resume</a>
         </div>
         <a href="#contact" class="nav-cta magnetic">Contact →</a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     </div>
   </section>
@@ -361,158 +364,151 @@
       <button class="filter-btn" data-filter="arvr">AR/VR</button>
     </div>
 
+    <!-- Coming Soon placeholders (hidden by default, shown by filter JS) -->
+    <div class="coming-soon-state" id="comingSoon" style="display:none;">
+      <p class="coming-soon-title">Coming Soon</p>
+      <p class="coming-soon-sub">This section is being updated.</p>
+    </div>
+
     <div class="projects-grid reveal" id="projectsGrid">
 
-      <a class="project-card large" data-category="spatial" data-id="1" href="pages/project.html?id=1">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1H2BF2MBMk-_uxIZVt216NKQLiakvccQG" alt="Global Exhibition Design System" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+      <!-- BRAND: Stratigen -->
+      <a class="project-card medium" data-category="brand" data-id="1" href="pages/project.html?id=1">
+        <div class="project-thumb" style="background:linear-gradient(135deg,#131313,#1e1e1e);display:flex;align-items:center;justify-content:center;">
+          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);">Brand Identity</span>
+          <div class="project-hover-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="project-info">
+          <p class="project-cat">Brand &amp; Identity</p>
+          <h3 class="project-name">Stratigen</h3>
+          <p class="project-desc">Complete brand identity — logo, color system, moodboard, and branded mockups.</p>
+          <div class="project-tags"><span>Logo</span><span>Brand Identity</span><span>Moodboard</span><span>Mockups</span></div>
+        </div>
+      </a>
+
+      <!-- SPATIAL 1: LUXORA -->
+      <a class="project-card large" data-category="spatial" data-id="2" href="pages/project.html?id=2">
+        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/12yngtXzKvYkWvL-TODn4eNZ92YFJNLfz","https://lh3.googleusercontent.com/d/135SiSH_BnNLmAvTui1NcF503rT2eXnI5"]'>
+          <img src="https://lh3.googleusercontent.com/d/12yngtXzKvYkWvL-TODn4eNZ92YFJNLfz" alt="LUXORA" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
           <div class="project-hover-overlay"><span>View Project →</span></div>
         </div>
         <div class="project-info">
           <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">Global Exhibition Design System</h3>
-          <p class="project-desc">Visual system for 100+ international exhibitions — CES, MWC, ISC West, Auto Expo.</p>
-          <div class="project-tags">
-            <span>Environmental Graphics</span>
-            <span>Signage</span>
-            <span>Print</span>
-          </div>
+          <h3 class="project-name">LUXORA — Premium Spatial Design</h3>
+          <p class="project-desc">High-end spatial environments for luxury retail, workspace, and residential clients.</p>
+          <div class="project-tags"><span>Spatial Design</span><span>Blender</span><span>Luxury</span></div>
         </div>
       </a>
 
-      <a class="project-card medium" data-category="motion" data-id="2" href="pages/project.html?id=2">
+      <!-- SPATIAL 2: NEXA -->
+      <a class="project-card medium" data-category="spatial" data-id="3" href="pages/project.html?id=3">
+        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1svIlWdeqcMh9kQ2Owx9fnrp-dmsz96NB","https://lh3.googleusercontent.com/d/1xPVT5-YI3jop8mmr1RW_hN8tMbiwb7x5","https://lh3.googleusercontent.com/d/1FYhC1mi2zYbh2PH4i4MHBTDLYuI9mNrw","https://lh3.googleusercontent.com/d/1tnG9GzrwAUprvmdpfR6DER2Eojww5ziQ"]'>
+          <img src="https://lh3.googleusercontent.com/d/1svIlWdeqcMh9kQ2Owx9fnrp-dmsz96NB" alt="NEXA Spaces" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <div class="project-hover-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="project-info">
+          <p class="project-cat">Spatial &amp; Exhibitions</p>
+          <h3 class="project-name">NEXA Spaces — Immersive Experience</h3>
+          <p class="project-desc">Immersive spatial concepts for entertainment, hospitality, and brand activation.</p>
+          <div class="project-tags"><span>Immersive</span><span>Spatial</span><span>Blender</span></div>
+        </div>
+      </a>
+
+      <!-- SPATIAL 3: Corporate Exhibition -->
+      <a class="project-card half" data-category="spatial" data-id="4" href="pages/project.html?id=4">
         <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1NpvE87hHI-duo3iuPd0N7xLmQ8lkyJzD" alt="Internal Newsletter System" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <img src="https://lh3.googleusercontent.com/d/16YXaGD8yCLR843_vY8VZgvcv_8_VCarT" alt="Corporate Exhibition Booth" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <div class="project-hover-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="project-info">
+          <p class="project-cat">Spatial &amp; Exhibitions</p>
+          <h3 class="project-name">Corporate Exhibition Booth</h3>
+          <p class="project-desc">Material enhancement, realistic texturing, lighting refinement for exhibition showcase.</p>
+          <div class="project-tags"><span>Exhibition</span><span>Blender</span><span>3D</span></div>
+        </div>
+      </a>
+
+      <!-- SPATIAL 4: ISC West -->
+      <a class="project-card half" data-category="spatial" data-id="5" href="pages/project.html?id=5">
+        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1H1gcScgkUEhxmqlj5bM4mKbbyqHeyHM7","https://lh3.googleusercontent.com/d/1H-pciOuqOqJ8fU7GAKP5_5i9mu5Kliue","https://lh3.googleusercontent.com/d/1Gwhua-3oWgk5lR2dkfqPz3OAguU8Zbb4"]'>
+          <img src="https://lh3.googleusercontent.com/d/1H1gcScgkUEhxmqlj5bM4mKbbyqHeyHM7" alt="ISC West Booth" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <div class="project-hover-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="project-info">
+          <p class="project-cat">Spatial &amp; Exhibitions</p>
+          <h3 class="project-name">ISC West Booth</h3>
+          <p class="project-desc">End-to-end booth design — structure visualization, branding, large-format mockups.</p>
+          <div class="project-tags"><span>Exhibition</span><span>Booth</span><span>Large Format</span></div>
+        </div>
+      </a>
+
+      <!-- SPATIAL 5: IMC Booth -->
+      <a class="project-card half" data-category="spatial" data-id="6" href="pages/project.html?id=6">
+        <div class="project-thumb">
+          <img src="https://lh3.googleusercontent.com/d/1I45puK1bQkX8E9rVvH6tsTTOOiUnYTqa" alt="IMC Booth Design" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <div class="project-hover-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="project-info">
+          <p class="project-cat">Spatial &amp; Exhibitions</p>
+          <h3 class="project-name">IMC Booth Design</h3>
+          <p class="project-desc">Complete booth visualization and exhibition branding for IMC.</p>
+          <div class="project-tags"><span>Exhibition</span><span>Booth</span><span>Branding</span></div>
+        </div>
+      </a>
+
+      <!-- SPATIAL 6: Exhibition Graphics -->
+      <a class="project-card half" data-category="spatial" data-id="7" href="pages/project.html?id=7">
+        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK","https://lh3.googleusercontent.com/d/1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s","https://lh3.googleusercontent.com/d/1HFIb04e02njFJjXGaN74U3694fSrhIEO","https://lh3.googleusercontent.com/d/1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw"]'>
+          <img src="https://lh3.googleusercontent.com/d/1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK" alt="Exhibition Graphics" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <div class="project-hover-overlay"><span>View Project →</span></div>
+        </div>
+        <div class="project-info">
+          <p class="project-cat">Spatial &amp; Exhibitions</p>
+          <h3 class="project-name">Exhibition &amp; Event Graphics</h3>
+          <p class="project-desc">Exhibition branding across multiple shows — booth panels, standees, backdrops.</p>
+          <div class="project-tags"><span>Exhibition</span><span>Event</span><span>Large Format</span></div>
+        </div>
+      </a>
+
+      <!-- MOTION 1: Magazine Ads -->
+      <a class="project-card medium" data-category="motion" data-id="8" href="pages/project.html?id=8">
+        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1GrzBSSNWTih8I4Io8Jg7SBsBb0af7GZr","https://lh3.googleusercontent.com/d/1v-vD1dR6_hPwG9ys181lAcJzKJugPO5X"]'>
+          <img src="https://lh3.googleusercontent.com/d/1GrzBSSNWTih8I4Io8Jg7SBsBb0af7GZr" alt="Magazine Ads" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
           <div class="project-hover-overlay"><span>View Project →</span></div>
         </div>
         <div class="project-info">
           <p class="project-cat">Motion &amp; Editorial</p>
-          <h3 class="project-name">Internal Newsletter System</h3>
-          <p class="project-desc">Editorial design reaching 100,000+ employees globally at Publicis Groupe.</p>
-          <div class="project-tags">
-            <span>Editorial</span>
-            <span>Motion</span>
-            <span>Systems</span>
-          </div>
+          <h3 class="project-name">Magazine Ads &amp; Print Campaign</h3>
+          <p class="project-desc">Magazine advertisements and print campaign creatives for brand communication.</p>
+          <div class="project-tags"><span>Print</span><span>Magazine</span><span>Layout</span></div>
         </div>
       </a>
 
-      <a class="project-card medium" data-category="brand" data-id="3" href="pages/project.html?id=3">
+      <!-- MOTION 2: Corporate Magazine -->
+      <a class="project-card half" data-category="motion" data-id="9" href="pages/project.html?id=9">
         <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1FiPG2Tfk5LjBp9yV9csvI3FUO1Q5OU8w" alt="Branding & Packaging — Multi-Client" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Brand &amp; Identity</p>
-          <h3 class="project-name">Branding &amp; Packaging — Multi-Client</h3>
-          <p class="project-desc">Brand identity and packaging design for multiple clients — automotive, FMCG, lifestyle.</p>
-          <div class="project-tags">
-            <span>Identity</span>
-            <span>Packaging</span>
-            <span>Print</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card half" data-category="brand" data-id="4" href="pages/project.html?id=4">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1vV0-FnbwJFMycXbKZRX-gxl1Duk19A5Y" alt="Logo Design — Multi-Client Collection" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Brand &amp; Identity</p>
-          <h3 class="project-name">Logo Design — Multi-Client Collection</h3>
-          <p class="project-desc">Logo and brand mark design across fashion, music, tech, and lifestyle brands.</p>
-          <div class="project-tags">
-            <span>Logo</span>
-            <span>Brand Marks</span>
-            <span>Identity</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card half" data-category="brand" data-id="5" href="pages/project.html?id=5">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1fAkbTNj8MvIjIKyw6mKho9wo-7t6n6_z" alt="Digi2L — Full Brand System" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Brand &amp; Identity</p>
-          <h3 class="project-name">Digi2L — Full Brand System</h3>
-          <p class="project-desc">Complete brand identity, UI screens, and marketing system built from scratch.</p>
-          <div class="project-tags">
-            <span>Brand</span>
-            <span>Design System</span>
-            <span>UI</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card wide" data-category="uiux" data-id="6" href="pages/project.html?id=6">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/15QFsqOn5k9vi6sU7yXTLxuQRrAXZ5Jds" alt="Omega Tablet — Product UI" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">UI/UX</p>
-          <h3 class="project-name">Omega Tablet — Product UI</h3>
-          <p class="project-desc">UI/UX design for hardware product line — product screens, interface, and pitch deck.</p>
-          <div class="project-tags">
-            <span>Figma</span>
-            <span>Product UI</span>
-            <span>Hardware</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card half" data-category="arvr" data-id="7" href="pages/project.html?id=7">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw" alt="Project LENS — AR Wayfinding Interface" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Case Study →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">AR/VR</p>
-          <h3 class="project-name">Project LENS — AR Wayfinding Interface</h3>
-          <p class="project-desc">AR interface design for retail brand. UX flow, interface mockups, pitch deck.</p>
-          <div class="project-tags">
-            <span>AR Interface</span>
-            <span>UX Flow</span>
-            <span>Pitch</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card large" data-category="motion" data-id="8" href="pages/project.html?id=8">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1i86OaatdTnDtJgO1ftwBqWc_SddOiUE7" alt="Pitch Deck & Emailer Design" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <img src="https://lh3.googleusercontent.com/d/1EOpVJNgfmJa9e-fFML42YI_naqmXR45n" alt="Corporate Magazine" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
           <div class="project-hover-overlay"><span>View Project →</span></div>
         </div>
         <div class="project-info">
           <p class="project-cat">Motion &amp; Editorial</p>
-          <h3 class="project-name">Pitch Deck &amp; Emailer Design</h3>
-          <p class="project-desc">High-impact pitch decks and emailer campaigns for enterprise clients.</p>
-          <div class="project-tags">
-            <span>Pitch Deck</span>
-            <span>Emailer</span>
-            <span>Editorial</span>
-          </div>
+          <h3 class="project-name">Corporate Magazine Design</h3>
+          <p class="project-desc">Corporate magazine — editorial layouts, typography hierarchy, page composition.</p>
+          <div class="project-tags"><span>Editorial</span><span>InDesign</span><span>Magazine</span></div>
         </div>
       </a>
 
-      <a class="project-card medium" data-category="brand" data-id="9" href="pages/project.html?id=9">
+      <!-- MOTION 3: Corporate Report -->
+      <a class="project-card half" data-category="motion" data-id="10" href="pages/project.html?id=10">
         <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1tJsB1ICWKCxCm_CX48SaB1zCpgBSKawM" alt="Social Media & Campaign Design" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
+          <img src="https://lh3.googleusercontent.com/d/1U80yTOtr0jjGAHbCsRtl4V4Cgfx2tcMG" alt="Corporate Report" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
           <div class="project-hover-overlay"><span>View Project →</span></div>
         </div>
         <div class="project-info">
-          <p class="project-cat">Brand &amp; Identity</p>
-          <h3 class="project-name">Social Media &amp; Campaign Design</h3>
-          <p class="project-desc">Campaign visuals, social creatives, and advertisement design across clients.</p>
-          <div class="project-tags">
-            <span>Campaign</span>
-            <span>Social</span>
-            <span>Advertising</span>
-          </div>
+          <p class="project-cat">Motion &amp; Editorial</p>
+          <h3 class="project-name">Corporate Report Design</h3>
+          <p class="project-desc">Editorial composition, typography hierarchy, branding consistency, and professional presentation.</p>
+          <div class="project-tags"><span>Report</span><span>Editorial</span><span>Layout</span></div>
         </div>
       </a>
 
@@ -548,21 +544,22 @@
         <form class="contact-form" id="contactForm" novalidate>
           <div class="form-group">
             <label class="form-label">Your Name</label>
-            <input type="text" class="form-input" placeholder="Pratiksha Sharma" />
+            <input type="text" name="name" class="form-input" placeholder="Your Name" required />
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input type="email" class="form-input" placeholder="hello@dentsu.com" />
+            <input type="email" name="email" class="form-input" placeholder="Email" required />
           </div>
           <div class="form-group">
             <label class="form-label">Subject</label>
-            <input type="text" class="form-input" placeholder="Art Director — Innovations" />
+            <input type="text" name="subject" class="form-input" placeholder="Subject" />
           </div>
           <div class="form-group">
             <label class="form-label">Message</label>
-            <textarea class="form-textarea" placeholder="Tell me about the role..."></textarea>
+            <textarea name="message" class="form-textarea" placeholder="Your message..." required></textarea>
           </div>
-          <button type="submit" class="form-submit magnetic">Send Message →</button>
+          <button type="submit" class="form-submit magnetic" id="formSubmitBtn">Send Message →</button>
+          <p class="form-status" id="formStatus" style="display:none;margin-top:12px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;"></p>
         </form>
       </div>
     </div>
@@ -577,9 +574,29 @@
       <a href="https://linkedin.com/in/garvit-yaggik-5925b3114" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:garvityagnik@gmail.com">Email</a>
     </div>
+    <div class="footer-nav">
+      <a href="#hero">Home</a>
+      <a href="#work">Work</a>
+      <a href="#journals">Journal</a>
+      <a href="#about">About</a>
+      <a href="pages/resume.html">Resume</a>
+    </div>
   </footer>
 
 </main>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay">
+  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
+  <nav class="mobile-nav-links">
+    <a href="#hero" class="mobile-nav-link">Home</a>
+    <a href="#work" class="mobile-nav-link">Work</a>
+    <a href="#journals" class="mobile-nav-link">Journal</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="pages/resume.html" class="mobile-nav-link">Resume</a>
+    <a href="#contact" class="mobile-nav-link nav-cta-mobile">Contact →</a>
+  </nav>
+</div>
 
 <!-- JS -->
 <script src="js/router.js"></script>
@@ -590,46 +607,116 @@
 <script src="js/filters.js"></script>
 
 <script>
-// Image fallback system — try multiple Google Drive URL formats
+// === Image fallback system ===
 document.querySelectorAll('img[src*="googleusercontent"]').forEach(img => {
   const id = img.src.split('/d/')[1]?.split('?')[0];
   if (!id) return;
-
   const urls = [
     `https://lh3.googleusercontent.com/d/${id}`,
     `https://drive.google.com/thumbnail?id=${id}&sz=w1600`,
-    `https://drive.google.com/thumbnail?id=${id}&sz=w800`,
-    `https://drive.google.com/file/d/${id}/preview`
+    `https://drive.google.com/thumbnail?id=${id}&sz=w800`
   ];
-
   let urlIndex = 0;
   img.onerror = function () {
     urlIndex++;
-    if (urlIndex < urls.length) {
-      this.src = urls[urlIndex];
-    } else {
+    if (urlIndex < urls.length) { this.src = urls[urlIndex]; }
+    else {
       this.style.display = 'none';
-      const parent = this.parentElement;
-      if (!parent) return;
-      parent.style.background = 'linear-gradient(135deg, #131313, #222222)';
-      parent.style.display = 'flex';
-      parent.style.alignItems = 'center';
-      parent.style.justifyContent = 'center';
-      parent.style.position = parent.style.position || 'relative';
-      const label = document.createElement('span');
-      label.textContent = 'Project Visual';
-      label.style.cssText = `
-        font-family:'Space Mono',monospace;
-        font-size:10px;color:#4a4642;
-        letter-spacing:0.16em;
-        text-transform:uppercase;
-        position:absolute;
-      `;
-      parent.appendChild(label);
+      const p = this.parentElement;
+      if (!p) return;
+      p.style.background = 'linear-gradient(135deg, #131313, #222)';
     }
   };
   img.src = urls[0];
 });
+
+// === Thumbnail Carousel ===
+document.querySelectorAll('.thumb-carousel').forEach(thumb => {
+  const images = JSON.parse(thumb.dataset.images || '[]');
+  if (images.length < 2) return;
+  const img = thumb.querySelector('img');
+  let current = 0;
+  // Dots
+  const dotsWrap = document.createElement('div');
+  dotsWrap.className = 'thumb-dots';
+  images.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.className = 'thumb-dot' + (i === 0 ? ' active' : '');
+    dotsWrap.appendChild(d);
+  });
+  thumb.appendChild(dotsWrap);
+  // Arrows
+  const arrowL = document.createElement('button');
+  arrowL.className = 'thumb-arrow thumb-arrow-l';
+  arrowL.innerHTML = '‹';
+  const arrowR = document.createElement('button');
+  arrowR.className = 'thumb-arrow thumb-arrow-r';
+  arrowR.innerHTML = '›';
+  thumb.appendChild(arrowL);
+  thumb.appendChild(arrowR);
+
+  function go(idx) {
+    current = (idx + images.length) % images.length;
+    img.style.opacity = '0';
+    setTimeout(() => {
+      img.src = images[current];
+      img.style.display = '';
+      img.style.opacity = '1';
+    }, 200);
+    dotsWrap.querySelectorAll('.thumb-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+  arrowL.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); go(current - 1); });
+  arrowR.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); go(current + 1); });
+  // Auto-cycle
+  let timer = setInterval(() => go(current + 1), 3000);
+  thumb.addEventListener('mouseenter', () => clearInterval(timer));
+  thumb.addEventListener('mouseleave', () => { timer = setInterval(() => go(current + 1), 3000); });
+});
+
+// === Formspree Contact Form ===
+const cForm = document.getElementById('contactForm');
+if (cForm) {
+  cForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('formSubmitBtn');
+    const status = document.getElementById('formStatus');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/garvityagnik@gmail.com', {
+        method: 'POST',
+        body: new FormData(cForm),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = 'Thank you! I\'ll get back to you soon.';
+        status.style.color = '#22c55e';
+        cForm.reset();
+      } else {
+        status.textContent = 'Something went wrong. Please email me directly.';
+        status.style.color = '#ef4444';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Please email me directly.';
+      status.style.color = '#ef4444';
+    }
+    status.style.display = 'block';
+    btn.textContent = 'Send Message →';
+    btn.disabled = false;
+  });
+}
+
+// === Mobile Hamburger ===
+const hamburger = document.getElementById('navHamburger');
+const overlay = document.getElementById('mobileNavOverlay');
+const closeBtn = document.getElementById('mobileNavClose');
+if (hamburger && overlay) {
+  hamburger.addEventListener('click', () => overlay.classList.add('open'));
+  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+  overlay.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => overlay.classList.remove('open'));
+  });
+}
 </script>
 </body>
 </html>

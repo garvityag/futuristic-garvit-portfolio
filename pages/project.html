@@ -10,185 +10,58 @@
     .project-page { padding: 100px 56px 80px; max-width: 1280px; margin: 0 auto; }
     .project-hero { padding-bottom: 48px; border-bottom: 1px solid var(--border); margin-bottom: 64px; }
     .project-cat-tag {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      color: var(--orange);
-      text-transform: uppercase;
-      padding: 6px 14px;
-      border: 1px solid var(--orange);
-      border-radius: 100px;
-      background: var(--orange-soft);
-      margin-bottom: 28px;
+      display: inline-block; font-family: var(--font-mono); font-size: 11px;
+      letter-spacing: 0.16em; color: var(--orange); text-transform: uppercase;
+      padding: 6px 14px; border: 1px solid var(--orange); border-radius: 100px;
+      background: var(--orange-soft); margin-bottom: 28px;
     }
     .project-hero h1 {
-      font-family: var(--font-display);
-      font-weight: 900;
-      font-size: clamp(48px, 7vw, 110px);
-      letter-spacing: -0.04em;
-      line-height: 0.95;
-      margin-bottom: 32px;
+      font-family: var(--font-display); font-weight: 900;
+      font-size: clamp(48px, 7vw, 110px); letter-spacing: -0.04em;
+      line-height: 0.95; margin-bottom: 32px;
     }
-    .project-tags-row {
-      display: flex; flex-wrap: wrap; gap: 8px;
-      margin-bottom: 36px;
-    }
+    .project-tags-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
     .project-tags-row span {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 6px 12px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border2);
-      color: var(--text);
+      font-family: var(--font-mono); font-size: 11px; padding: 6px 12px;
+      border-radius: 8px; background: var(--surface); border: 1px solid var(--border2); color: var(--text);
     }
-    .info-bar {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-    .info-cell {
-      padding: 24px 28px;
-      border-right: 1px solid var(--border);
-      background: var(--bg3);
-    }
+    .info-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .info-cell { padding: 24px 28px; border-right: 1px solid var(--border); background: var(--bg3); }
     .info-cell:last-child { border-right: 0; }
-    .info-cell .lbl {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text2);
-      margin-bottom: 8px;
-    }
-    .info-cell .val {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
+    .info-cell .lbl { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text2); margin-bottom: 8px; }
+    .info-cell .val { font-family: var(--font-display); font-weight: 800; font-size: 18px; color: var(--text); letter-spacing: -0.01em; }
 
-    .full-img {
-      width: 100%;
-      aspect-ratio: 16/9;
-      border-radius: var(--radius);
-      background:
-        radial-gradient(circle at 30% 30%, rgba(255,107,43,0.15), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(99,102,241,0.15), transparent 55%),
-        linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
-      border: 1px solid var(--border);
-      margin: 56px 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      color: var(--text3);
-    }
+    /* Image Carousel */
+    .project-carousel { position: relative; margin: 56px 0; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+    .carousel-track { position: relative; width: 100%; aspect-ratio: 16/9; background: var(--bg3); }
+    .carousel-track img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s ease; }
+    .carousel-track img.active { opacity: 1; }
+    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 48px; height: 48px; border-radius: 50%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); color: #fff; font-size: 22px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.3s; }
+    .carousel-btn:hover { background: rgba(255,107,43,0.7); }
+    .carousel-btn-l { left: 16px; }
+    .carousel-btn-r { right: 16px; }
+    .carousel-dots { display: flex; gap: 8px; justify-content: center; padding: 14px 0; background: var(--bg3); }
+    .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border2); cursor: pointer; transition: all 0.3s; }
+    .carousel-dot.active { background: var(--orange); transform: scale(1.3); }
 
-    .project-img {
-      width: 100%;
-      display: block;
-      border-radius: 16px;
-      margin: 24px 0;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      filter: brightness(0.85);
-      transition: filter 0.3s var(--ease), transform 0.5s var(--ease);
-    }
-    .project-img:hover {
-      filter: brightness(1);
-      transform: translateY(-2px);
-    }
-    .project-img-hero {
-      margin: 56px 0;
-      border-radius: var(--radius);
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
-      margin: 56px 0;
-    }
-    .block h3 {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 22px;
-      color: var(--orange);
-      margin-bottom: 14px;
-      letter-spacing: -0.01em;
-    }
-    .block p {
-      color: var(--text2);
-      font-size: 16px;
-      line-height: 1.7;
-    }
-
-    .outcome-card {
-      margin: 56px 0;
-      padding: 36px 40px;
-      border: 1px solid var(--orange);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(135deg, var(--orange-soft), transparent),
-        var(--bg3);
-      box-shadow: 0 0 40px var(--orange-glow);
-    }
-    .outcome-card .lbl {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 14px;
-    }
-    .outcome-card p {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 24px;
-      line-height: 1.3;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
-
-    .pn-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin: 80px 0 0;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-    }
-    .pn-card {
-      padding: 28px 30px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: border-color .3s var(--ease);
-    }
+    .project-img { width: 100%; display: block; border-radius: 16px; margin: 24px 0; border: 1px solid var(--border); background: var(--surface); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin: 56px 0; }
+    .block h3 { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--orange); margin-bottom: 14px; }
+    .block p { color: var(--text2); font-size: 16px; line-height: 1.7; }
+    .outcome-card { margin: 56px 0; padding: 36px 40px; border: 1px solid var(--orange); border-radius: var(--radius); background: linear-gradient(135deg, var(--orange-soft), transparent), var(--bg3); box-shadow: 0 0 40px var(--orange-glow); }
+    .outcome-card .lbl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .outcome-card p { font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 1.3; color: var(--text); }
+    .pn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 80px 0 0; padding-top: 48px; border-top: 1px solid var(--border); }
+    .pn-card { padding: 28px 30px; background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); transition: border-color .3s var(--ease); }
     .pn-card:hover { border-color: var(--orange); }
-    .pn-card .dir {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      color: var(--text2);
-      margin-bottom: 10px;
-    }
-    .pn-card .name {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 22px;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
+    .pn-card .dir { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--text2); margin-bottom: 10px; }
+    .pn-card .name { font-family: var(--font-display); font-weight: 800; font-size: 22px; color: var(--text); }
     .pn-card.next { text-align: right; }
+    /* PDF viewer */
+    .pdf-wrap { margin: 56px 0; }
+    .pdf-wrap iframe { width: 100%; height: 80vh; border: none; border-radius: 16px; background: #0d0d0d; }
+    .pdf-link { display: inline-block; margin-top: 14px; font-family: var(--font-mono); font-size: 13px; color: var(--orange); letter-spacing: 0.06em; transition: color 0.3s; }
+    .pdf-link:hover { color: var(--text); }
 
     @media (max-width: 900px) {
       .project-page { padding: 90px 22px 60px; }
@@ -220,6 +93,13 @@
     <a href="https://linkedin.com/in/garvit-yaggik-5925b3114" target="_blank" rel="noopener">LinkedIn</a>
     <a href="mailto:garvityagnik@gmail.com">Email</a>
   </div>
+  <div class="footer-nav">
+    <a href="../index.html#hero">Home</a>
+    <a href="../index.html#work">Work</a>
+    <a href="../index.html#journals">Journal</a>
+    <a href="../index.html#about">About</a>
+    <a href="resume.html">Resume</a>
+  </div>
 </footer>
 
 <script src="../js/router.js"></script>
@@ -228,169 +108,116 @@
 <script>
 const PROJECTS = {
   1: {
-    id: 1,
-    title: "Global Exhibition Design System",
-    category: "Spatial & Exhibitions",
-    year: "2022–2024",
-    client: "VVDN Technologies",
-    role: "Sole Designer — Art Direction, Print, Environmental",
-    tags: ["Environmental Graphics","Large Format","Signage","Brand"],
-    overview: "Full visual design system for 100+ international exhibitions including CES, MWC, ISC West, and Auto Expo. 13–14 large-format wall panels per event (7–8ft minimum), booth layouts, signage hierarchy, and environmental graphics.",
-    challenge: "Each exhibition required a complete visual system in tight turnaround — new theme, new layouts, print-ready files for global vendors. No templates existed. Built the system from scratch.",
-    solution: "Created a modular grid system that could flex across any booth size. Standardised typography, color application, and asset hierarchy across 18 global locations.",
-    outcome: "100+ exhibitions executed. System adopted company-wide. Zero missed deadlines across 2 years.",
-    thumb: "https://lh3.googleusercontent.com/d/1H2BF2MBMk-_uxIZVt216NKQLiakvccQG",
-    images: [
-      "https://lh3.googleusercontent.com/d/1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s",
-      "https://lh3.googleusercontent.com/d/1HFIb04e02njFJjXGaN74U3694fSrhIEO"
-    ]
+    title: "Stratigen", category: "Brand & Identity", year: "2024",
+    client: "Personal Project", role: "Brand Identity Designer",
+    tools: "Illustrator, Photoshop, PowerPoint",
+    tags: ["Logo","Brand Identity","Moodboard","Mockups"],
+    overview: "Complete brand identity built from scratch — logo design, color system, moodboard, and branded mockups. Full system developed independently with no brief constraints.",
+    challenge: "Creating a cohesive brand identity with zero constraints — full creative freedom means every decision has to be self-justified and internally consistent.",
+    solution: "Built a structured brand system with defined color palettes, typography rules, and application guidelines that could scale across any medium.",
+    outcome: "Full brand identity completed — logo, color system, moodboard, and presentation-ready mockups.",
+    type: "pdf",
+    pdfUrl: "https://drive.google.com/file/d/1Bvm1pIP2597MyPOb_aPrkJTxI_jaoEJR/preview",
+    pdfFullscreen: "https://drive.google.com/file/d/1Bvm1pIP2597MyPOb_aPrkJTxI_jaoEJR/view"
   },
   2: {
-    id: 2,
-    title: "Internal Newsletter System",
-    category: "Motion & Editorial",
-    year: "2024–Present",
-    client: "Publicis Groupe",
-    role: "Sole Designer — Concept, Design, Motion",
-    tags: ["Editorial Design","Motion Graphics","Brand Systems"],
-    overview: "Spotted the gap, proposed the format, built the templates, launched the series — no brief, no precedent.",
-    challenge: "No existing newsletter format. Had to define tone, visual language, and production workflow from zero.",
-    solution: "Built a modular editorial system with locked templates any team member could update without breaking the visual language.",
-    outcome: "Now reaches 100,000+ employees globally. Zero layout breaks since launch.",
-    thumb: "https://lh3.googleusercontent.com/d/1NpvE87hHI-duo3iuPd0N7xLmQ8lkyJzD",
-    images: [
-      "https://lh3.googleusercontent.com/d/15xMhfmrUi4lmX7--uP53umOAuMBcPYTR",
-      "https://lh3.googleusercontent.com/d/1HGXFlclIjZYnVOQRKzLeC7JIw1iuzCHM"
-    ]
+    title: "LUXORA — Premium Spatial Design", category: "Spatial & Exhibitions", year: "2024–2025",
+    client: "Confidential Luxury Clients", role: "Spatial Designer, Art Director",
+    tools: "Blender, Photoshop, Lightroom",
+    tags: ["Spatial Design","Blender","Luxury","Interior"],
+    overview: "High-end spatial environments for luxury retail, workspace, and residential clients. Mood direction, material selection, lighting atmosphere, and cinematic spatial visualization.",
+    challenge: "Translating abstract luxury brand values into physical spatial experiences that feel immersive and premium.",
+    solution: "Developed cinematic 3D visualizations with precise material textures, lighting setups, and atmospheric mood that communicate the brand's essence before construction begins.",
+    outcome: "Multiple spatial concepts approved and moved to production phase.",
+    images: ["https://lh3.googleusercontent.com/d/12yngtXzKvYkWvL-TODn4eNZ92YFJNLfz","https://lh3.googleusercontent.com/d/135SiSH_BnNLmAvTui1NcF503rT2eXnI5"]
   },
   3: {
-    id: 3,
-    title: "Branding & Packaging — Multi-Client",
-    category: "Brand & Identity",
-    year: "2021–2024",
-    client: "Multiple Clients",
-    role: "Lead Designer — Identity, Packaging, Print",
-    tags: ["Brand Identity","Packaging","Print","Art Direction"],
-    overview: "Brand identity and packaging design for multiple clients across automotive, FMCG, and lifestyle categories. Full ownership from concept to print-ready artwork.",
-    challenge: "Each brand needed a distinct visual voice while maintaining the same level of craft and shelf-presence. Tight production windows and varied print specs.",
-    solution: "Built a repeatable identity-to-pack workflow — typography systems, colour ladders, and structural pack templates that flex across formats and substrates.",
-    outcome: "Multiple identities and SKUs shipped. Reusable production templates that compress later projects from weeks to days.",
-    thumb: "https://lh3.googleusercontent.com/d/1FiPG2Tfk5LjBp9yV9csvI3FUO1Q5OU8w",
-    images: [
-      "https://lh3.googleusercontent.com/d/1GrzBSSNWTih8I4Io8Jg7SBsBb0af7GZr",
-      "https://lh3.googleusercontent.com/d/1I45puK1bQkX8E9rVvH6tsTTOOiUnYTqa",
-      "https://lh3.googleusercontent.com/d/1Gwhua-3oWgk5lR2dkfqPz3OAguU8Zbb4"
-    ]
+    title: "NEXA Spaces — Immersive Experience", category: "Spatial & Exhibitions", year: "2024–2025",
+    client: "Experiential Brands & Hospitality", role: "Spatial Designer, Environment Artist",
+    tools: "Blender, Photoshop, Cinema 4D",
+    tags: ["Immersive","Spatial","Blender","Cinema 4D"],
+    overview: "Immersive spatial concepts for entertainment, hospitality, and brand activation. Environment styling, lighting design, experience zoning, and futuristic spatial visualization.",
+    challenge: "Creating environments that feel futuristic and immersive while remaining practically constructible.",
+    solution: "Combined cinematic lighting design with modular environment components that can be adapted to different venue scales.",
+    outcome: "Spatial concepts adopted for brand activation events and hospitality venues.",
+    images: ["https://lh3.googleusercontent.com/d/1svIlWdeqcMh9kQ2Owx9fnrp-dmsz96NB","https://lh3.googleusercontent.com/d/1xPVT5-YI3jop8mmr1RW_hN8tMbiwb7x5","https://lh3.googleusercontent.com/d/1FYhC1mi2zYbh2PH4i4MHBTDLYuI9mNrw","https://lh3.googleusercontent.com/d/1tnG9GzrwAUprvmdpfR6DER2Eojww5ziQ"]
   },
   4: {
-    id: 4,
-    title: "Logo Design — Multi-Client Collection",
-    category: "Brand & Identity",
-    year: "2019–2024",
-    client: "Multiple Clients",
-    role: "Brand Designer — Logo, Marks, Identity",
-    tags: ["Logo","Brand Marks","Identity","Typography"],
-    overview: "Logo and brand mark design across fashion, music, tech, and lifestyle brands. A working collection that spans wordmarks, monograms, and full brand-mark systems.",
-    challenge: "Designing distinct marks that hold up across digital, print, and merch — at every scale, in every context.",
-    solution: "A research-led process: language audit, mark exploration, narrowing to 3 directions, then refining the strongest into a usage system with constructions, clearspace, and colour rules.",
-    outcome: "40+ brand marks shipped across categories. Several adopted as long-term identities still in use today.",
-    thumb: "https://lh3.googleusercontent.com/d/1vV0-FnbwJFMycXbKZRX-gxl1Duk19A5Y",
-    images: [
-      "https://lh3.googleusercontent.com/d/1xitH-UblhCIyB9JdOXThH3hkyi6rXbNy",
-      "https://lh3.googleusercontent.com/d/1MEneQ6B43Xr3u6ah59IlltOSvQ00ScKb",
-      "https://lh3.googleusercontent.com/d/1mQJxjHS-SwpAIa_57j86hxTyWCr0fuH3"
-    ]
+    title: "Corporate Exhibition Booth", category: "Spatial & Exhibitions", year: "2024",
+    client: "Corporate Technology Brand", role: "3D Visualizer, Spatial Designer",
+    tools: "Blender, Photoshop, Cinema 4D, Lightroom",
+    tags: ["Exhibition","Blender","3D","Booth"],
+    overview: "Material enhancement, realistic texturing, lighting refinement for a corporate exhibition and technology showcase environment.",
+    challenge: "Enhancing existing booth concepts with photorealistic material quality and atmospheric lighting.",
+    solution: "Refined LED surfaces, reflective materials, and futuristic spatial mood through detailed 3D texturing and lighting.",
+    outcome: "Enhanced visualization approved for production execution.",
+    images: ["https://lh3.googleusercontent.com/d/16YXaGD8yCLR843_vY8VZgvcv_8_VCarT"]
   },
   5: {
-    id: 5,
-    title: "Digi2L — Full Brand System",
-    category: "Brand & Identity",
-    year: "2022",
-    client: "Digi2L",
-    role: "Sole Designer — Brand, UI, Marketing",
-    tags: ["Brand Identity","Design System","UI","Marketing"],
-    overview: "Complete brand identity, UI screens, and marketing system built from scratch — brand mark, color system, typography, product UI, and pitch presentations.",
-    challenge: "Brand and product were still being defined while design had to ship. No guidelines, no templates, no infrastructure.",
-    solution: "Built a flexible design system first — then every output derived from it. Gave the brand visual consistency while the product evolved.",
-    outcome: "Full brand system adopted. Used across all channels for 6+ months after handoff.",
-    thumb: "https://lh3.googleusercontent.com/d/1fAkbTNj8MvIjIKyw6mKho9wo-7t6n6_z",
-    images: [
-      "https://lh3.googleusercontent.com/d/1v-vD1dR6_hPwG9ys181lAcJzKJugPO5X",
-      "https://lh3.googleusercontent.com/d/1tJsB1ICWKCxCm_CX48SaB1zCpgBSKawM"
-    ]
+    title: "ISC West Booth", category: "Spatial & Exhibitions", year: "2023",
+    client: "VVDN Technologies", role: "Exhibition Designer, Art Director",
+    tools: "Blender, Photoshop, Illustrator, Lightroom",
+    tags: ["Exhibition","Booth","Large Format","Print"],
+    overview: "End-to-end booth design for ISC West. Booth structure visualization, branding graphics, large-format mockups, and vendor coordination for production execution.",
+    challenge: "Designing for a major international security expo with strict vendor specs and tight turnaround.",
+    solution: "Built modular booth layouts with brand-consistent graphics that could be adapted to vendor production requirements.",
+    outcome: "Booth executed successfully at ISC West with zero production issues.",
+    images: ["https://lh3.googleusercontent.com/d/1H1gcScgkUEhxmqlj5bM4mKbbyqHeyHM7","https://lh3.googleusercontent.com/d/1H-pciOuqOqJ8fU7GAKP5_5i9mu5Kliue","https://lh3.googleusercontent.com/d/1Gwhua-3oWgk5lR2dkfqPz3OAguU8Zbb4"]
   },
   6: {
-    id: 6,
-    title: "Omega Tablet — Product UI",
-    category: "UI/UX",
-    year: "2023",
-    client: "VVDN Technologies",
-    role: "UI/UX Designer — Product UI, Pitch",
-    tags: ["Figma","Product UI","Hardware","Pitch"],
-    overview: "UI/UX design for a hardware product line — product screens, dashboard interface, and pitch deck. Built for both end-users on the device and stakeholders in the boardroom.",
-    challenge: "Translate complex hardware capability into screens a non-technical buyer can grasp in 30 seconds, while staying useful for the operator on-device.",
-    solution: "Two-tier interface system — a clean product UI optimised for the tablet, plus a pitch-mode storyboard that walks investors and clients through the same data with extra context.",
-    outcome: "Used in C-suite presentations and international client pitches. Interface shipped as the device's product UI.",
-    thumb: "https://lh3.googleusercontent.com/d/15QFsqOn5k9vi6sU7yXTLxuQRrAXZ5Jds",
-    images: [
-      "https://lh3.googleusercontent.com/d/12GPd7S8VNAoM2WAQD9Vqsz57T4KiXtun",
-      "https://lh3.googleusercontent.com/d/1ZolH-F6ujOvLpp2xaVe6vGwCFNKY-gnv",
-      "https://lh3.googleusercontent.com/d/1Z0zUGY2EiV0GX8t4neaEQKzjB5iTt_16"
-    ]
+    title: "IMC Booth Design", category: "Spatial & Exhibitions", year: "2023",
+    client: "VVDN Technologies", role: "Exhibition Designer",
+    tools: "Blender, Photoshop, Illustrator, Lightroom",
+    tags: ["Exhibition","Booth","Branding","Spatial"],
+    overview: "Complete booth visualization and exhibition branding for IMC. Booth mockups, branding graphics, layout visualization, and production-ready assets.",
+    challenge: "Creating a cohesive booth presence that communicates technology capabilities at scale.",
+    solution: "Developed comprehensive booth visualization with integrated branding graphics and clear visitor flow.",
+    outcome: "Booth design delivered and executed at IMC event.",
+    images: ["https://lh3.googleusercontent.com/d/1I45puK1bQkX8E9rVvH6tsTTOOiUnYTqa"]
   },
   7: {
-    id: 7,
-    title: "Project LENS — AR Wayfinding Interface",
-    category: "AR/VR",
-    year: "2024",
-    client: "Confidential Retail Brand",
-    role: "Interface Design, UX Flow, Pitch Deck",
-    tags: ["AR Interface","UX Flow","Pitch Deck","Spatial"],
-    overview: "AR interface design for a retail brand's experiential campaign — UX flow, interface mockups, and pitch deck. Collaborated with a strategist and developer team.",
-    challenge: "Design an AR interface that works for users who have never used AR before. Zero learning curve.",
-    solution: "Minimal floating UI layer — directional arrows, proximity indicators, and contextual product info. All designed in Figma with AR-aware constraints.",
-    outcome: "Pitch accepted. Interface delivered as prototype-ready Figma file + case study deck.",
-    thumb: "https://lh3.googleusercontent.com/d/1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw",
-    images: [
-      "https://lh3.googleusercontent.com/d/1HY9muyNHqTiSuYV9A1wwH0U4_mAhTYda",
-      "https://lh3.googleusercontent.com/d/1HZlAYnrwixSNwZS428naKNm6nwVw2Cvh"
-    ]
+    title: "Exhibition & Event Graphics", category: "Spatial & Exhibitions", year: "2022–2024",
+    client: "VVDN Technologies", role: "Graphic Designer, Print Production",
+    tools: "Photoshop, Illustrator, Lightroom",
+    tags: ["Exhibition","Event","Large Format","Print"],
+    overview: "Exhibition and event branding across multiple shows — booth panels, standees, backdrops, and large-format print creatives.",
+    challenge: "Maintaining brand consistency across dozens of events with different venue specs and print vendors.",
+    solution: "Built a reusable graphics system with locked brand zones and flexible content areas.",
+    outcome: "Graphics system used across 50+ events over 2 years.",
+    images: ["https://lh3.googleusercontent.com/d/1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK","https://lh3.googleusercontent.com/d/1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s","https://lh3.googleusercontent.com/d/1HFIb04e02njFJjXGaN74U3694fSrhIEO","https://lh3.googleusercontent.com/d/1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw"]
   },
   8: {
-    id: 8,
-    title: "Pitch Deck & Emailer Design",
-    category: "Motion & Editorial",
-    year: "2023–Present",
-    client: "Enterprise Clients",
-    role: "Lead Designer — Editorial, Motion, Decks",
-    tags: ["Pitch Deck","Emailer","Editorial","Motion"],
-    overview: "High-impact pitch decks and emailer campaigns for enterprise clients — narrative-led design with editorial pacing and motion-aware layouts.",
-    challenge: "Decks that have to land in a 20-minute meeting with C-suite — and emailers that have to pull a click in 2 seconds. Two extremes, one visual language.",
-    solution: "A modular editorial system: locked grids, type scale, and motion cues that work for both formats. Story-first layout decisions, then visual.",
-    outcome: "Decks landed funding and partnerships; emailer open-rates improved measurably across campaigns.",
-    thumb: "https://lh3.googleusercontent.com/d/1i86OaatdTnDtJgO1ftwBqWc_SddOiUE7",
-    images: [
-      "https://lh3.googleusercontent.com/d/15xMhfmrUi4lmX7--uP53umOAuMBcPYTR",
-      "https://lh3.googleusercontent.com/d/1NpvE87hHI-duo3iuPd0N7xLmQ8lkyJzD"
-    ]
+    title: "Magazine Ads & Print Campaign", category: "Motion & Editorial", year: "2023",
+    client: "VVDN Technologies", role: "Graphic Designer, Print Designer",
+    tools: "Photoshop, Illustrator",
+    tags: ["Print","Magazine","Layout","Typography"],
+    overview: "Magazine advertisements and print campaign creatives for brand communication. Layout composition, typography hierarchy, visual storytelling, and print-ready artwork.",
+    challenge: "Creating ads that stand out in crowded trade magazines while maintaining corporate brand guidelines.",
+    solution: "Bold typography-led layouts with strategic white space and strong visual hierarchy.",
+    outcome: "Ads published in multiple industry magazines with positive brand recognition.",
+    images: ["https://lh3.googleusercontent.com/d/1GrzBSSNWTih8I4Io8Jg7SBsBb0af7GZr","https://lh3.googleusercontent.com/d/1v-vD1dR6_hPwG9ys181lAcJzKJugPO5X"]
   },
   9: {
-    id: 9,
-    title: "Social Media & Campaign Design",
-    category: "Brand & Identity",
-    year: "2021–Present",
-    client: "Multiple Clients",
-    role: "Designer — Campaign, Social, Advertising",
-    tags: ["Campaign","Social","Advertising","Art Direction"],
-    overview: "Campaign visuals, social creatives, and advertisement design across clients. Full-funnel: hero key visuals, cutdowns for every channel, and motion variants.",
-    challenge: "One idea has to flex across 15+ formats — square, story, reel, billboard, banner — without losing the headline beat.",
-    solution: "Build the campaign as a system from day one: master frame, type-and-image grammar, then derive every format from the same DNA. Faster handoff, tighter consistency.",
-    outcome: "Campaigns shipped across paid and organic channels with measurable lift on engagement and recall.",
-    thumb: "https://lh3.googleusercontent.com/d/1tJsB1ICWKCxCm_CX48SaB1zCpgBSKawM",
-    images: [
-      "https://lh3.googleusercontent.com/d/1v-vD1dR6_hPwG9ys181lAcJzKJugPO5X",
-      "https://lh3.googleusercontent.com/d/15Mj6TBqXU_gB0LvxyoEPLGHIby21sQfy"
-    ]
+    title: "Corporate Magazine Design", category: "Motion & Editorial", year: "2023",
+    client: "VVDN Technologies", role: "Editorial Designer",
+    tools: "Photoshop, Illustrator, InDesign",
+    tags: ["Editorial","InDesign","Magazine","Print"],
+    overview: "Corporate magazine design — editorial layouts, typography hierarchy, page composition, image treatments, and brand consistency throughout.",
+    challenge: "Transforming dense corporate content into an engaging, readable magazine format.",
+    solution: "Structured editorial grid with clear content hierarchy, pull quotes, and breathing room between sections.",
+    outcome: "Magazine published and distributed across organization.",
+    images: ["https://lh3.googleusercontent.com/d/1EOpVJNgfmJa9e-fFML42YI_naqmXR45n"]
+  },
+  10: {
+    title: "Corporate Report Design", category: "Motion & Editorial", year: "2023",
+    client: "Self-Initiated", role: "Editorial Designer",
+    tools: "Photoshop, Illustrator, InDesign",
+    tags: ["Report","Editorial","Layout","InDesign"],
+    overview: "Corporate report with editorial composition, typography hierarchy, branding consistency, and professional visual presentation.",
+    challenge: "Presenting complex data and content in an accessible, premium document format.",
+    solution: "Clean page layouts with infographic placement, consistent typography, and premium document aesthetics.",
+    outcome: "Report template adopted for ongoing corporate communications.",
+    images: ["https://lh3.googleusercontent.com/d/1U80yTOtr0jjGAHbCsRtl4V4Cgfx2tcMG"]
   }
 };
 
@@ -400,18 +227,35 @@ const PROJECTS = {
   document.title = `${p.title} — Garvit Yaggik`;
 
   const ids = Object.keys(PROJECTS).map(n => parseInt(n, 10));
-  const idx = ids.indexOf(p.id);
+  const idx = ids.indexOf(id);
   const prev = PROJECTS[ids[(idx - 1 + ids.length) % ids.length]];
   const next = PROJECTS[ids[(idx + 1) % ids.length]];
+  const prevId = ids[(idx - 1 + ids.length) % ids.length];
+  const nextId = ids[(idx + 1) % ids.length];
 
   const tagsHtml = p.tags.map(t => `<span>${t}</span>`).join('');
-  const imgAttrs = `loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';"`;
-  const heroHtml = p.thumb
-    ? `<img src="${p.thumb}" alt="${p.title} — hero" class="project-img project-img-hero" ${imgAttrs} />`
-    : `<div class="full-img">// HERO IMAGE</div>`;
-  const imagesHtml = (p.images || []).map((src, i) => `
-    <img src="${src}" alt="${p.title} — image ${i + 1}" class="project-img" ${imgAttrs} />
-  `).join('');
+
+  // Media section — PDF or image carousel
+  let mediaHtml = '';
+  if (p.type === 'pdf') {
+    mediaHtml = `
+      <div class="pdf-wrap">
+        <iframe src="${p.pdfUrl}" allow="autoplay"></iframe>
+        <a href="${p.pdfFullscreen}" target="_blank" rel="noopener" class="pdf-link">Open in fullscreen →</a>
+      </div>`;
+  } else if (p.images && p.images.length > 1) {
+    const imgsHtml = p.images.map((src, i) => `<img src="${src}" alt="${p.title} — ${i+1}" class="${i===0?'active':''}" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none';" />`).join('');
+    const dotsHtml = p.images.map((_, i) => `<span class="carousel-dot${i===0?' active':''}" data-idx="${i}"></span>`).join('');
+    mediaHtml = `
+      <div class="project-carousel" id="projCarousel">
+        <div class="carousel-track">${imgsHtml}</div>
+        <button class="carousel-btn carousel-btn-l" id="carL">‹</button>
+        <button class="carousel-btn carousel-btn-r" id="carR">›</button>
+        <div class="carousel-dots">${dotsHtml}</div>
+      </div>`;
+  } else if (p.images && p.images.length === 1) {
+    mediaHtml = `<img src="${p.images[0]}" alt="${p.title}" class="project-img" style="margin:56px 0;border-radius:var(--radius);" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.style.display='none';" />`;
+  }
 
   document.getElementById('projectPage').innerHTML = `
     <div class="project-hero">
@@ -419,92 +263,45 @@ const PROJECTS = {
       <h1>${p.title}</h1>
       <div class="project-tags-row">${tagsHtml}</div>
       <div class="info-bar">
-        <div class="info-cell">
-          <div class="lbl">Year</div>
-          <div class="val">${p.year}</div>
-        </div>
-        <div class="info-cell">
-          <div class="lbl">Client</div>
-          <div class="val">${p.client}</div>
-        </div>
-        <div class="info-cell">
-          <div class="lbl">Role</div>
-          <div class="val">${p.role}</div>
-        </div>
+        <div class="info-cell"><div class="lbl">Year</div><div class="val">${p.year}</div></div>
+        <div class="info-cell"><div class="lbl">Client</div><div class="val">${p.client}</div></div>
+        <div class="info-cell"><div class="lbl">Role</div><div class="val">${p.role}</div></div>
+        <div class="info-cell"><div class="lbl">Tools</div><div class="val">${p.tools}</div></div>
       </div>
     </div>
-
-    ${heroHtml}
-
+    ${mediaHtml}
     <div class="two-col">
-      <div class="block">
-        <h3>Overview</h3>
-        <p>${p.overview}</p>
-      </div>
-      <div class="block">
-        <h3>Challenge</h3>
-        <p>${p.challenge}</p>
-      </div>
+      <div class="block"><h3>Overview</h3><p>${p.overview}</p></div>
+      <div class="block"><h3>Challenge</h3><p>${p.challenge}</p></div>
     </div>
-
-    ${imagesHtml}
-
-    <div class="block" style="margin-top:56px">
-      <h3>Solution</h3>
-      <p>${p.solution}</p>
-    </div>
-
-    <div class="outcome-card">
-      <div class="lbl">// Outcome</div>
-      <p>${p.outcome}</p>
-    </div>
-
+    <div class="block" style="margin-top:56px"><h3>Solution</h3><p>${p.solution}</p></div>
+    <div class="outcome-card"><div class="lbl">// Outcome</div><p>${p.outcome}</p></div>
     <div class="pn-row">
-      <a class="pn-card prev" href="project.html?id=${prev.id}">
-        <div class="dir">← Previous</div>
-        <div class="name">${prev.title}</div>
-      </a>
-      <a class="pn-card next" href="project.html?id=${next.id}">
-        <div class="dir">Next →</div>
-        <div class="name">${next.title}</div>
-      </a>
+      <a class="pn-card prev" href="project.html?id=${prevId}"><div class="dir">← Previous</div><div class="name">${prev.title}</div></a>
+      <a class="pn-card next" href="project.html?id=${nextId}"><div class="dir">Next →</div><div class="name">${next.title}</div></a>
     </div>
   `;
 
-  // Image fallback system — try multiple Google Drive URL formats
-  document.querySelectorAll('img[src*="googleusercontent"]').forEach(img => {
-    if (img.dataset._fbWired) return;
-    const id = img.src.split('/d/')[1]?.split('?')[0];
-    if (!id) return;
-    const urls = [
-      `https://lh3.googleusercontent.com/d/${id}`,
-      `https://drive.google.com/thumbnail?id=${id}&sz=w1600`,
-      `https://drive.google.com/thumbnail?id=${id}&sz=w800`,
-      `https://drive.google.com/file/d/${id}/preview`
-    ];
-    let urlIndex = 0;
-    img.dataset._fbWired = '1';
-    img.onerror = function () {
-      urlIndex++;
-      if (urlIndex < urls.length) {
-        this.src = urls[urlIndex];
-      } else {
-        this.style.display = 'none';
-        const parent = this.parentElement;
-        if (!parent) return;
-        parent.style.background = 'linear-gradient(135deg, #131313, #222222)';
-        parent.style.display = 'flex';
-        parent.style.alignItems = 'center';
-        parent.style.justifyContent = 'center';
-        parent.style.position = parent.style.position || 'relative';
-        const label = document.createElement('span');
-        label.textContent = 'Project Visual';
-        label.style.cssText = `font-family:'Space Mono',monospace;font-size:10px;color:#4a4642;letter-spacing:0.16em;text-transform:uppercase;position:absolute;`;
-        parent.appendChild(label);
-      }
-    };
-    img.src = urls[0];
-  });
+  // Carousel logic
+  const carousel = document.getElementById('projCarousel');
+  if (carousel) {
+    const track = carousel.querySelector('.carousel-track');
+    const imgs = track.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    let cur = 0;
+    function goTo(i) {
+      cur = (i + imgs.length) % imgs.length;
+      imgs.forEach((img, j) => img.classList.toggle('active', j === cur));
+      dots.forEach((d, j) => d.classList.toggle('active', j === cur));
+    }
+    document.getElementById('carL').addEventListener('click', () => goTo(cur - 1));
+    document.getElementById('carR').addEventListener('click', () => goTo(cur + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(parseInt(d.dataset.idx))));
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') goTo(cur - 1);
+      if (e.key === 'ArrowRight') goTo(cur + 1);
+    });
+  }
 })();
 </script>
 </body>

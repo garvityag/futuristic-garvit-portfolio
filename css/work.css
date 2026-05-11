@@ -186,3 +186,71 @@
   .project-desc { font-size: 13px; }
   .project-info { padding: 18px 20px 22px; }
 }
+
+/* Coming Soon State */
+.coming-soon-state {
+  text-align: center;
+  padding: 80px 20px;
+}
+.coming-soon-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--text3);
+  margin-bottom: 8px;
+}
+.coming-soon-sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+}
+
+/* Thumbnail Carousel Arrows & Dots */
+.thumb-carousel { position: relative; }
+.thumb-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+}
+.thumb-carousel:hover .thumb-arrow { opacity: 1; }
+.thumb-arrow-l { left: 8px; }
+.thumb-arrow-r { right: 8px; }
+.thumb-arrow:hover { background: rgba(255,107,43,0.7); }
+.thumb-dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 5;
+}
+.thumb-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s ease;
+}
+.thumb-dot.active {
+  background: var(--orange);
+  transform: scale(1.3);
+}
+.project-thumb img {
+  transition: transform 0.6s var(--ease), filter 0.4s var(--ease), opacity 0.2s ease;
+}
+
