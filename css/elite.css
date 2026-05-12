@@ -1,0 +1,528 @@
+/* =====================================================
+   ELITE DESIGN LAYER — Cyberpunk Haute Couture
+   Editorial precision meets sci-fi interface
+   World's Biggest Designer — Garvit Yaggik
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* ══════════════════════════════════════════════════
+   SECTION NUMBER GHOST TYPOGRAPHY
+   Massive faint numerals behind each section header
+   ══════════════════════════════════════════════════ */
+
+[data-section-num] {
+  position: relative;
+}
+
+[data-section-num]::before {
+  content: attr(data-section-num);
+  position: absolute;
+  top: -0.15em;
+  right: 0;
+  font-family: 'Bebas Neue', var(--font-display);
+  font-weight: 400;
+  font-size: clamp(120px, 18vw, 220px);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 107, 43, 0.055);
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════
+   DIAGONAL STRUCTURAL GRID — hero card decoration
+   ══════════════════════════════════════════════════ */
+
+.hero-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 54px,
+    rgba(255, 107, 43, 0.011) 54px,
+    rgba(255, 107, 43, 0.011) 55px
+  );
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* ══════════════════════════════════════════════════
+   PROJECT CARD — EDITORIAL NUMBER LABELS
+   ══════════════════════════════════════════════════ */
+
+.project-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: rgba(255, 107, 43, 0.28);
+  display: block;
+  margin-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .project-num {
+  color: rgba(255, 107, 43, 0.55);
+}
+
+/* ══════════════════════════════════════════════════
+   PROJECT CARDS — elevated hover treatment
+   ══════════════════════════════════════════════════ */
+
+.project-card {
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease !important;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) !important;
+}
+
+.project-card:hover .project-name {
+  background: linear-gradient(135deg, #fff, #f5f0eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ══════════════════════════════════════════════════
+   ADVANCED NAV GLASSMORPHISM
+   ══════════════════════════════════════════════════ */
+
+.hero-nav {
+  background: rgba(8, 8, 10, 0.48) !important;
+  backdrop-filter: blur(32px) saturate(180%) brightness(0.88) !important;
+  -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(0.88) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.045),
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.055),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   SECTION HEADER — animated neon underline
+   ══════════════════════════════════════════════════ */
+
+.section-header {
+  position: relative;
+  padding-bottom: 28px;
+}
+
+.section-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 107, 43, 0.7) 0%,
+    rgba(14, 165, 233, 0.5) 50%,
+    transparent 100%
+  );
+}
+
+.section-header.visible::after {
+  animation: sectionUnderline 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+@keyframes sectionUnderline {
+  to { width: 100%; }
+}
+
+/* ══════════════════════════════════════════════════
+   WORK SECTION — "SELECTED" sub-label
+   ══════════════════════════════════════════════════ */
+
+#work .section-title {
+  position: relative;
+}
+
+#work .section-title::after {
+  content: 'SELECTED';
+  position: absolute;
+  bottom: -20px;
+  left: 2px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  color: rgba(255, 107, 43, 0.22);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════
+   TERMINAL CONTACT FORM
+   ══════════════════════════════════════════════════ */
+
+.contact-form-wrap {
+  background: rgba(1, 3, 6, 0.96) !important;
+  border-color: rgba(14, 165, 233, 0.16) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top accent line */
+.contact-form-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(14, 165, 233, 0.5),
+    rgba(99, 102, 241, 0.3),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Terminal header line */
+.contact-form-wrap::before {
+  content: '> INITIALIZE_CONNECTION( garvityagnik@gmail.com )';
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: rgba(14, 165, 233, 0.32);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(14, 165, 233, 0.07);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-label {
+  color: rgba(14, 165, 233, 0.45) !important;
+  letter-spacing: 0.18em !important;
+}
+
+.form-label::before {
+  content: '> ';
+  opacity: 0.45;
+}
+
+.form-input,
+.form-textarea {
+  background: rgba(3, 8, 14, 0.92) !important;
+  border-color: rgba(14, 165, 233, 0.11) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 13px !important;
+  letter-spacing: 0.04em !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: rgba(14, 165, 233, 0.4) !important;
+  box-shadow:
+    0 0 0 2px rgba(14, 165, 233, 0.07),
+    0 0 24px rgba(14, 165, 233, 0.04) !important;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(14, 165, 233, 0.18) !important;
+  font-family: var(--font-mono);
+}
+
+.form-submit {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.1em !important;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(99,102,241,0.15)) !important;
+  border: 1px solid rgba(14, 165, 233, 0.28) !important;
+  color: rgba(14, 165, 233, 0.9) !important;
+  transition: all 0.3s ease !important;
+}
+
+.form-submit:hover {
+  background: linear-gradient(135deg, rgba(14,165,233,0.22), rgba(99,102,241,0.22)) !important;
+  border-color: rgba(14, 165, 233, 0.5) !important;
+  color: #0ea5e9 !important;
+  box-shadow:
+    0 0 30px rgba(14, 165, 233, 0.15),
+    0 8px 24px rgba(0,0,0,0.4) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   ABOUT SECTION — vertical "DESIGNER" wordmark
+   ══════════════════════════════════════════════════ */
+
+.about-grid {
+  position: relative;
+  overflow: visible;
+}
+
+.about-wordmark {
+  position: absolute;
+  right: -48px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center center;
+  font-family: 'Bebas Neue', var(--font-display);
+  font-weight: 400;
+  font-size: clamp(56px, 7.5vw, 88px);
+  letter-spacing: 0.14em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.038);
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  z-index: 0;
+}
+
+/* ══════════════════════════════════════════════════
+   CONTACT TITLE — inline "//" prefix
+   ══════════════════════════════════════════════════ */
+
+.contact-title {
+  position: relative;
+}
+
+.contact-title::before {
+  content: '//';
+  font-family: var(--font-mono);
+  font-size: 0.28em;
+  font-weight: 400;
+  color: rgba(255, 107, 43, 0.3);
+  position: absolute;
+  top: 10px;
+  left: -0.6em;
+  letter-spacing: 0;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════════════
+   STAT BLOCKS — animated underline
+   ══════════════════════════════════════════════════ */
+
+.stat {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.stat::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+  opacity: 0;
+  transition: width 1s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
+}
+
+.hero-stats.in-view .stat::after {
+  width: 100%;
+  opacity: 0.35;
+}
+
+/* ══════════════════════════════════════════════════
+   HERO BIO STRONG — neon underline emphasis
+   ══════════════════════════════════════════════════ */
+
+.hero-bio strong {
+  position: relative;
+  color: var(--text) !important;
+  font-weight: 500;
+}
+
+.hero-bio strong::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,107,43,0.5), transparent);
+}
+
+/* ══════════════════════════════════════════════════
+   AVAILABLE BADGE — enhanced with border glow
+   ══════════════════════════════════════════════════ */
+
+.available-badge {
+  border-color: rgba(74, 222, 128, 0.2) !important;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.07), 0 4px 14px rgba(0,0,0,0.3) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   JOURNAL CARDS — elevated hover
+   ══════════════════════════════════════════════════ */
+
+.journal-card:hover .journal-title {
+  color: #fff;
+}
+
+.journal-card:hover .journal-tag {
+  text-shadow: 0 0 14px rgba(255, 107, 43, 0.5);
+}
+
+/* ══════════════════════════════════════════════════
+   MARQUEE — larger, more cinematic
+   ══════════════════════════════════════════════════ */
+
+.marquee-track span:not(.dot) {
+  font-size: clamp(12px, 1.15vw, 15px) !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* ══════════════════════════════════════════════════
+   SCROLL PROGRESS — thicker neon bar
+   ══════════════════════════════════════════════════ */
+
+#scroll-progress {
+  height: 2px !important;
+  box-shadow: 0 0 12px rgba(255, 107, 43, 0.6), 0 0 4px rgba(14, 165, 233, 0.4) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   FILTER BUTTONS — active neon glow
+   ══════════════════════════════════════════════════ */
+
+.filter-btn.active {
+  box-shadow:
+    0 0 22px rgba(255, 107, 43, 0.28),
+    0 4px 12px rgba(255, 107, 43, 0.14),
+    inset 0 0 12px rgba(255, 107, 43, 0.08) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   SKILLS — neon dot pulse on hover
+   ══════════════════════════════════════════════════ */
+
+.skill-dot {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.skill-item:hover .skill-dot {
+  box-shadow: 0 0 10px var(--orange), 0 0 20px rgba(255,107,43,0.3);
+  transform: scale(1.3);
+}
+
+/* ══════════════════════════════════════════════════
+   TOOL BADGES — elevated hover
+   ══════════════════════════════════════════════════ */
+
+.tool-badge:hover {
+  box-shadow:
+    0 0 14px rgba(255, 107, 43, 0.14),
+    0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   FOOTER — editorial treatment
+   ══════════════════════════════════════════════════ */
+
+.footer-logo {
+  font-family: 'Bebas Neue', var(--font-display) !important;
+  font-size: 22px !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* ══════════════════════════════════════════════════
+   HERO EYEBROW STYLING
+   ══════════════════════════════════════════════════ */
+
+.hero-eyebrow {
+  font-size: 10px !important;
+}
+
+/* ══════════════════════════════════════════════════
+   CONTACT LEFT — decorative bottom line
+   ══════════════════════════════════════════════════ */
+
+.contact-left {
+  position: relative;
+}
+
+.contact-left::after {
+  content: '';
+  position: absolute;
+  bottom: -24px; left: 0;
+  width: 64px; height: 1px;
+  background: linear-gradient(90deg, rgba(255,107,43,0.5), transparent);
+}
+
+/* ══════════════════════════════════════════════════
+   PAGE SECTION TRANSITIONS — staggered line accents
+   ══════════════════════════════════════════════════ */
+
+section {
+  position: relative;
+}
+
+/* Subtle top accent per section */
+#journals,
+#about,
+#work,
+#contact {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 107, 43, 0.012) 0%,
+    transparent 80px
+  ) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   ABOUT PHOTO — multi-layer glass frame
+   ══════════════════════════════════════════════════ */
+
+.about-photo {
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(255, 107, 43, 0.1),
+    0 0 0 8px rgba(255, 107, 43, 0.03),
+    0 40px 100px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   JOURNAL FEATURED BADGE — pulse
+   ══════════════════════════════════════════════════ */
+
+.journal-featured-badge {
+  animation: badgePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  0%, 100% { box-shadow: 0 4px 14px rgba(255,107,43,0.4); }
+  50%       { box-shadow: 0 4px 24px rgba(255,107,43,0.65); }
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+  .about-wordmark { display: none; }
+  [data-section-num]::before { font-size: clamp(80px, 16vw, 150px); }
+  .contact-title::before { display: none; }
+}
+
+@media (max-width: 767px) {
+  [data-section-num]::before { display: none; }
+  .hero-card::after { display: none; }
+  .contact-form-wrap::before {
+    content: '> INITIALIZE_CONNECTION( )';
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-form-wrap::before { display: none; }
+  .form-submit {
+    font-size: 11px !important;
+    letter-spacing: 0.06em !important;
+  }
+}
