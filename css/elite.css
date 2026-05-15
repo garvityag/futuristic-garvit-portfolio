@@ -501,6 +501,177 @@ section {
 }
 
 /* ══════════════════════════════════════════════════
+   HERO NAME — animated gradient shimmer
+   ══════════════════════════════════════════════════ */
+
+.hero-name {
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #f5f0eb 18%,
+    #ff9060 34%,
+    #ffffff 50%,
+    #c8d8ff 66%,
+    #ffffff 82%,
+    #f5f0eb 100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  animation: nameShimmer 7s linear infinite;
+}
+
+@keyframes nameShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+
+/* ══════════════════════════════════════════════════
+   CARD REVEAL ANIMATION (staggered on scroll)
+   ══════════════════════════════════════════════════ */
+
+.journal-card,
+.project-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease !important;
+}
+
+.journal-card.revealed,
+.project-card.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════════════
+   HERO SECTION — ambient depth gradient
+   ══════════════════════════════════════════════════ */
+
+.hero-card {
+  background:
+    radial-gradient(ellipse 70% 55% at 20% 80%, rgba(255,107,43,0.035) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(14,165,233,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(99,102,241,0.02) 0%, transparent 70%),
+    rgba(10, 10, 14, 0.5) !important;
+}
+
+/* ══════════════════════════════════════════════════
+   ABOUT SECTION — experience blocks
+   ══════════════════════════════════════════════════ */
+
+.exp-item {
+  position: relative;
+  padding-left: 20px;
+  transition: transform 0.3s ease;
+}
+
+.exp-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 1.5px;
+  background: linear-gradient(180deg, var(--orange), rgba(14,165,233,0.4), transparent);
+  border-radius: 2px;
+}
+
+.exp-item:hover {
+  transform: translateX(4px);
+}
+
+/* ══════════════════════════════════════════════════
+   JOURNAL CARD — tag shimmer
+   ══════════════════════════════════════════════════ */
+
+.journal-tag {
+  position: relative;
+  overflow: hidden;
+}
+.journal-tag::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,107,43,0.18), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.journal-card:hover .journal-tag::after {
+  transform: translateX(100%);
+}
+
+/* ══════════════════════════════════════════════════
+   SECTION LABEL — flicker
+   ══════════════════════════════════════════════════ */
+
+.section-label {
+  animation: labelFlicker 8s ease-in-out infinite;
+}
+
+@keyframes labelFlicker {
+  0%, 92%, 94%, 96%, 100% { opacity: 1; }
+  93%  { opacity: 0.6; }
+  95%  { opacity: 0.85; }
+}
+
+/* ══════════════════════════════════════════════════
+   NAV LOGO — gradient
+   ══════════════════════════════════════════════════ */
+
+.nav-logo {
+  font-family: 'Bebas Neue', var(--font-display) !important;
+  font-size: 20px !important;
+  letter-spacing: 0.08em !important;
+  background: linear-gradient(135deg, #ff6b2b, #ff9500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+}
+
+/* ══════════════════════════════════════════════════
+   WORK SECTION — project card image overlay
+   ══════════════════════════════════════════════════ */
+
+.project-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.project-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 50%,
+    rgba(6, 6, 10, 0.65) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.project-card:hover .project-thumb::after {
+  opacity: 1;
+}
+
+/* ══════════════════════════════════════════════════
+   CONTACT — glow nodes
+   ══════════════════════════════════════════════════ */
+
+.contact-link {
+  transition: color 0.3s ease, letter-spacing 0.3s ease !important;
+}
+
+.contact-link:hover {
+  letter-spacing: 0.02em;
+}
+
+/* ══════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════ */
 

@@ -17,12 +17,26 @@
   <link rel="stylesheet" href="css/resume.css" />
   <link rel="stylesheet" href="css/futuristic.css" />
   <link rel="stylesheet" href="css/elite.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/redesign.css" />
 
   <!-- Vendor scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.19/dist/lenis.min.js"></script>
 </head>
 <body>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileNav">
+  <button class="mobile-nav-close-btn" id="mobileNavClose" aria-label="Close menu">✕</button>
+  <a href="#hero"     class="mobile-nav-link" data-nav>Home</a>
+  <a href="#work"     class="mobile-nav-link" data-nav>Work</a>
+  <a href="#journals" class="mobile-nav-link" data-nav>Journal</a>
+  <a href="#about"    class="mobile-nav-link" data-nav>About</a>
+  <a href="pages/resume.html" class="mobile-nav-link">Resume</a>
+  <a href="#contact"  class="mobile-nav-link" data-nav>Contact</a>
+  <div class="mobile-nav-footer">GY · Portfolio 2025</div>
+</div>
 
 <!-- Cinematic Preloader -->
 <div id="preloader">
@@ -650,27 +664,15 @@
 
 </main>
 
-<!-- Mobile Nav Overlay -->
-<div class="mobile-nav-overlay" id="mobileNavOverlay">
-  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
-  <nav class="mobile-nav-links">
-    <a href="#hero" class="mobile-nav-link">Home</a>
-    <a href="#work" class="mobile-nav-link">Work</a>
-    <a href="#journals" class="mobile-nav-link">Journal</a>
-    <a href="#about" class="mobile-nav-link">About</a>
-    <a href="pages/resume.html" class="mobile-nav-link">Resume</a>
-    <a href="#contact" class="mobile-nav-link nav-cta-mobile">Contact →</a>
-  </nav>
-</div>
-
 <!-- JS -->
 <script src="js/preloader.js"></script>
 <script src="js/router.js"></script>
 <script src="js/cursor.js"></script>
-<script src="js/three-hero.js"></script>
+<script src="js/three-hero-v2.js"></script>
 <script src="js/lenis-init.js"></script>
 <script src="js/animations.js"></script>
 <script src="js/filters.js"></script>
+<script src="js/effects.js"></script>
 
 <script>
 // === Image fallback system ===
@@ -773,16 +775,25 @@ if (cForm) {
 }
 
 // === Mobile Hamburger ===
-const hamburger = document.getElementById('navHamburger');
-const overlay = document.getElementById('mobileNavOverlay');
-const closeBtn = document.getElementById('mobileNavClose');
-if (hamburger && overlay) {
-  hamburger.addEventListener('click', () => overlay.classList.add('open'));
-  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
+(function () {
+  const hamburger = document.getElementById('navHamburger');
+  const overlay   = document.getElementById('mobileNav');
+  const closeBtn  = document.getElementById('mobileNavClose');
+  if (!hamburger || !overlay) return;
+
+  function openNav()  { overlay.classList.add('open');  hamburger.classList.add('open');  document.body.style.overflow = 'hidden'; }
+  function closeNav() { overlay.classList.remove('open'); hamburger.classList.remove('open'); document.body.style.overflow = ''; }
+
+  hamburger.addEventListener('click', openNav);
+  if (closeBtn) closeBtn.addEventListener('click', closeNav);
   overlay.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => overlay.classList.remove('open'));
+    link.addEventListener('click', closeNav);
   });
-}
+  // Close on outside tap
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeNav(); });
+  // Close on Escape
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+})();
 
 // === Section Header Underline — trigger on scroll into view ===
 (function () {

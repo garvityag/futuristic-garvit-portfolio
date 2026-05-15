@@ -1,0 +1,1490 @@
+/* ================================================================
+   DIGITAL VOID — Complete Portfolio Redesign
+   Garvit Yaggik · Art Director · 2025
+
+   Palette: Acid chartreuse #C8FF00 · Void black #000000
+   Typography: Dela Gothic One · Bricolage Grotesque · DM Mono
+   Aesthetic: Luxury brutalism meets particle physics
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+/* ──────────────────────────────────────────
+   1. DESIGN TOKENS (override existing vars)
+   ────────────────────────────────────────── */
+
+:root {
+  /* VOID palette */
+  --void:      #000000;
+  --void-2:    #050507;
+  --void-3:    #0d0d12;
+
+  /* Acid chartreuse — the ONE color */
+  --acid:      #c8ff00;
+  --acid-dim:  rgba(200, 255, 0, 0.10);
+  --acid-glow: rgba(200, 255, 0, 0.05);
+  --acid-text: rgba(200, 255, 0, 0.72);
+
+  /* Text */
+  --ice:       #f0f0ee;
+  --ice-dim:   rgba(240, 240, 238, 0.45);
+  --ice-faint: rgba(240, 240, 238, 0.14);
+
+  /* Blood — used once or twice for max impact */
+  --blood:     #ff1a3e;
+
+  /* Override existing vars */
+  --bg:        #000000;
+  --text:      #f0f0ee;
+  --text2:     rgba(240, 240, 238, 0.45);
+  --orange:    #c8ff00;
+  --grad-text: linear-gradient(135deg, #c8ff00, #a8d800);
+
+  /* Typography */
+  --font-display: 'Dela Gothic One', sans-serif;
+  --font-body:    'Bricolage Grotesque', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  /* Easing */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ──────────────────────────────────────────
+   2. GLOBAL BASE
+   ────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--void) !important;
+  font-family: var(--font-body) !important;
+  color: var(--ice) !important;
+  overflow-x: hidden;
+}
+
+/* Film grain — tighter, more intense */
+body::before {
+  opacity: 0.04 !important;
+  background-size: 200px !important;
+  animation: grainShift 0.25s steps(3) infinite !important;
+}
+
+/* Scanlines — stronger on void black */
+body::after {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, 0.06) 2px,
+    rgba(0, 0, 0, 0.06) 3px
+  ) !important;
+}
+
+/* ──────────────────────────────────────────
+   3. SCROLL PROGRESS — acid stripe
+   ────────────────────────────────────────── */
+
+#scroll-progress {
+  background: var(--acid) !important;
+  box-shadow: 0 0 16px rgba(200, 255, 0, 0.8),
+              0 0 4px rgba(200, 255, 0, 0.4) !important;
+  height: 2px !important;
+}
+
+/* ──────────────────────────────────────────
+   4. PRELOADER — VOID RITUAL
+   ────────────────────────────────────────── */
+
+#preloader {
+  background: #000000 !important;
+}
+
+.preloader-bg-grid {
+  background-image:
+    linear-gradient(rgba(200, 255, 0, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 255, 0, 0.055) 1px, transparent 1px) !important;
+  background-size: 60px 60px !important;
+}
+
+.preloader-ring {
+  border-color: transparent !important;
+}
+
+.preloader-ring:nth-child(1) { border-color: rgba(200, 255, 0, 0.30) !important; }
+.preloader-ring:nth-child(2) { border-color: rgba(200, 255, 0, 0.18) !important; }
+.preloader-ring:nth-child(3) { border-color: rgba(200, 255, 0, 0.10) !important; }
+.preloader-ring:nth-child(4) { border-color: rgba(200, 255, 0, 0.05) !important; }
+
+.preloader-logo {
+  background: linear-gradient(135deg, #c8ff00, #a8d800) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-family: var(--font-display) !important;
+  font-size: 72px !important;
+  letter-spacing: 0.06em !important;
+}
+
+.preloader-name {
+  color: rgba(200, 255, 0, 0.35) !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.35em !important;
+}
+
+.preloader-bar {
+  background: linear-gradient(90deg, #c8ff00, #a8d800, #c8ff00) !important;
+  box-shadow: 0 0 20px rgba(200, 255, 0, 0.7) !important;
+}
+
+.preloader-bar-wrap {
+  background: rgba(200, 255, 0, 0.08) !important;
+}
+
+.preloader-label {
+  color: rgba(200, 255, 0, 0.25) !important;
+}
+
+.preloader-pct {
+  color: var(--acid) !important;
+}
+
+/* ──────────────────────────────────────────
+   5. CUSTOM CURSOR — ACID
+   ────────────────────────────────────────── */
+
+#cursor-dot {
+  background: var(--acid) !important;
+  box-shadow: 0 0 12px rgba(200, 255, 0, 0.9) !important;
+  mix-blend-mode: normal !important;
+}
+
+#cursor-ring {
+  border-top-color:    rgba(200, 255, 0, 0.9) !important;
+  border-right-color:  rgba(200, 255, 0, 0.18) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.55) !important;
+  border-left-color:   rgba(255, 255, 255, 0.12) !important;
+}
+
+/* ──────────────────────────────────────────
+   6. NAVIGATION — VOID BAR
+   ────────────────────────────────────────── */
+
+.hero-nav {
+  background: rgba(0, 0, 0, 0.72) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: none !important;
+  border-top: 1px solid rgba(200, 255, 0, 0.10) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 14px 32px !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  top: auto !important;
+}
+
+.hero-nav::after {
+  background: linear-gradient(
+    90deg,
+    rgba(200,255,0,0.5),
+    rgba(255,255,255,0.25),
+    rgba(200,255,0,0.5)
+  ) !important;
+}
+
+.nav-logo {
+  font-family: var(--font-display) !important;
+  font-size: 20px !important;
+  letter-spacing: 0.05em !important;
+  color: var(--acid) !important;
+  text-shadow: 0 0 20px rgba(200, 255, 0, 0.5);
+}
+
+.nav-link {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase;
+  color: var(--ice-dim) !important;
+  border-radius: 0 !important;
+  padding: 6px 14px !important;
+  transition: color 0.2s ease, background 0.2s ease !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--acid) !important;
+  background: rgba(200, 255, 0, 0.06) !important;
+}
+
+.nav-cta {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase;
+  background: var(--acid) !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+  padding: 10px 20px !important;
+  font-weight: 500 !important;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.nav-cta:hover {
+  box-shadow: 0 0 28px rgba(200, 255, 0, 0.6), 0 8px 24px rgba(0,0,0,0.5) !important;
+  transform: translateY(-1px);
+}
+
+/* Hamburger in new color */
+.nav-hamburger span {
+  background: var(--acid) !important;
+}
+
+/* ──────────────────────────────────────────
+   7. HERO — FULL VOID
+   ────────────────────────────────────────── */
+
+#hero {
+  padding: 0 !important;
+  background: var(--void) !important;
+}
+
+.hero-card {
+  border-radius: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  min-height: 100svh !important;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Canvas fills entire hero */
+#hero-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Ambient orbs — acid tint */
+.hero-card::before {
+  background:
+    radial-gradient(ellipse 500px 320px at 12% 70%, rgba(200,255,0,0.04) 0%, transparent 65%),
+    radial-gradient(ellipse 400px 280px at 88% 24%, rgba(200,255,0,0.03) 0%, transparent 60%),
+    radial-gradient(ellipse 350px 250px at 52% 52%, rgba(255,255,255,0.01) 0%, transparent 70%) !important;
+  animation-name: acidOrbDrift !important;
+}
+
+@keyframes acidOrbDrift {
+  0%   { opacity: 0.6; transform: scale(1) translate(0, 0); }
+  40%  { opacity: 1;   transform: scale(1.05) translate(15px, -10px); }
+  75%  { opacity: 0.75; transform: scale(0.96) translate(-10px, 18px); }
+  100% { opacity: 0.9; transform: scale(1.03) translate(5px, -5px); }
+}
+
+/* HUD corners — acid color */
+.hud-corner-tl,
+.hud-corner-tr,
+.hud-corner-bl,
+.hud-corner-br {
+  border-color: rgba(200, 255, 0, 0.55) !important;
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.hud-data {
+  color: rgba(200, 255, 0, 0.38) !important;
+}
+
+.hero-scan-beam {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(200, 255, 0, 0.03) 15%,
+    rgba(200, 255, 0, 0.16) 50%,
+    rgba(200, 255, 0, 0.03) 85%,
+    transparent 100%
+  ) !important;
+}
+
+/* ──────────────────────────────────────────
+   8. HERO CONTENT TYPOGRAPHY
+   ────────────────────────────────────────── */
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+/* HERO NAME — Dela Gothic One, massive */
+.hero-name {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important; /* Dela Gothic is already black */
+  font-size: clamp(34px, 4.2vw, 76px) !important;
+  line-height: 0.9 !important;
+  letter-spacing: 0.02em !important;
+
+  /* Override the shimmer animation with acid version */
+  background: linear-gradient(
+    100deg,
+    #ffffff 0%,
+    #f5f5f0 20%,
+    #c8ff00 38%,
+    #ffffff 55%,
+    #e8ffe0 72%,
+    #ffffff 100%
+  ) !important;
+  background-size: 280% auto !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  animation: acidNameShimmer 9s linear infinite !important;
+  white-space: normal !important;
+}
+
+@keyframes acidNameShimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: -280% center; }
+}
+
+/* DESIGNATION — mono, acid */
+.hero-designation {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.28em !important;
+  color: var(--acid) !important;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+/* EYEBROW */
+.hero-eyebrow {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.35em !important;
+  color: rgba(200, 255, 0, 0.5) !important;
+}
+
+.hero-eyebrow::before {
+  background: var(--acid) !important;
+}
+
+/* STATS */
+.stat-num {
+  font-family: var(--font-display) !important;
+  font-size: 42px !important;
+  color: var(--ice) !important;
+  text-shadow: 0 0 40px rgba(200, 255, 0, 0.2) !important;
+}
+
+.stat-suffix {
+  color: var(--acid) !important;
+}
+
+.stat-label {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.22em !important;
+  color: var(--ice-dim) !important;
+  text-transform: uppercase;
+}
+
+.stat::after {
+  background: linear-gradient(90deg, var(--acid), transparent) !important;
+}
+
+/* BIO */
+.hero-bio {
+  font-family: var(--font-body) !important;
+  font-size: 14.5px !important;
+  line-height: 1.7 !important;
+  color: var(--ice-dim) !important;
+}
+
+.hero-bio strong {
+  color: var(--ice) !important;
+  font-weight: 600 !important;
+}
+
+.hero-bio strong::after {
+  background: linear-gradient(90deg, rgba(200,255,0,0.5), transparent) !important;
+}
+
+/* TAGS */
+.hero-tag {
+  font-family: var(--font-mono) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  border-color: rgba(200, 255, 0, 0.18) !important;
+  color: rgba(200, 255, 0, 0.65) !important;
+  padding: 6px 12px !important;
+  transition: all 0.25s ease !important;
+}
+
+.hero-tag:hover {
+  background: rgba(200, 255, 0, 0.08) !important;
+  border-color: rgba(200, 255, 0, 0.45) !important;
+  color: var(--acid) !important;
+  box-shadow: 0 0 16px rgba(200, 255, 0, 0.12) !important;
+}
+
+.hero-tag::after {
+  background: linear-gradient(90deg, transparent, rgba(200, 255, 0, 0.15), transparent) !important;
+}
+
+/* Available badge */
+.available-badge {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  background: rgba(200, 255, 0, 0.07) !important;
+  border-color: rgba(200, 255, 0, 0.22) !important;
+  color: rgba(200, 255, 0, 0.8) !important;
+  box-shadow: 0 0 20px rgba(200, 255, 0, 0.07) !important;
+}
+
+.available-dot {
+  background: var(--acid) !important;
+  box-shadow: 0 0 8px rgba(200, 255, 0, 0.8) !important;
+}
+
+/* ──────────────────────────────────────────
+   9. CHARACTER CAROUSEL — acid frame
+   ────────────────────────────────────────── */
+
+.char-carousel {
+  position: relative;
+}
+
+.char-carousel::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(200,255,0,0.25), transparent 50%, rgba(200,255,0,0.15));
+  z-index: -1;
+  pointer-events: none;
+}
+
+.char-glow {
+  background: radial-gradient(ellipse at center bottom,
+    rgba(200, 255, 0, 0.22) 0%,
+    rgba(200, 255, 0, 0.08) 40%,
+    transparent 70%) !important;
+}
+
+.char-dot.active {
+  background: var(--acid) !important;
+  box-shadow: 0 0 8px rgba(200,255,0,0.7) !important;
+}
+
+.char-dot {
+  background: rgba(200, 255, 0, 0.22) !important;
+}
+
+/* ──────────────────────────────────────────
+   10. MARQUEE — ACID INVERSION
+       The electric stripe between hero and content
+   ────────────────────────────────────────── */
+
+.marquee-section {
+  background: var(--acid) !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  padding: 18px 0 !important;
+  margin: 0 !important;
+}
+
+.marquee-track span:not(.dot) {
+  color: #000 !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase;
+  font-weight: 500 !important;
+}
+
+.marquee-track .dot {
+  color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Marquee gradient fades */
+.marquee-section::before {
+  background: linear-gradient(90deg, var(--acid), transparent) !important;
+}
+.marquee-section::after {
+  background: linear-gradient(-90deg, var(--acid), transparent) !important;
+}
+
+/* ──────────────────────────────────────────
+   11. SECTION COMMON — void aesthetic
+   ────────────────────────────────────────── */
+
+section {
+  background: var(--void) !important;
+}
+
+#journals, #about, #work, #contact {
+  background: linear-gradient(
+    180deg,
+    rgba(200, 255, 0, 0.008) 0%,
+    transparent 60px
+  ) !important;
+}
+
+.section-label {
+  font-family: var(--font-mono) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.3em !important;
+  color: rgba(200, 255, 0, 0.5) !important;
+  text-shadow: 0 0 20px rgba(200, 255, 0, 0.35) !important;
+}
+
+.section-title {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  color: var(--ice) !important;
+}
+
+.section-header::after {
+  background: linear-gradient(
+    90deg,
+    rgba(200, 255, 0, 0.75) 0%,
+    rgba(200, 255, 0, 0.3) 50%,
+    transparent 100%
+  ) !important;
+}
+
+.section-link {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.2em !important;
+  color: var(--acid-text) !important;
+  text-transform: uppercase;
+}
+
+.section-link:hover {
+  color: var(--acid) !important;
+}
+
+/* Cyber divider — acid version */
+.cyber-divider {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 255, 0, 0.3) 25%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(200, 255, 0, 0.3) 75%,
+    transparent 100%
+  ) !important;
+  margin: 0 !important;
+}
+
+.cyber-divider::before {
+  color: var(--acid) !important;
+}
+
+/* ──────────────────────────────────────────
+   12. JOURNAL CARDS — BRUTALIST REDESIGN
+   ────────────────────────────────────────── */
+
+.journals-row {
+  display: grid !important;
+  gap: 1px !important; /* hairline gaps between cards */
+}
+
+.journal-card {
+  border-radius: 0 !important;
+  background: var(--void-2) !important;
+  border: none !important;
+  border-left: 3px solid transparent !important;
+  padding: 28px 28px 22px !important;
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.journal-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: rgba(200, 255, 0, 0.08);
+}
+
+/* Hover: acid yellow left border + subtle background lift */
+.journal-card:hover {
+  border-left-color: var(--acid) !important;
+  background: rgba(200, 255, 0, 0.035) !important;
+  box-shadow: none !important;
+}
+
+.journal-banner {
+  border-radius: 0 !important;
+  height: 150px !important;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.journal-banner svg {
+  width: 100%;
+  height: 100%;
+}
+
+.journal-tag {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.28em !important;
+  text-transform: uppercase;
+  color: var(--acid-text) !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
+.journal-title {
+  font-family: var(--font-display) !important;
+  font-size: clamp(14px, 1.3vw, 18px) !important;
+  font-weight: 400 !important;
+  line-height: 1.2 !important;
+  color: var(--ice) !important;
+  margin-top: 6px !important;
+}
+
+.journal-excerpt {
+  font-family: var(--font-body) !important;
+  color: var(--ice-dim) !important;
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+}
+
+.journal-foot {
+  border-top: 1px solid rgba(200, 255, 0, 0.07) !important;
+  padding-top: 12px !important;
+  margin-top: 14px !important;
+}
+
+.journal-date {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.18em !important;
+  color: var(--ice-faint) !important;
+}
+
+.journal-read {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.18em !important;
+  color: var(--acid-text) !important;
+}
+
+.journal-featured-badge {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase;
+  background: var(--acid) !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+  padding: 4px 10px !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* ──────────────────────────────────────────
+   13. WORK SECTION — ARCHITECTURAL GRID
+   ────────────────────────────────────────── */
+
+.work-filter {
+  gap: 2px !important;
+}
+
+.filter-btn {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.24em !important;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  border-color: rgba(200, 255, 0, 0.14) !important;
+  color: var(--ice-dim) !important;
+  padding: 8px 16px !important;
+  background: transparent !important;
+  transition: all 0.22s ease !important;
+}
+
+.filter-btn:hover:not(.active) {
+  border-color: rgba(200, 255, 0, 0.35) !important;
+  color: var(--acid) !important;
+  background: rgba(200, 255, 0, 0.04) !important;
+}
+
+.filter-btn.active {
+  background: var(--acid) !important;
+  color: #000 !important;
+  border-color: var(--acid) !important;
+  box-shadow: 0 0 24px rgba(200, 255, 0, 0.25),
+              0 0 8px rgba(200, 255, 0, 0.15) !important;
+}
+
+.project-card {
+  border-radius: 0 !important;
+  background: var(--void-2) !important;
+  border: none !important;
+  border-top: 1px solid rgba(200, 255, 0, 0.09) !important;
+  transition:
+    transform 0.55s var(--ease),
+    box-shadow 0.4s ease !important;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  border-top-color: rgba(200, 255, 0, 0.35) !important;
+  box-shadow:
+    0 0 0 1px rgba(200, 255, 0, 0.12),
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(200, 255, 0, 0.04) !important;
+}
+
+.project-num {
+  color: rgba(200, 255, 0, 0.28) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.28em !important;
+}
+
+.project-card:hover .project-num {
+  color: rgba(200, 255, 0, 0.65) !important;
+}
+
+.project-name {
+  font-family: var(--font-display) !important;
+  font-size: clamp(14px, 1.2vw, 18px) !important;
+  font-weight: 400 !important;
+  color: var(--ice) !important;
+}
+
+.project-card:hover .project-name {
+  background: linear-gradient(135deg, #fff, #e8ffe8) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+
+.project-cat {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.2em !important;
+  color: var(--ice-faint) !important;
+}
+
+.project-tag {
+  font-family: var(--font-mono) !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.2em !important;
+  border-radius: 0 !important;
+  border-color: rgba(200, 255, 0, 0.12) !important;
+  color: rgba(200, 255, 0, 0.5) !important;
+  padding: 4px 8px !important;
+  text-transform: uppercase;
+}
+
+.project-card:hover .project-tag {
+  border-color: rgba(200, 255, 0, 0.3) !important;
+  color: var(--acid) !important;
+}
+
+.project-link {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase;
+  color: var(--acid) !important;
+  border-color: rgba(200, 255, 0, 0.22) !important;
+  border-radius: 0 !important;
+  padding: 8px 16px !important;
+  background: transparent !important;
+}
+
+.project-link:hover {
+  background: var(--acid) !important;
+  color: #000 !important;
+  box-shadow: 0 0 20px rgba(200, 255, 0, 0.3) !important;
+}
+
+/* ──────────────────────────────────────────
+   14. ABOUT SECTION — editorial redesign
+   ────────────────────────────────────────── */
+
+.about-photo {
+  box-shadow:
+    0 0 0 1px rgba(200, 255, 0, 0.12),
+    0 0 0 8px rgba(200, 255, 0, 0.03),
+    0 40px 100px rgba(0, 0, 0, 0.7) !important;
+}
+
+.about-photo::after {
+  background: linear-gradient(
+    135deg,
+    rgba(200, 255, 0, 0.28),
+    rgba(255, 255, 255, 0.08),
+    rgba(200, 255, 0, 0.20)
+  ) !important;
+}
+
+.about-name {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+}
+
+.about-title {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.28em !important;
+  color: var(--acid-text) !important;
+  text-transform: uppercase;
+}
+
+.about-bio {
+  font-family: var(--font-body) !important;
+  color: var(--ice-dim) !important;
+}
+
+.exp-company {
+  font-family: var(--font-display) !important;
+  font-size: clamp(15px, 1.3vw, 20px) !important;
+  font-weight: 400 !important;
+  color: var(--ice) !important;
+}
+
+.exp-role {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.18em !important;
+  color: var(--acid-text) !important;
+  text-transform: uppercase;
+}
+
+.exp-period {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.15em !important;
+  color: var(--ice-faint) !important;
+}
+
+.skill-item {
+  transition: transform 0.3s ease !important;
+}
+
+.skill-item:hover {
+  transform: translateX(8px) !important;
+}
+
+.skill-dot {
+  background: var(--acid) !important;
+  box-shadow: none !important;
+}
+
+.skill-item:hover .skill-dot {
+  box-shadow: 0 0 10px rgba(200,255,0,0.7),
+              0 0 20px rgba(200,255,0,0.3) !important;
+}
+
+.skill-name {
+  font-family: var(--font-body) !important;
+  color: var(--ice) !important;
+}
+
+.skill-fill {
+  background: linear-gradient(90deg, var(--acid), rgba(200,255,0,0.5)) !important;
+}
+
+.tool-badge {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  border-color: rgba(200, 255, 0, 0.12) !important;
+  color: rgba(200, 255, 0, 0.55) !important;
+  background: rgba(200, 255, 0, 0.03) !important;
+  padding: 5px 10px !important;
+}
+
+.tool-badge:hover {
+  border-color: rgba(200, 255, 0, 0.35) !important;
+  color: var(--acid) !important;
+  background: rgba(200, 255, 0, 0.07) !important;
+  box-shadow: 0 0 12px rgba(200, 255, 0, 0.1) !important;
+}
+
+.about-wordmark {
+  -webkit-text-stroke: 1px rgba(200, 255, 0, 0.04) !important;
+}
+
+/* ──────────────────────────────────────────
+   15. CONTACT SECTION — VOID TERMINAL
+   ────────────────────────────────────────── */
+
+.contact-title {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  color: var(--ice) !important;
+}
+
+.contact-title::before {
+  color: rgba(200, 255, 0, 0.3) !important;
+}
+
+.contact-subtitle {
+  font-family: var(--font-body) !important;
+  color: var(--ice-dim) !important;
+}
+
+.contact-link {
+  font-family: var(--font-body) !important;
+  font-weight: 500;
+  color: var(--ice) !important;
+  border-color: rgba(200, 255, 0, 0.15) !important;
+  border-radius: 0 !important;
+  padding: 14px 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.contact-link:hover {
+  color: var(--acid) !important;
+  background: rgba(200, 255, 0, 0.05) !important;
+  border-color: rgba(200, 255, 0, 0.4) !important;
+  box-shadow: 0 0 24px rgba(200, 255, 0, 0.08) !important;
+  letter-spacing: 0.02em !important;
+}
+
+.contact-link::before {
+  background: linear-gradient(90deg, transparent, var(--acid), transparent) !important;
+}
+
+.contact-link-icon {
+  color: var(--acid) !important;
+}
+
+.contact-label {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.25em !important;
+  text-transform: uppercase;
+  color: rgba(200, 255, 0, 0.4) !important;
+}
+
+.contact-email-link {
+  color: var(--acid) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  letter-spacing: 0.12em !important;
+}
+
+.contact-form-wrap {
+  background: rgba(0, 0, 0, 0.97) !important;
+  border-color: rgba(200, 255, 0, 0.14) !important;
+  border-radius: 0 !important;
+}
+
+.contact-form-wrap::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 255, 0, 0.5),
+    rgba(200, 255, 0, 0.3),
+    transparent
+  ) !important;
+}
+
+.contact-form-wrap::before {
+  content: '> INITIALIZE_CONNECTION( garvityagnik@gmail.com )' !important;
+  color: rgba(200, 255, 0, 0.28) !important;
+  border-bottom-color: rgba(200, 255, 0, 0.06) !important;
+}
+
+.form-label {
+  color: rgba(200, 255, 0, 0.45) !important;
+  font-family: var(--font-mono) !important;
+}
+
+.form-label::before {
+  content: '> ';
+}
+
+.form-input,
+.form-textarea {
+  background: rgba(0, 5, 0, 0.95) !important;
+  border-color: rgba(200, 255, 0, 0.10) !important;
+  font-family: var(--font-mono) !important;
+  font-size: 13px !important;
+  color: var(--ice) !important;
+  border-radius: 0 !important;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: rgba(200, 255, 0, 0.4) !important;
+  box-shadow: 0 0 0 2px rgba(200, 255, 0, 0.07),
+              0 0 24px rgba(200, 255, 0, 0.04) !important;
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(200, 255, 0, 0.18) !important;
+}
+
+.form-submit {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.18em !important;
+  font-size: 11px !important;
+  text-transform: uppercase;
+  background: var(--acid) !important;
+  border: none !important;
+  color: #000 !important;
+  border-radius: 0 !important;
+  padding: 14px 28px !important;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease !important;
+}
+
+.form-submit:hover {
+  box-shadow: 0 0 36px rgba(200, 255, 0, 0.4),
+              0 8px 24px rgba(0,0,0,0.5) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ──────────────────────────────────────────
+   16. FOOTER — pure void
+   ────────────────────────────────────────── */
+
+footer {
+  background: var(--void) !important;
+}
+
+footer::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 255, 0, 0.3),
+    rgba(200, 255, 0, 0.4),
+    rgba(200, 255, 0, 0.3),
+    transparent
+  ) !important;
+}
+
+.footer-logo {
+  color: var(--acid) !important;
+  font-family: var(--font-display) !important;
+  letter-spacing: 0.08em !important;
+  text-shadow: 0 0 20px rgba(200,255,0,0.3) !important;
+}
+
+.footer-link {
+  font-family: var(--font-mono) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase;
+  color: var(--ice-dim) !important;
+}
+
+.footer-link:hover {
+  color: var(--acid) !important;
+}
+
+.footer-copy {
+  font-family: var(--font-mono) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.18em !important;
+  color: rgba(200, 255, 0, 0.22) !important;
+}
+
+.social-link {
+  color: var(--ice-dim) !important;
+  border-color: rgba(200, 255, 0, 0.12) !important;
+  border-radius: 0 !important;
+  transition: all 0.25s ease !important;
+}
+
+.social-link:hover {
+  color: var(--acid) !important;
+  border-color: rgba(200, 255, 0, 0.4) !important;
+  background: rgba(200, 255, 0, 0.05) !important;
+  box-shadow: 0 0 16px rgba(200,255,0,0.12) !important;
+}
+
+/* ──────────────────────────────────────────
+   17. SECTION GHOST NUMBERS — acid tint
+   ────────────────────────────────────────── */
+
+[data-section-num]::before {
+  -webkit-text-stroke: 1px rgba(200, 255, 0, 0.045) !important;
+}
+
+/* ──────────────────────────────────────────
+   18. GLITCH — acid color
+   ────────────────────────────────────────── */
+
+@keyframes glitchName {
+  0%   { text-shadow: 0 0 0; filter: none; }
+  5%   { text-shadow: -4px 0 0 rgba(200,255,0,0.7), 4px 0 0 rgba(255,255,255,0.7); filter: blur(0.4px); }
+  10%  { text-shadow: 5px 0 0 rgba(200,255,0,0.5), -5px 0 0 rgba(255,255,255,0.5); filter: none; }
+  15%  { text-shadow: -2px 0 0 rgba(255,26,62,0.55), 2px 0 0 rgba(200,255,0,0.55); }
+  20%  { text-shadow: 0 0 0; filter: none; }
+  30%  { text-shadow: 4px 0 0 rgba(255,255,255,0.35), -4px 0 0 rgba(200,255,0,0.35); }
+  35%  { text-shadow: 0 0 0; }
+  100% { text-shadow: 0 0 0; filter: none; }
+}
+
+/* ──────────────────────────────────────────
+   19. MOBILE NAV OVERLAY — acid theme
+   ────────────────────────────────────────── */
+
+.mobile-nav-overlay {
+  background: rgba(0, 0, 0, 0.98) !important;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-display) !important;
+  font-weight: 400 !important;
+  color: rgba(240, 240, 238, 0.72) !important;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: var(--acid) !important;
+  text-shadow: 0 0 40px rgba(200, 255, 0, 0.45) !important;
+}
+
+.mobile-nav-footer {
+  color: rgba(200, 255, 0, 0.3) !important;
+}
+
+.mobile-nav-close-btn {
+  color: rgba(200, 255, 0, 0.4) !important;
+}
+
+.mobile-nav-close-btn:hover {
+  color: var(--acid) !important;
+}
+
+/* ──────────────────────────────────────────
+   20. CARD HOVER EFFECTS — acid highlights
+   ────────────────────────────────────────── */
+
+/* Shimmer stays but acid tinted */
+.project-card:hover::before {
+  opacity: 0.7 !important;
+}
+
+.journal-card:hover::before {
+  opacity: 0 !important; /* Disabled — border is the effect now */
+}
+
+/* ──────────────────────────────────────────
+   21. MAGNETIC BUTTON GLOW — acid
+   ────────────────────────────────────────── */
+
+.magnetic:hover,
+.nav-cta:hover {
+  box-shadow: 0 14px 40px rgba(200, 255, 0, 0.4),
+              0 0 60px rgba(200, 255, 0, 0.10) !important;
+}
+
+/* ──────────────────────────────────────────
+   22. SCROLL PROGRESS TEXT / ANIMATED GRADIENT
+   ────────────────────────────────────────── */
+
+@keyframes progressFlow {
+  0%   { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+
+#scroll-progress {
+  background: linear-gradient(90deg, #c8ff00, #ffffff, #c8ff00) !important;
+  background-size: 200% 100% !important;
+  animation: progressFlow 2.5s linear infinite !important;
+}
+
+/* ──────────────────────────────────────────
+   23. DIAGONAL SECTION TRANSITIONS
+       Top divider lines on sections
+   ────────────────────────────────────────── */
+
+#journals::before,
+#work::before,
+#about::before,
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200,255,0,0.22) 30%,
+    rgba(200,255,0,0.4) 50%,
+    rgba(200,255,0,0.22) 70%,
+    transparent 100%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ──────────────────────────────────────────
+   24. SECTION FILTER ACTIVE BADGE
+   ────────────────────────────────────────── */
+
+.filter-btn.active {
+  box-shadow:
+    0 0 24px rgba(200, 255, 0, 0.28),
+    0 4px 12px rgba(200, 255, 0, 0.12),
+    inset 0 0 14px rgba(200, 255, 0, 0.06) !important;
+}
+
+/* ──────────────────────────────────────────
+   25. ABOUT PHOTO GLOW FRAME
+   ────────────────────────────────────────── */
+
+@keyframes photoFrameGlow {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 0.8; }
+}
+
+/* ──────────────────────────────────────────
+   26. CONTACT LEFT BOTTOM LINE — acid
+   ────────────────────────────────────────── */
+
+.contact-left::after {
+  background: linear-gradient(90deg, rgba(200,255,0,0.6), transparent) !important;
+}
+
+/* ──────────────────────────────────────────
+   27. DIAGONAL CLIP-PATH CUTS
+       Angled transitions between sections
+   ────────────────────────────────────────── */
+
+/* Marquee section gets an angled top and bottom via box shadow trick */
+.marquee-section {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sections get subtle top accent shadows */
+#journals { box-shadow: 0 -1px 0 rgba(200,255,0,0.06); }
+#work      { box-shadow: 0 -1px 0 rgba(200,255,0,0.08); }
+#about     { box-shadow: 0 -1px 0 rgba(200,255,0,0.06); }
+#contact   { box-shadow: 0 -1px 0 rgba(200,255,0,0.1); }
+
+/* ──────────────────────────────────────────
+   28. AVAILABLE BADGE SHIMMER — acid
+   ────────────────────────────────────────── */
+
+.available-badge::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 255, 0, 0.22) 50%,
+    transparent 100%
+  ) !important;
+}
+
+/* ──────────────────────────────────────────
+   29. HUD DATA CLOCK
+   ────────────────────────────────────────── */
+
+.hud-data-bl {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ──────────────────────────────────────────
+   30. JOURNAL BANNER GRADIENT OVERLAY
+   ────────────────────────────────────────── */
+
+.journal-banner::before {
+  background: linear-gradient(
+    180deg,
+    rgba(200, 255, 0, 0.03) 0%,
+    transparent 100%
+  ) !important;
+}
+
+/* ──────────────────────────────────────────
+   31. SECTION LABEL FLICKER
+   ────────────────────────────────────────── */
+
+@keyframes labelFlicker {
+  0%, 88%, 92%, 96%, 100% { opacity: 1; }
+  90% { opacity: 0.5; }
+  94% { opacity: 0.8; }
+}
+
+/* ──────────────────────────────────────────
+   32. CARD REVEAL STATES
+   ────────────────────────────────────────── */
+
+.journal-card,
+.project-card {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease),
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.4s ease !important;
+}
+
+.journal-card.revealed,
+.project-card.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* ──────────────────────────────────────────
+   33. HERO DIAGONAL GRID — acid tint
+   ────────────────────────────────────────── */
+
+.hero-card::after {
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px,
+    transparent 54px,
+    rgba(200, 255, 0, 0.014) 54px,
+    rgba(200, 255, 0, 0.014) 55px
+  ) !important;
+}
+
+/* ──────────────────────────────────────────
+   33b. SECTION HEADER UNDERLINE — acid
+   ────────────────────────────────────────── */
+
+.section-header {
+  padding-bottom: 32px !important;
+}
+
+/* ──────────────────────────────────────────
+   33c. WORK "SELECTED" SUBLABEL
+   ────────────────────────────────────────── */
+
+#work .section-title::after {
+  content: 'SELECTED' !important;
+  color: rgba(200, 255, 0, 0.22) !important;
+  font-family: var(--font-mono) !important;
+}
+
+/* ──────────────────────────────────────────
+   33d. NAV BORDER FLOW — acid colors
+   ────────────────────────────────────────── */
+
+.hero-nav::after {
+  background: linear-gradient(
+    90deg,
+    rgba(200,255,0,0.5),
+    rgba(255,255,255,0.3),
+    rgba(200,255,0,0.5)
+  ) !important;
+}
+
+/* ──────────────────────────────────────────
+   33e. RESUME PAGE LINK — acid CTA
+   ────────────────────────────────────────── */
+
+.resume-cta,
+.resume-download {
+  border-radius: 0 !important;
+}
+
+/* ──────────────────────────────────────────
+   34. RESPONSIVE OVERRIDES (acid palette)
+   ────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .hero-nav {
+    background: rgba(0, 0, 0, 0.88) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-card {
+    min-height: 100svh !important;
+  }
+
+  .hero-name {
+    font-size: clamp(26px, 10vw, 46px) !important;
+    white-space: normal !important;
+  }
+
+  .journal-card {
+    padding: 20px 18px 16px !important;
+  }
+
+  .project-card {
+    border-radius: 0 !important;
+  }
+
+  .contact-form-wrap {
+    border-radius: 0 !important;
+  }
+
+  .marquee-section {
+    padding: 14px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-name {
+    font-size: clamp(24px, 11vw, 38px) !important;
+  }
+
+  .stat-num {
+    font-size: 34px !important;
+  }
+
+  .preloader-logo {
+    font-size: 56px !important;
+  }
+}
+
+/* ──────────────────────────────────────────
+   35. TOUCH DEVICE — disable heavy effects
+   ────────────────────────────────────────── */
+
+@media (hover: none) {
+  .journal-card,
+  .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-tag:hover { background: transparent !important; }
+}
+
+/* ──────────────────────────────────────────
+   36. REDUCED MOTION
+   ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name { animation: none !important; }
+  .hero-card::before { animation: none !important; }
+  .section-label { animation: none !important; }
+  .journal-card, .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

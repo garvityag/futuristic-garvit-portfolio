@@ -219,7 +219,7 @@ body::after {
   z-index: 6;
   pointer-events: none;
   opacity: 0;
-  animation: hudFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 2.2s forwards;
+  animation: hudFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
 }
 .hud-corner-tl { top: 22px; left: 22px; border-top: 1.5px solid rgba(255,107,43,0.5); border-left: 1.5px solid rgba(255,107,43,0.5); }
 .hud-corner-tr { top: 22px; right: 22px; border-top: 1.5px solid rgba(255,107,43,0.5); border-right: 1.5px solid rgba(255,107,43,0.5); }
@@ -242,7 +242,7 @@ body::after {
   text-transform: uppercase;
   line-height: 1.8;
   opacity: 0;
-  animation: hudFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 2.5s forwards;
+  animation: hudFadeIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
 }
 .hud-data-tl { top: 28px; left: 54px; }
 .hud-data-tr { top: 28px; right: 54px; text-align: right; }
@@ -264,8 +264,7 @@ body::after {
   z-index: 5;
   pointer-events: none;
   top: 0;
-  animation: scanBeam 10s linear infinite;
-  animation-delay: 3s;
+  animation: scanBeam 10s linear 0.8s infinite;
 }
 
 @keyframes scanBeam {
@@ -656,6 +655,102 @@ footer::before {
 .marquee-section::after {
   right: 0;
   background: linear-gradient(-90deg, var(--bg), transparent);
+}
+
+/* ——— 30. HERO AMBIENT FLOATING ORBS ——— */
+.hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 420px 280px at 15% 75%, rgba(255,107,43,0.042) 0%, transparent 70%),
+    radial-gradient(ellipse 380px 260px at 85% 22%, rgba(14,165,233,0.038) 0%, transparent 65%),
+    radial-gradient(ellipse 300px 200px at 50% 50%, rgba(99,102,241,0.022) 0%, transparent 70%);
+  animation: heroOrbDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes heroOrbDrift {
+  0%   { opacity: 0.7; transform: scale(1) translate(0, 0); }
+  33%  { opacity: 1;   transform: scale(1.04) translate(12px, -8px); }
+  66%  { opacity: 0.8; transform: scale(0.97) translate(-8px, 14px); }
+  100% { opacity: 1;   transform: scale(1.02) translate(6px, -4px); }
+}
+
+/* ——— 30b. AMBIENT BACKGROUND GLOW ORBS ——— */
+body {
+  position: relative;
+}
+
+body::before {
+  /* film grain — already set above, add glow in a different way */
+}
+
+/* Deep ambient orbs behind sections */
+#work::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,107,43,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
+
+#about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -180px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(14,165,233,0.04) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(40px);
+}
+
+/* ——— 31. SECTION TRANSITION FADE ——— */
+section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ——— 32. JOURNAL CARD foot rule ——— */
+.journal-foot {
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ——— 33. ENHANCED SCROLL PROGRESS ——— */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #ff6b2b, #ff9500, #6366f1, #0ea5e9);
+  background-size: 200% 100%;
+  animation: progressFlow 3s linear infinite;
+  z-index: 99996;
+  transform-origin: left;
+}
+
+@keyframes progressFlow {
+  0%   { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
+
+/* ——— 34. FILTER BUTTON TRANSITIONS ——— */
+.filter-btn {
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.filter-btn:hover:not(.active) {
+  border-color: rgba(255,107,43,0.22) !important;
+  color: rgba(255,107,43,0.8) !important;
 }
 
 /* ——— RESPONSIVE ——— */

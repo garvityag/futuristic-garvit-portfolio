@@ -39,9 +39,9 @@
         decay: Math.random() * 0.055 + 0.025,
         vx: (Math.random() - 0.5) * 1.4,
         vy: -Math.random() * 2.2 - 0.4,
-        color: Math.random() > 0.6
-          ? '#ff6b2b'
-          : (Math.random() > 0.5 ? '#0ea5e9' : '#ff9500'),
+        color: Math.random() > 0.55
+          ? '#c8ff00'
+          : (Math.random() > 0.5 ? '#ffffff' : '#a8d800'),
       });
     }
     if (embers.length > 200) embers.splice(0, embers.length - 200);
@@ -94,33 +94,33 @@
   document.addEventListener('mouseover', (e) => {
     if (e.target.closest(sel)) {
       isHovering = true;
-      dot.style.background = '#0ea5e9';
-      dot.style.boxShadow  = '0 0 12px rgba(14,165,233,0.9)';
+      dot.style.background = '#ffffff';
+      dot.style.boxShadow  = '0 0 14px rgba(255,255,255,0.9)';
       dot.style.transform  = 'scale(2)';
     }
   });
   document.addEventListener('mouseout', (e) => {
     if (e.target.closest(sel)) {
       isHovering = false;
-      dot.style.background = '#ff6b2b';
-      dot.style.boxShadow  = '0 0 10px rgba(255,107,43,0.8)';
+      dot.style.background = '#c8ff00';
+      dot.style.boxShadow  = '0 0 12px rgba(200,255,0,0.85)';
       dot.style.transform  = 'scale(1)';
     }
   });
 
-  // Inject cursor base styles
+  // Inject cursor base styles — ACID palette
   const s = document.createElement('style');
   s.textContent = `
     #cursor-dot {
       width: 6px; height: 6px;
-      background: #ff6b2b;
+      background: #c8ff00;
       border-radius: 50%;
       position: fixed; top: 0; left: 0;
       pointer-events: none;
       z-index: 99999;
       transition: transform 0.12s ease, background 0.18s ease, box-shadow 0.18s ease;
-      mix-blend-mode: screen;
-      box-shadow: 0 0 10px rgba(255,107,43,0.8);
+      mix-blend-mode: normal;
+      box-shadow: 0 0 12px rgba(200,255,0,0.85);
       will-change: transform;
     }
     #cursor-ring {
@@ -131,10 +131,10 @@
       will-change: transform;
       border-radius: 50%;
       border: 1.5px solid transparent;
-      border-top-color: rgba(255,107,43,0.9);
-      border-right-color: rgba(255,107,43,0.18);
-      border-bottom-color: rgba(14,165,233,0.7);
-      border-left-color: rgba(14,165,233,0.18);
+      border-top-color:    rgba(200,255,0,0.9);
+      border-right-color:  rgba(200,255,0,0.18);
+      border-bottom-color: rgba(255,255,255,0.65);
+      border-left-color:   rgba(255,255,255,0.14);
     }
   `;
   document.head.appendChild(s);
