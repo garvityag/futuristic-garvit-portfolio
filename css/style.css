@@ -577,12 +577,11 @@ footer.site-foot a:hover { color: var(--paper); }
 .gl-hover #gl { cursor: pointer; }
 
 /* 3D cards */
-.work-grid { perspective: 1600px; }
 .card { transform-style: preserve-3d; }
-.card.reveal { opacity: 0; transform: translate3d(0, 80px, -120px) rotateX(22deg); transform-origin: 50% 100%;
+.card.reveal { opacity: 0; transform: perspective(1200px) translate3d(0, 70px, -80px) rotateX(18deg); transform-origin: 50% 100%;
   transition: opacity 1.1s var(--ease) var(--d, 0s), transform 1.3s var(--ease) var(--d, 0s); }
 .card.reveal.in { opacity: 1; transform: none; }
-.card-media { transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0); transition: transform .6s var(--ease); transform-style: preserve-3d; }
+.card-media { transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .6s var(--ease); transform-style: preserve-3d; }
 .card.tilting .card-media { transition: transform .12s linear; }
 .card-media::before {
   content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; transition: opacity .4s;
@@ -591,7 +590,6 @@ footer.site-foot a:hover { color: var(--paper); }
 }
 .card:hover .card-media::before { opacity: 1; }
 .card:hover .card-media { box-shadow: 0 40px 80px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(229,72,42,.25); }
-.card-frame { transform: translateZ(40px); }
 
 /* split-letter 3D titles */
 .split { perspective: 800px; }
@@ -603,14 +601,12 @@ footer.site-foot a:hover { color: var(--paper); }
 /* 3D ticker + lab + misc */
 .ticker { perspective: 900px; }
 .ticker-track { transform: rotateX(14deg); transform-origin: 50% 50%; }
-.lab-list { perspective: 1400px; }
-.lab-row.reveal { transform: translate3d(0, 40px, -80px) rotateX(14deg); }
+.lab-row.reveal { transform: perspective(1000px) translate3d(0, 40px, -60px) rotateX(12deg); }
 .lab-row.reveal.in { transform: none; }
-a.lab-row:hover { transform: translateZ(18px); }
+a.lab-row:hover { transform: perspective(1000px) translateZ(18px); }
 .about-photo .ph { transform: perspective(1000px) rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg)); transition: transform .5s var(--ease); }
 .cs-cover { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); }
-.cs-gallery { perspective: 1400px; }
-.cs-gallery img.reveal { transform: translate3d(0, 60px, -100px) rotateX(16deg); transition: opacity 1s var(--ease), transform 1.2s var(--ease); }
+.cs-gallery img.reveal { transform: perspective(1200px) translate3d(0, 60px, -80px) rotateX(14deg); transition: opacity 1s var(--ease), transform 1.2s var(--ease); }
 .cs-gallery img.reveal.in { transform: none; }
 
 @media (hover: none), (pointer: coarse) {

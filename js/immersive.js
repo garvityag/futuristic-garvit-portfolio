@@ -74,7 +74,10 @@
     setTimeout(() => tiltEl('.cs-cover', 5), 300);
   }
 
-  /* ---------------- darkroom tunnel ---------------- */
+  /* ---------------- the developing tray ----------------
+     A darkroom under safelight. Scrolling slides each print into
+     the developer, the image appears out of blank paper, then the
+     print is lifted and pegged on the drying line above.        */
   const stage = document.getElementById('heroStage');
   const canvas = document.getElementById('gl');
   if (!stage || !canvas) return;
@@ -82,177 +85,205 @@
   const grid = hero.querySelector('.hero-grid');
   const name = hero.querySelector('.hero-name');
   const foot = hero.querySelector('.hero-foot');
-  const cap = document.getElementById('tunnelCaption');
   const tcNum = document.getElementById('tcNum'), tcTitle = document.getElementById('tcTitle');
 
   const ok = (() => { try { return !!(window.THREE && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))); } catch (e) { return false; } })();
   if (!ok) { root.classList.add('no-gl'); return; }
 
   const T = window.THREE;
-  const renderer = new T.WebGLRenderer({ canvas, antialias: !mobile, alpha: false, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.25 : 1.75));
-  renderer.setClearColor(0x0e0d0b, 1);
+  const renderer = new T.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, mobile ? 1.5 : 1.75));
+  renderer.setClearColor(0x0b0605, 1);
   const scene = new T.Scene();
-  scene.fog = new T.FogExp2(0x0e0d0b, 0.045);
-  const camera = new T.PerspectiveCamera(55, 1, 0.1, 200);
-  camera.position.set(0, 0, 14);
+  const camera = new T.PerspectiveCamera(mobile ? 58 : 42, 1, 0.1, 100);
+  const look = new T.Vector3(0, 1.2, 0);
 
-  const projects = (window.PROJECTS || []).slice(0, mobile ? 14 : 27);
+  /* prints to develop: projects with real thumbnails first */
   const base = window.ASSET_BASE || '';
-  const prints = [];
-  const loader = new T.TextureLoader();
+  const all = (window.PROJECTS || []);
+  const picks = all.filter(p => p.thumb).concat(all.filter(p => !p.thumb)).slice(0, mobile ? 5 : 8);
+  const N = picks.length;
 
-  function coverTexture(p, i) {
-    const c = document.createElement('canvas'); c.width = 800; c.height = 600;
-    const x = c.getContext('2d');
-    const cv = p.cover || {};
-    x.fillStyle = cv.bg || '#201d1a'; x.fillRect(0, 0, 800, 600);
-    const g = x.createRadialGradient(620, 160, 10, 620, 160, 420);
-    g.addColorStop(0, (cv.accent || '#e5482a') + 'cc'); g.addColorStop(1, 'transparent');
-    x.fillStyle = g; x.fillRect(0, 0, 800, 600);
-    x.fillStyle = cv.ink || '#ede6d6';
-    x.font = '500 22px "IBM Plex Mono", monospace';
-    x.fillText(('GY–' + String(i + 1).padStart(2, '0') + '  ' + p.title).toUpperCase().slice(0, 46), 44, 64);
-    x.font = '900 170px Archivo, "Arial Narrow", sans-serif';
-    x.fillText(p.stat ? p.stat.value : String(i + 1).padStart(2, '0'), 40, 470);
-    x.font = 'italic 34px "Instrument Serif", Georgia, serif';
-    x.fillText((p.stat ? p.stat.label : p.kicker).slice(0, 40), 46, 530);
-    const t = new T.CanvasTexture(c); t.anisotropy = 4; return t;
-  }
-
-  const paper = new T.MeshBasicMaterial({ color: 0xede6d6 });
-  const W = 3.2, H = 2.4, B = 0.14;
-  projects.forEach((p, i) => {
-    const g = new T.Group();
-    const border = new T.Mesh(new T.PlaneGeometry(W + B * 2, H + B * 2.8), paper);
-    border.position.y = -B * 0.4;
-    const mat = new T.MeshBasicMaterial({ map: coverTexture(p, i) });
-    const img = new T.Mesh(new T.PlaneGeometry(W, H), mat);
-    img.position.z = 0.002;
-    g.add(border, img);
-    const src = p.thumb ? base + p.thumb : null;
-    if (src) loader.load(src, tex => { tex.anisotropy = 4; mat.map = tex; mat.needsUpdate = true; });
-    const a = i * 0.78;
-    const r = mobile ? 3.8 : 5.6;
-    g.position.set(Math.cos(a) * r, Math.sin(a) * r * 0.62, -i * 2.7);
-    g.rotation.set((Math.random() - 0.5) * 0.25, -Math.cos(a) * 0.35, (Math.random() - 0.5) * 0.3);
-    g.userData = { p, i, base: g.position.clone(), rot: g.rotation.clone(), seed: Math.random() * 10, hover: 0 };
-    img.userData.group = g; border.userData.group = g;
-    scene.add(g); prints.push(g);
+  /* ---- liquid surface ---- */
+  const liquidMat = new T.ShaderMaterial({
+    uniforms: { uTime: { value: 0 }, uMouse: { value: new T.Vector2(0, 0) }, uPulse: { value: 0 }, uDrop: { value: new T.Vector2(0, 0) }, uDropT: { value: -10 } },
+    vertexShader: `varying vec2 vUv; varying vec3 vP; void main(){ vUv = uv; vec4 w = modelMatrix * vec4(position,1.); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+    fragmentShader: `
+      precision highp float; varying vec2 vUv; varying vec3 vP;
+      uniform float uTime; uniform vec2 uMouse; uniform float uPulse; uniform vec2 uDrop; uniform float uDropT;
+      float h(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
+      float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
+        return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }
+      void main(){
+        vec2 p = vP.xz;
+        float d = length(p - uMouse);
+        float ring = sin(d * 7.0 - uTime * 4.0) * exp(-d * 0.55) * (0.35 + uPulse);
+        float dd = length(p - uDrop); float age = uTime - uDropT;
+        ring += sin(dd * 9.0 - age * 9.0) * exp(-dd * 0.7) * exp(-age * 1.2) * step(0.0, age) * 1.4;
+        float c = n(p * 1.6 + vec2(uTime * .05, -uTime * .04)) * .6 + n(p * 3.7 - uTime * .07) * .4;
+        float caust = pow(smoothstep(.45, .95, c), 3.0);
+        vec3 deep = vec3(.045, .018, .015);
+        vec3 safe = vec3(.92, .18, .10);
+        float spot = exp(-length(p - vec2(2.5, -3.0)) * .32);
+        vec3 col = deep + safe * (spot * .55 + caust * .10 * spot + ring * .07 * (0.4 + spot));
+        float edge = smoothstep(0.0, .06, vUv.x) * smoothstep(0.0, .06, vUv.y) * smoothstep(0.0, .06, 1. - vUv.x) * smoothstep(0.0, .06, 1. - vUv.y);
+        col = mix(vec3(.02,.012,.01), col, edge);
+        gl_FragColor = vec4(col, 1.0);
+      }`
   });
-  const depth = projects.length * 2.7;
+  const liquid = new T.Mesh(new T.PlaneGeometry(13, 9, 1, 1), liquidMat);
+  liquid.rotation.x = -Math.PI / 2;
+  scene.add(liquid);
 
-  /* dust in the safelight */
-  const N = mobile ? 600 : 1600;
-  const pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
-  const cA = new T.Color(0xe5482a), cB = new T.Color(0xede6d6);
-  for (let k = 0; k < N; k++) {
-    pos[k * 3] = (Math.random() - 0.5) * 22; pos[k * 3 + 1] = (Math.random() - 0.5) * 14; pos[k * 3 + 2] = 14 - Math.random() * (depth + 20);
-    const c = Math.random() < 0.35 ? cA : cB; col[k * 3] = c.r; col[k * 3 + 1] = c.g; col[k * 3 + 2] = c.b;
+  /* tray rim */
+  const rimMat = new T.MeshBasicMaterial({ color: 0x1a0d0a });
+  [[0, -4.6, 13.6, 0.3], [0, 4.6, 13.6, 0.3], [-6.65, 0, 0.3, 9.4], [6.65, 0, 0.3, 9.4]].forEach(([x, z, w, d]) => {
+    const m = new T.Mesh(new T.BoxGeometry(w, 0.35, d), rimMat); m.position.set(x, 0.12, z); scene.add(m);
+  });
+
+  /* ---- drying line ---- */
+  const LINE_Y = 3.55, LINE_Z = -3.4;
+  const lineGeo = new T.BufferGeometry().setFromPoints(Array.from({ length: 40 }, (_, i) => {
+    const x = -8 + i * (16 / 39); return new T.Vector3(x, LINE_Y + 0.12 - Math.pow(x / 8, 2) * -0.25 - 0.25, LINE_Z);
+  }));
+  scene.add(new T.Line(lineGeo, new T.LineBasicMaterial({ color: 0x5a3a30 })));
+
+  /* ---- prints ---- */
+  const PW = 3.2, PH = 2.4;
+  const printVS = `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`;
+  const printFS = `
+    precision highp float; varying vec2 vUv;
+    uniform sampler2D uTex; uniform float uDev; uniform float uWet; uniform float uTime; uniform float uHas;
+    float h(vec2 p){ return fract(sin(dot(p, vec2(12.9898,78.233))) * 43758.5453); }
+    float n(vec2 p){ vec2 i=floor(p), f=fract(p); f=f*f*(3.-2.*f);
+      return mix(mix(h(i),h(i+vec2(1,0)),f.x), mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x), f.y); }
+    void main(){
+      vec2 uv = vUv;
+      uv += vec2(sin(uv.y * 18. + uTime * 2.), cos(uv.x * 14. + uTime * 1.7)) * .0035 * uWet;
+      float border = step(.035, uv.x) * step(.035, 1.-uv.x) * step(.045, uv.y) * step(.035, 1.-uv.y);
+      vec2 iuv = (uv - vec2(.035,.045)) / vec2(.93,.92);
+      vec3 img = texture2D(uTex, iuv).rgb;
+      vec3 paper = vec3(.93,.90,.84);
+      float fb = n(iuv * 5.) * .6 + n(iuv * 13.) * .4;
+      float dev = smoothstep(fb - .22, fb + .22, uDev * 1.35 - .2);
+      vec3 latent = mix(paper, paper * vec3(.86,.80,.74), smoothstep(.0, .3, uDev));
+      vec3 im = mix(latent, img, dev);
+      vec3 col = mix(paper, im, border);
+      col *= mix(vec3(1.), vec3(1., .58, .5), uWet * .55);
+      col += vec3(.25,.05,.03) * uWet * pow(1. - abs(uv.y - .5) * 2., 4.) * .25;
+      gl_FragColor = vec4(col, 1.);
+    }`;
+  const loader = new T.TextureLoader();
+  function coverTex(p, i) {
+    const c = document.createElement('canvas'); c.width = 800; c.height = 600; const x = c.getContext('2d'); const cv = p.cover || {};
+    x.fillStyle = cv.bg || '#201d1a'; x.fillRect(0, 0, 800, 600);
+    x.fillStyle = cv.ink || '#ede6d6'; x.font = '900 180px Archivo, "Arial Narrow", sans-serif';
+    x.fillText(p.stat ? p.stat.value : String(i + 1).padStart(2, '0'), 40, 470);
+    x.font = '500 22px "IBM Plex Mono", monospace'; x.fillText(p.title.toUpperCase().slice(0, 40), 44, 64);
+    return new T.CanvasTexture(c);
   }
-  const pg = new T.BufferGeometry();
-  pg.setAttribute('position', new T.BufferAttribute(pos, 3));
-  pg.setAttribute('color', new T.BufferAttribute(col, 3));
-  const dust = new T.Points(pg, new T.PointsMaterial({ size: 0.045, vertexColors: true, transparent: true, opacity: 0.75, blending: T.AdditiveBlending, depthWrite: false }));
-  scene.add(dust);
+  const prints = picks.map((p, i) => {
+    const mat = new T.ShaderMaterial({
+      uniforms: { uTex: { value: coverTex(p, i) }, uDev: { value: 0 }, uWet: { value: 0 }, uTime: { value: 0 }, uHas: { value: 1 } },
+      vertexShader: printVS, fragmentShader: printFS, side: T.DoubleSide
+    });
+    if (p.thumb) loader.load(base + p.thumb, tex => { tex.minFilter = T.LinearFilter; mat.uniforms.uTex.value = tex; });
+    const m = new T.Mesh(new T.PlaneGeometry(PW, PH * 1.04, 1, 1), mat);
+    const clip = new T.Mesh(new T.BoxGeometry(0.18, 0.34, 0.08), new T.MeshBasicMaterial({ color: 0x2b1b16 }));
+    clip.position.set(0, PH * 0.52 + 0.08, 0.02); m.add(clip); clip.visible = false;
+    const g = new T.Group(); g.add(m); g.visible = false; scene.add(g);
+    const slotX = (i - (N - 1) / 2) * (mobile ? 1.45 : 1.75);
+    g.userData = { p, i, mat, clip, slot: new T.Vector3(slotX, LINE_Y - 0.45, LINE_Z), seed: Math.random() * 6 };
+    return g;
+  });
 
-  /* safelight at the end of the tunnel */
-  const gc = document.createElement('canvas'); gc.width = gc.height = 256;
-  const gx = gc.getContext('2d'); const rg = gx.createRadialGradient(128, 128, 0, 128, 128, 128);
-  rg.addColorStop(0, 'rgba(255,90,60,1)'); rg.addColorStop(0.25, 'rgba(229,72,42,.55)'); rg.addColorStop(1, 'rgba(229,72,42,0)');
-  gx.fillStyle = rg; gx.fillRect(0, 0, 256, 256);
-  const glow = new T.Sprite(new T.SpriteMaterial({ map: new T.CanvasTexture(gc), blending: T.AdditiveBlending, depthWrite: false, fog: false }));
-  glow.scale.set(40, 40, 1); glow.position.set(0, 0, -depth - 10); scene.add(glow);
-
-  /* sizing */
+  /* ---- sizing ---- */
   function resize() {
-    const w = hero.clientWidth, h = hero.clientHeight;
-    renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix();
+    const w = hero.clientWidth, hh = hero.clientHeight;
+    renderer.setSize(w, hh, false); camera.aspect = w / hh; camera.updateProjectionMatrix();
   }
   resize(); addEventListener('resize', resize);
 
-  /* input */
-  let mx = 0, my = 0, tmx = 0, tmy = 0;
-  const ray = new T.Raycaster(); const ndc = new T.Vector2(-9, -9);
-  let hovered = null;
-  if (fine) {
-    hero.addEventListener('mousemove', e => {
-      const r = hero.getBoundingClientRect();
-      tmx = ((e.clientX - r.left) / r.width) * 2 - 1; tmy = -(((e.clientY - r.top) / r.height) * 2 - 1);
-      ndc.set(tmx, tmy);
-    });
-    hero.addEventListener('mouseleave', () => { ndc.set(-9, -9); });
-    canvas.addEventListener('click', () => { if (hovered) location.href = 'pages/project.html?p=' + hovered.userData.p.slug; });
-  }
+  /* ---- input: ripples follow the cursor, click drops a ripple ---- */
+  const ray = new T.Raycaster(); const ndc = new T.Vector2(); let mx = 0, my = 0, tmx = 0, tmy = 0, pulse = 0;
+  const target = new T.Vector2(0, 0);
+  hero.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect();
+    tmx = ((e.clientX - r.left) / r.width) * 2 - 1; tmy = -(((e.clientY - r.top) / r.height) * 2 - 1);
+    ndc.set(tmx, tmy); ray.setFromCamera(ndc, camera);
+    const hit = ray.intersectObject(liquid)[0]; if (hit) target.set(hit.point.x, hit.point.z);
+    pulse = Math.min(1, pulse + 0.06);
+  });
+  hero.addEventListener('pointerdown', () => { liquidMat.uniforms.uDrop.value.copy(target); liquidMat.uniforms.uDropT.value = clock.getElapsedTime(); });
 
-  /* scroll progress through the stage */
+  /* ---- scroll ---- */
   let prog = 0, tprog = 0;
   function readScroll() {
-    const r = stage.getBoundingClientRect();
-    const span = stage.offsetHeight - innerHeight;
+    const r = stage.getBoundingClientRect(); const span = stage.offsetHeight - innerHeight;
     tprog = reduced ? 0 : Math.min(1, Math.max(0, -r.top / Math.max(1, span)));
   }
   addEventListener('scroll', readScroll, { passive: true }); readScroll();
-
-  let visible = true;
-  new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(hero);
+  let visible = true; new IntersectionObserver(es => { visible = es[0].isIntersecting; }).observe(hero);
 
   const clock = new T.Clock();
-  const lerp = (a, b, t) => a + (b - a) * t;
-  const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const L = (a, b, t) => a + (b - a) * t;
+  const cl = v => Math.min(1, Math.max(0, v));
+  const sm = v => v * v * (3 - 2 * v);
+  const TRAY = new T.Vector3(0, 0.03, 0.6);
   let lastCap = -1;
 
   function frame() {
     requestAnimationFrame(frame);
     if (!visible) return;
     const t = clock.getElapsedTime();
-    prog = lerp(prog, tprog, 0.08);
-    mx = lerp(mx, tmx, 0.05); my = lerp(my, tmy, 0.05);
+    prog = L(prog, tprog, 0.09); mx = L(mx, tmx, 0.05); my = L(my, tmy, 0.05); pulse *= 0.96;
+    const lm = liquidMat.uniforms; lm.uTime.value = t; lm.uPulse.value = pulse;
+    lm.uMouse.value.lerp(target, 0.12);
 
-    /* camera flies through the prints */
-    const e = ease(prog);
-    const z = lerp(14, -depth + 4, e);
-    camera.position.set(mx * 1.2, my * 0.8, z);
-    camera.rotation.set(my * 0.06, -mx * 0.08, Math.sin(t * 0.2) * 0.02 + e * 0.35);
+    /* camera: a slow lean over the tray, rising toward the line */
+    const rise = sm(cl((prog - 0.03) / 0.45));
+    camera.position.set(mx * 0.9, L(mobile ? 9.5 : 8.2, mobile ? 8.2 : 6.8, rise) + my * 0.4, L(mobile ? 9.5 : 8.4, mobile ? 9 : 8.8, rise));
+    look.set(mx * 0.4, L(0.6, 1.75, rise), L(0.2, -0.9, rise));
+    camera.lookAt(look);
 
-    /* prints float, spin, and lift on hover */
-    let hit = null;
-    if (fine && prog < 0.98) {
-      ray.setFromCamera(ndc, camera);
-      const hits = ray.intersectObjects(prints.map(g => g.children[1]));
-      hit = hits.length ? hits[0].object.userData.group : null;
-    }
-    if (hit !== hovered) { hovered = hit; root.classList.toggle('gl-hover', !!hit); }
-    prints.forEach(g => {
-      const u = g.userData;
-      u.hover = lerp(u.hover, g === hovered ? 1 : 0, 0.12);
-      g.position.x = u.base.x + Math.sin(t * 0.5 + u.seed) * 0.15;
-      g.position.y = u.base.y + Math.cos(t * 0.4 + u.seed) * 0.15;
-      g.position.z = u.base.z + u.hover * 0.8;
-      g.rotation.x = u.rot.x + Math.sin(t * 0.3 + u.seed) * 0.05;
-      g.rotation.y = u.rot.y * (1 - u.hover) + Math.cos(t * 0.25 + u.seed) * 0.05;
-      g.rotation.z = u.rot.z * (1 - u.hover);
-      const s = 1 + u.hover * 0.12; g.scale.set(s, s, 1);
+    /* prints: enter, develop, lift, peg */
+    const span = 0.92 / N; let active = -1;
+    prints.forEach((g, i) => {
+      const u = g.userData, m = g.children[0];
+      const f = (prog - 0.04 - i * span) / span;      // local 0..1 for this print
+      u.mat.uniforms.uTime.value = t;
+      if (f < -0.05) { g.visible = false; return; }
+      g.visible = true;
+      const enter = sm(cl(f / 0.2)), dev = cl((f - 0.15) / 0.5), lift = sm(cl((f - 0.68) / 0.32));
+      if (f >= 0 && f < 1) active = i;
+      // in the tray: slide in from the right, lie flat, rock with the liquid
+      const trayPos = TRAY.clone().add(new T.Vector3(L(9, 0, enter), 0, L(1.2, 0, enter)));
+      trayPos.y += Math.sin(t * 1.3 + u.seed) * 0.02;
+      const hang = u.slot.clone(); hang.y += Math.sin(t * 0.9 + u.seed) * 0.03;
+      const arc = Math.sin(lift * Math.PI) * 1.6;
+      g.position.set(L(trayPos.x, hang.x, lift), L(trayPos.y, hang.y, lift) + arc, L(trayPos.z, hang.z, lift));
+      const sc = L(1, mobile ? 0.42 : 0.5, lift); g.scale.set(sc, sc, sc);
+      m.rotation.set(L(-Math.PI / 2, 0, lift) + Math.sin(t * 0.8 + u.seed) * 0.02 * (1 - lift), 0, L(-0.06, Math.sin(t * 0.7 + u.seed) * 0.03, lift));
+      u.mat.uniforms.uDev.value = dev;
+      u.mat.uniforms.uWet.value = (1 - lift) * enter * 0.9 + lift * 0.25;
+      u.clip.visible = lift > 0.85;
     });
-    dust.rotation.z = t * 0.01;
-    glow.material.opacity = 0.55 + Math.sin(t * 1.3) * 0.08 + e * 0.35;
     renderer.render(scene, camera);
 
-    /* DOM choreography over the canvas */
-    const a = Math.min(1, prog / 0.28);
-    grid.style.opacity = 1 - a; grid.style.transform = `translate3d(0, ${-a * 60}px, 0)`;
-    foot.style.opacity = 1 - Math.min(1, prog / 0.18);
-    const b = Math.min(1, prog / 0.42);
+    /* DOM choreography */
+    const a = cl(prog / 0.12);
+    grid.style.opacity = 1 - a; grid.style.transform = `translate3d(0, ${-a * 50}px, 0)`;
+    foot.style.opacity = 1 - cl(prog / 0.08);
+    const b = cl(prog / 0.16);
     name.style.opacity = 1 - b;
-    name.style.transform = `perspective(900px) translate3d(0, ${-b * 40}px, ${b * 260}px) rotateX(${b * 28}deg)`;
-    name.style.pointerEvents = b > 0.5 ? 'none' : '';
-
-    /* caption names the print nearest the camera */
-    let best = -1, bd = 1e9;
-    if (prog > 0.3) prints.forEach((g, i) => { const d = g.position.z - camera.position.z; if (d < -2 && -d < bd) { bd = -d; best = i; } });
-    root.classList.toggle('tunnel-on', best > -1);
-    if (best > -1 && best !== lastCap) { lastCap = best; const p = prints[best].userData.p; tcNum.textContent = 'GY–' + String(best + 1).padStart(2, '0'); tcTitle.textContent = p.title; }
-    root.classList.toggle('tunnel-end', prog > 0.86);
+    name.style.transform = `perspective(900px) translate3d(0, ${b * 80}px, ${-b * 200}px) rotateX(${-b * 35}deg)`;
+    name.style.filter = `blur(${b * 6}px)`;
+    root.classList.toggle('tunnel-on', active > -1 && prog > 0.08 && prog < 0.95);
+    if (active > -1 && active !== lastCap) {
+      lastCap = active; const p = prints[active].userData.p;
+      tcNum.textContent = 'DEVELOPING · GY–' + String(all.indexOf(p) + 1).padStart(2, '0'); tcTitle.textContent = p.title;
+    }
+    root.classList.toggle('tunnel-end', prog > 0.95);
   }
   root.classList.add('gl-ready');
   frame();
