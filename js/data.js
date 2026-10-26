@@ -60,7 +60,7 @@ window.PROJECTS = [
       'Ran five rounds with regional leads through to final sign-off.'
     ],
     outcome: 'Approved by regional leads for global circulation as the reference kit for roughly 90,000 employees across 126 agencies.',
-    images: []
+    images: ['assets/work/support-kit-deck.webp']
   },
   {
     slug: 'launch-campaigns',
@@ -83,7 +83,7 @@ window.PROJECTS = [
     outcome: 'Launch comms now ship in days instead of being designed from scratch each time, and every rollout looks like it came from one brand.',
     pdf: '1INgXsrKEit9JEWvF0HQUnyEl2DFC1-Ks',
     pdfLabel: 'AI note-taker launch newsletter',
-    images: ['1INgXsrKEit9JEWvF0HQUnyEl2DFC1-Ks']
+    images: ['assets/work/launch-banner-system.webp', '1INgXsrKEit9JEWvF0HQUnyEl2DFC1-Ks']
   },
   {
     slug: 'intranet-articles',
@@ -149,7 +149,7 @@ window.PROJECTS = [
     outcome: 'The infographic now anchors the platform\'s leadership updates and was reused in the newsletter.',
     pdf: '16x6qft6Xy1B-RbrLGwZbyC9Y9rt66Sr5',
     pdfLabel: 'Monthly ops review deck',
-    images: ['16x6qft6Xy1B-RbrLGwZbyC9Y9rt66Sr5']
+    images: ['assets/work/data-story.webp', '16x6qft6Xy1B-RbrLGwZbyC9Y9rt66Sr5']
   },
   {
     slug: 'design-ops-automation',
@@ -170,7 +170,7 @@ window.PROJECTS = [
       'Scripted Illustrator builds for newsletters and infographics, driven by one config file.'
     ],
     outcome: 'Teammates without design tools can now produce on-brand comms themselves, and design time goes to the work that needs a designer.',
-    images: []
+    images: ['assets/work/design-ops-tools.webp']
   },
   {
     slug: 'support-directory',
@@ -212,7 +212,7 @@ window.PROJECTS = [
       'Documented the full prompt-to-final process alongside the creatives.'
     ],
     outcome: 'Delivered three finished ads and a process write-up showing how AI speeds up production without losing art direction.',
-    images: []
+    images: ['assets/work/ai-briefcase-ads.webp']
   },
   {
     slug: 'isc-west',
