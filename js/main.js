@@ -44,8 +44,8 @@
 
   /* Image with Drive fallbacks; on total failure swap in the cover */
   window.mediaFor = function (p, idx, w) {
-    if (p.images && p.images.length) {
-      const id = p.images[0];
+    if (p.thumb || (p.images && p.images.length)) {
+      const id = p.thumb || p.images[0];
       return `<img src="${driveImg(id, w || 1600)}" alt="${p.title}" loading="lazy" referrerpolicy="no-referrer" data-drive="${id}" data-slug="${p.slug}" data-idx="${idx}">`;
     }
     return renderCover(p, idx);

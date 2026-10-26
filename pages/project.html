@@ -56,7 +56,7 @@
   document.title = `${p.title} · Garvit Yaggik`;
 
   const nda = /NDA/.test(p.client);
-  const gallery = (p.images || []).slice(1).map(id =>
+  const gallery = (p.images || []).slice(p.thumb ? 0 : 1).map(id =>
     `<img src="${driveImg(id, 2000)}" alt="${p.title}" loading="lazy" referrerpolicy="no-referrer" data-drive="${id}" data-slug="${p.slug}" class="reveal">`).join('');
 
   document.getElementById('cs').innerHTML = `

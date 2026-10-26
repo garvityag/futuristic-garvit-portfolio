@@ -18,6 +18,7 @@ window.CATEGORIES = [
 window.PROJECTS = [
   {
     slug: 'it-newsletter',
+    thumb: 'assets/work/thumbs/newsletter.webp',
     title: 'The IT Newsletter',
     kicker: 'An internal channel built from zero',
     category: 'editorial',
@@ -42,6 +43,7 @@ window.PROJECTS = [
   },
   {
     slug: 'it-support-kit',
+    thumb: 'assets/work/thumbs/support-kit.webp',
     title: 'Employee IT Support Kit',
     kicker: 'A 17-page reference people actually open',
     category: 'editorial',
@@ -64,6 +66,7 @@ window.PROJECTS = [
   },
   {
     slug: 'launch-campaigns',
+    thumb: 'assets/work/thumbs/launch.webp',
     title: 'Enterprise Launch Campaigns',
     kicker: 'Banners, emailers and intranet pages for global rollouts',
     category: 'campaign',
@@ -87,6 +90,7 @@ window.PROJECTS = [
   },
   {
     slug: 'intranet-articles',
+    thumb: 'assets/work/thumbs/intranet.webp',
     title: 'Intranet Article System',
     kicker: 'Release notes and announcements that read like editorial',
     category: 'campaign',
@@ -109,6 +113,7 @@ window.PROJECTS = [
   },
   {
     slug: 'it-updates-studio',
+    thumb: 'assets/work/thumbs/updates.webp',
     title: 'IT Updates Studio',
     kicker: 'One source of truth for maintenance pages and daily emails',
     category: 'ai',
@@ -130,6 +135,7 @@ window.PROJECTS = [
   },
   {
     slug: 'data-infographics',
+    thumb: 'assets/work/thumbs/data.webp',
     title: 'Data Stories for Leadership',
     kicker: 'Turning a platform\'s numbers into one clear story',
     category: 'editorial',
@@ -153,6 +159,7 @@ window.PROJECTS = [
   },
   {
     slug: 'design-ops-automation',
+    thumb: 'assets/work/thumbs/ops.webp',
     title: 'Design Ops Automation',
     kicker: 'Tools that remove the repetitive half of the job',
     category: 'ai',
@@ -174,6 +181,7 @@ window.PROJECTS = [
   },
   {
     slug: 'support-directory',
+    thumb: 'assets/work/thumbs/directory.webp',
     title: 'Global Support Directory',
     kicker: '63 countries of support contacts on one page',
     category: 'campaign',
@@ -195,6 +203,7 @@ window.PROJECTS = [
   },
   {
     slug: 'ai-spec-campaign',
+    thumb: 'assets/work/thumbs/ads.webp',
     title: 'AI Ad Campaign · Premium Briefcase',
     kicker: 'Spec work: three Instagram ads, AI-first process',
     category: 'campaign',
