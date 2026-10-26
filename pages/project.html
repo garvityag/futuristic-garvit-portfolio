@@ -40,6 +40,7 @@
   <a href="mailto:garvityagnik@gmail.com">garvityagnik@gmail.com</a>
 </footer>
 
+<script>window.ASSET_BASE = '../';</script>
 <script src="../js/data.js"></script>
 <script src="../js/main.js"></script>
 <script>
@@ -55,7 +56,7 @@
   document.title = `${p.title} · Garvit Yaggik`;
 
   const nda = /NDA/.test(p.client);
-  const gallery = (p.images || []).slice(1).map(id =>
+  const gallery = (p.images || []).slice(p.thumb ? 0 : 1).map(id =>
     `<img src="${driveImg(id, 2000)}" alt="${p.title}" loading="lazy" referrerpolicy="no-referrer" data-drive="${id}" data-slug="${p.slug}" class="reveal">`).join('');
 
   document.getElementById('cs').innerHTML = `
@@ -80,10 +81,15 @@
         <p>${p.outcome}</p>
       </div></div>
     </section>
-    ${p.pdf ? `<div class="cs-pdf reveal"><iframe src="https://drive.google.com/file/d/${p.pdf}/preview" title="${p.title} presentation" loading="lazy"></iframe>
-      <p style="margin-top:14px"><a class="arrow-link" href="https://drive.google.com/file/d/${p.pdf}/view" target="_blank" rel="noopener">Open full presentation</a></p></div>` : ''}
+    ${p.pdf ? `<div class="cs-pdf reveal">
+      <p class="mono dim" style="margin-bottom:14px">${p.pdfLabel || 'Full document'}</p>
+      <iframe src="https://drive.google.com/file/d/${p.pdf}/preview" title="${p.pdfLabel || p.title}" loading="lazy"></iframe>
+      <div class="cs-docs">
+        <a class="arrow-link" href="https://drive.google.com/file/d/${p.pdf}/view" target="_blank" rel="noopener">Open ${p.pdfLabel || 'full document'}</a>
+        ${(p.docs || []).map(d => `<a class="arrow-link" href="https://drive.google.com/file/d/${d.id}/view" target="_blank" rel="noopener">${d.label}</a>`).join('')}
+      </div></div>` : ''}
     ${gallery ? `<div class="cs-gallery">${gallery}</div>` : ''}
-    ${nda ? `<p class="cs-nda mono">Internal work. Names, data and logos are withheld under NDA. Full walkthrough available in interview.</p>` : ''}
+    ${nda ? `<p class="cs-nda mono">${(p.images || []).some(isLocal) ? 'Internal work. Screens are recreated with placeholder names, links and data. ' : 'Internal work. '}Full walkthrough available in interview.</p>` : ''}
     <a class="cs-next" href="project.html?p=${next.slug}">
       <span class="mono">Next project →</span>
       <h3>${next.title}</h3>

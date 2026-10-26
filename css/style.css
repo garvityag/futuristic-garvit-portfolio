@@ -25,6 +25,7 @@
   --gutter: clamp(16px, 4vw, 56px);
   --max: 1440px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -549,3 +550,5 @@ footer.site-foot a:hover { color: var(--paper); }
   .article-nav .next { text-align: left; }
 }
 .article .cs-back { display: block; width: fit-content; }
+.cs-docs { display: flex; flex-wrap: wrap; gap: 14px 32px; margin-top: 20px; }
+.card-media > img[data-drive^="assets"], .cs-cover > img[data-drive^="assets"] { object-position: top center; }
