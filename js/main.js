@@ -54,7 +54,7 @@
     (root || document).querySelectorAll('img[data-drive]').forEach(img => {
       if (img.dataset.wired) return;
       img.dataset.wired = '1';
-      const urls = driveFallbacks(img.dataset.drive);
+      const urls = window.isLocal(img.dataset.drive) ? [img.src] : driveFallbacks(img.dataset.drive);
       let i = 0;
       const fail = () => {
         i++;
