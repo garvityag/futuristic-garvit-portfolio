@@ -25,6 +25,7 @@
   --gutter: clamp(16px, 4vw, 56px);
   --max: 1440px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
