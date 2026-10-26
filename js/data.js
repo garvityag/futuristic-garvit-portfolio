@@ -408,7 +408,7 @@ window.PROJECTS = [
     approach: ['Logo, colour palette, typography rules, moodboard and application mockups as one system.'],
     outcome: 'A complete, presentation-ready brand system.',
     pdf: '1Bvm1pIP2597MyPOb_aPrkJTxI_jaoEJR',
-    images: []
+    images: ['1Bvm1pIP2597MyPOb_aPrkJTxI_jaoEJR']
   },
   {
     slug: 'cyber-posters',
