@@ -163,7 +163,43 @@ window.PROJECTS = [
       'Managed press-ready files and colour across vendors in different countries.'
     ],
     outcome: 'Every new show became a configuration rather than a redesign, keeping the brand consistent across 100+ exhibitions.',
-    images: ['1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK', '1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s', '1HFIb04e02njFJjXGaN74U3694fSrhIEO', '1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw']
+    pdf: '1Z5aSkvRMjSGA0jIeFHua726WbyR0oH8e',
+    pdfLabel: 'Hannover Messe product signage',
+    images: ['1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK', '1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s', '1HFIb04e02njFJjXGaN74U3694fSrhIEO', '1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw',
+      '1TaphvB0kALbIiTU0_FZhw8UPkN0tUJkH', '185UCdiq264fO6hqPjwQOdQqwl5O-SDlj', '1C305TmPrZMAAAK7m7a-MKKRqJ4Yp7YgV', '1YGL8D2jGySRFbb83AJ02GbVpnn84m_9E',
+      '1DyctFCqkiEx4BHuJOziJxyeLByNRuJdD', '1aq2oxGtCBNQjIm36HN_aLstq5xYVYbHz', '18DpgtKuL73PQpwbRh20G9n6KYWtCgGfr', '13fHQ3Rzybj3XnZVPk7g-QY-23Mn0U2XL',
+      '1U4eJvnnVfnWRVsPT93LxnVMJE0cV8kqM', '16OkYHOJQuDajMj_4_kpkTwmfOEniEaM3', '1R8ZdMVpZaeKEG0JukV80z8mmxtEcXEwZ', '1pzDxsQWRAFDnyYsYHeRZkDkDygZN7bVd']
+  },
+  {
+    slug: 'product-brochures',
+    title: 'Product Brochures',
+    kicker: 'Making 5G, Wi-Fi 7 and FPGA readable for buyers',
+    category: 'editorial',
+    size: 'lg',
+    year: '2023 – 2024',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'InDesign, Illustrator, Photoshop',
+    stat: { value: '7+', label: 'product & service brochures' },
+    cover: { bg: '#E9E3D6', ink: '#141210', accent: '#2B4BD8', motif: 'grid' },
+    brief: 'Deeply technical products (5G radio units, lab kits, Wi-Fi 7, FPGA, cloud platforms) needed sales collateral that a buyer at a trade show could understand in seconds.',
+    approach: [
+      'Built a consistent brochure system across product lines: cover, overview, highlights, specs and contact.',
+      'Turned spec sheets into diagrams and icon-led feature grids.',
+      'Designed print-ready four-pagers and web versions with QR links back to product pages.'
+    ],
+    outcome: 'A family of brochures used across sales and 100+ exhibitions, recognisably one brand across every product line.',
+    pdf: '1vGku3dgiUB81HdYh6fVMrkwVp02vPTTD',
+    pdfLabel: 'Corporate brochure',
+    docs: [
+      { label: '5G Lab Kit', id: '1DUOtMYgWx83aEBy7ieX_0EDBdMDzjYuA' },
+      { label: '5G Low Power Radio Unit', id: '1ryYAUBTUfu8MPWXAVtzNOXe68Du-2i6S' },
+      { label: 'Wi-Fi 7', id: '17MMEBp7p2dwofTYo3XQELAT6WyvWOrLG' },
+      { label: 'SoC / FPGA / ASIC', id: '1-PVGJaYNk88FhP4Pr0cUiMwDSSbQJ-7K' },
+      { label: 'Engineering services', id: '1PJG9ZNo0mSzrW9ZbXZZM9-ZDwLq5uNVH' },
+      { label: 'Ambarella platforms', id: '1cSQV844QiC6883kChcjg_4flqknECuK4' }
+    ],
+    images: ['1FZqmjWL5uQWqwueJyOXilMGjlruzx4ng', '1tKFL7MQ44PaGzgdkjZTQIp-hDKrqWTwN', '1QxX6bzA5svDrQZcTrx8Z_7aWgvG8EwWz', '1tW3kJrM3FTSsRv8h11oKn00Wbeosh_Mc']
   },
   {
     slug: 'ai-spec-campaign',
@@ -188,23 +224,47 @@ window.PROJECTS = [
   },
   {
     slug: 'corporate-magazine',
-    title: 'Corporate Magazine',
-    kicker: 'The company\'s first magazine, pitched and launched',
+    title: 'Ensemble · Corporate Magazine',
+    kicker: 'A 50+ page company magazine, edition after edition',
     category: 'editorial',
     size: 'md',
-    year: '2023',
+    year: '2022 – 2024',
     client: 'VVDN Technologies',
     role: 'Editorial Designer',
     tools: 'InDesign, Photoshop, Illustrator',
-    stat: { value: '01', label: 'first edition, pitched by me' },
+    stat: { value: '3', label: 'editions · 2022 – 2024' },
     cover: { bg: '#E9E3D6', ink: '#141210', accent: '#D8432B', motif: 'masthead' },
-    brief: 'Dense corporate content and no in-house publication. The goal was a magazine people would actually read.',
+    brief: 'Management messages, business wins, events, awards and people stories for a 10,000+ employee company, in a magazine people actually want to read.',
     approach: [
-      'Pitched the idea and set the grid, type rules and photography guidelines.',
-      'Structured each issue with clear hierarchy, pull quotes and room to breathe.'
+      'Set the grid, type rules and photography guidelines for the magazine.',
+      'Gave each edition its own theme and cover while keeping the system consistent.',
+      'Structured 20+ sections per issue with clear hierarchy, pull quotes and room to breathe.'
     ],
-    outcome: 'Published and distributed across the organisation as its first corporate magazine.',
+    outcome: 'Published and distributed across the organisation, with editions in 2022, 2023 and 2024.',
+    pdf: '1jLfSpgh4IetZi35g1-GWZKgghlRFS_30',
+    pdfLabel: 'Ensemble 2024',
+    docs: [{ label: 'Ensemble 2023', id: '1L7EYYJpi5nPelLRSSo4-EzgSIXCHMHR4' }, { label: 'Ensemble 2022', id: '1fKnxhKQ6IK1YTiVxoVm0543KHoRHpffT' }],
     images: ['1EOpVJNgfmJa9e-fFML42YI_naqmXR45n']
+  },
+  {
+    slug: 'sunkonnect',
+    title: 'SunKonnect · Energy Storage NA',
+    kicker: 'Social countdown for a US trade show',
+    category: 'campaign',
+    size: 'md',
+    year: '2025',
+    client: 'SunKonnect (freelance)',
+    role: 'Designer',
+    tools: 'Photoshop, Illustrator',
+    stat: { value: '4', label: 'post social series' },
+    cover: { bg: '#0F1A2A', ink: '#EEF2F6', accent: '#F2B233', motif: 'frame' },
+    brief: 'A renewable-energy consultancy exhibiting at Energy Storage North America in San Diego needed a social series to build presence before the show.',
+    approach: [
+      'Designed a four-post series: arrival announcement, capabilities, services and a final countdown.',
+      'Kept one visual system across the set so the posts read as a campaign, not one-offs.'
+    ],
+    outcome: 'Delivered a ready-to-post series ahead of the February 2025 show.',
+    images: ['1TsQrdDmBuMeLCtrJvyevq6s-ODYg_BDg', '1KCLA5G_ccwA-ygWcIO1pvNa_xPxwZ26i', '1CXmWgLYijQwTxlIpF9qPM-99y9XYsMMK', '1htgIBLz4uJvfwXq8cIDIaeK4vWeQYg44']
   },
   {
     slug: 'luxora',
@@ -221,6 +281,44 @@ window.PROJECTS = [
     approach: ['Mood direction, material selection, lighting atmosphere and cinematic 3D visualisation.'],
     outcome: 'A set of spatial concepts that communicate the brand before construction begins.',
     images: ['12yngtXzKvYkWvL-TODn4eNZ92YFJNLfz', '135SiSH_BnNLmAvTui1NcF503rT2eXnI5']
+  },
+  {
+    slug: 'office-branding',
+    title: 'Office Branding',
+    kicker: 'Wall graphics for a global innovation campus',
+    category: 'spatial',
+    size: 'md',
+    year: '2024',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer, Print Production',
+    tools: 'Illustrator, Photoshop',
+    stat: { value: '28 ft', label: 'widest wall graphic' },
+    cover: { bg: '#141210', ink: '#EDE6D6', accent: '#D8432B', motif: 'banners' },
+    brief: 'Bring the company\'s story, business units, values and culture onto the walls of its headquarters.',
+    approach: [
+      'Designed large-format wall graphics, the widest at 336 × 75 inches, mapping business units and capabilities.',
+      'Wrote a values and culture wall around the #WeMakeItHappen line.',
+      'Prepared production files to exact working-area specs for the print vendor.'
+    ],
+    outcome: 'Installed across the campus as permanent brand walls for employees and visiting clients.',
+    images: ['1Gvu_Fj6vYtQPz9FtXxchwMdchPBdlxGp', '1mWcinkWTgrq1t5DJ6CO-6ZmgD1bseSMa', '1uAe1c4V4UTppaZOhkG9J0Pw5qB01Ph2z']
+  },
+  {
+    slug: 'stratigen',
+    title: 'Stratigen',
+    kicker: 'Brand identity from a blank page',
+    category: 'editorial',
+    size: 'md',
+    year: '2024',
+    client: 'Personal project',
+    role: 'Brand Identity Designer',
+    tools: 'Illustrator, Photoshop',
+    cover: { bg: '#2B4BD8', ink: '#F2EEE6', accent: '#F2EEE6', motif: 'mark' },
+    brief: 'A full identity with zero constraints, where every decision has to justify itself.',
+    approach: ['Logo, colour palette, typography rules, moodboard and application mockups as one system.'],
+    outcome: 'A complete, presentation-ready brand system.',
+    pdf: '1Bvm1pIP2597MyPOb_aPrkJTxI_jaoEJR',
+    images: []
   },
   {
     slug: 'imc-booth',
@@ -275,7 +373,7 @@ window.PROJECTS = [
     title: 'Magazine Ads & Print',
     kicker: 'Trade-magazine ads that stand out',
     category: 'campaign',
-    size: 'sm',
+    size: 'md',
     year: '2023',
     client: 'VVDN Technologies',
     role: 'Graphic Designer',
@@ -291,7 +389,7 @@ window.PROJECTS = [
     title: 'Corporate Report',
     kicker: 'Complex content, premium document',
     category: 'editorial',
-    size: 'sm',
+    size: 'md',
     year: '2023',
     client: 'Self-initiated',
     role: 'Editorial Designer',
@@ -301,23 +399,6 @@ window.PROJECTS = [
     approach: ['Clean page layouts with infographic placement and consistent typography.'],
     outcome: 'A reusable report template for ongoing corporate communications.',
     images: ['1U80yTOtr0jjGAHbCsRtl4V4Cgfx2tcMG']
-  },
-  {
-    slug: 'stratigen',
-    title: 'Stratigen',
-    kicker: 'Brand identity from a blank page',
-    category: 'editorial',
-    size: 'sm',
-    year: '2024',
-    client: 'Personal project',
-    role: 'Brand Identity Designer',
-    tools: 'Illustrator, Photoshop',
-    cover: { bg: '#2B4BD8', ink: '#F2EEE6', accent: '#F2EEE6', motif: 'mark' },
-    brief: 'A full identity with zero constraints, where every decision has to justify itself.',
-    approach: ['Logo, colour palette, typography rules, moodboard and application mockups as one system.'],
-    outcome: 'A complete, presentation-ready brand system.',
-    pdf: '1Bvm1pIP2597MyPOb_aPrkJTxI_jaoEJR',
-    images: []
   }
 ];
 
