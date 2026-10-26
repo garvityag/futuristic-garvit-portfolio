@@ -1,722 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garvit Yaggik — Art Director</title>
-  <meta name="description" content="Garvit Yaggik — Graphic Designer, Art Director and Visual Strategist. 5+ years building visual systems at Publicis Groupe, VVDN Technologies and Digi2L." />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/marquee.css" />
-  <link rel="stylesheet" href="css/journals.css" />
-  <link rel="stylesheet" href="css/work.css" />
-  <link rel="stylesheet" href="css/about.css" />
-  <link rel="stylesheet" href="css/contact.css" />
-  <link rel="stylesheet" href="css/resume.css" />
-
-  <!-- Vendor scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.19/dist/lenis.min.js"></script>
+  <title>Garvit Yaggik · Art Director & Graphic Designer</title>
+  <meta name="description" content="Garvit Yaggik is an art director and graphic designer with 6+ years across brand, editorial, campaigns and exhibitions, working with generative AI and automation. Open to roles in Gurgaon, Pune and remote." />
+  <meta property="og:title" content="Garvit Yaggik · Art Director & Graphic Designer" />
+  <meta property="og:description" content="Brand, editorial, campaigns and exhibitions. 6+ years. AI-powered design." />
+  <meta property="og:image" content="assets/character/01.webp" />
+  <meta name="theme-color" content="#0E0D0B" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" as="image" href="assets/character/01.webp" />
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.19/dist/lenis.min.js" defer></script>
 </head>
 <body>
 
-<!-- Custom Cursor -->
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-<canvas id="cursor-trail"></canvas>
+<header class="topbar">
+  <a href="#top" class="logo" aria-label="Garvit Yaggik, home">GY®</a>
+  <nav aria-label="Main">
+    <a href="#work">Work</a>
+    <a href="#lab">AI Lab</a>
+    <a href="#about">About</a>
+    <a href="#journal">Journal</a>
+    <a href="pages/resume.html">Resume</a>
+  </nav>
+  <a href="#contact" class="cta">Let's talk</a>
+  <button class="menu-btn" data-menu-open aria-label="Open menu">Menu</button>
+</header>
 
-<!-- Scroll Progress Bar -->
-<div id="scroll-progress"></div>
+<div class="mobile-menu" id="mobileMenu" aria-label="Menu">
+  <button class="close mono" data-menu-close>Close ✕</button>
+  <a href="#work"><span>01</span>Work</a>
+  <a href="#lab"><span>02</span>AI Lab</a>
+  <a href="#about"><span>03</span>About</a>
+  <a href="#journal"><span>04</span>Journal</a>
+  <a href="pages/resume.html"><span>05</span>Resume</a>
+  <a href="#contact"><span>06</span>Contact</a>
+</div>
 
-<!-- MAIN PAGE -->
-<main id="page-home">
+<main id="top">
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-card">
-      <canvas id="hero-canvas"></canvas>
-
-      <div class="hero-content">
-
-        <!-- LEFT -->
-        <div class="hero-left reveal">
-          <span class="hero-eyebrow">PORTFOLIO 2025</span>
-          <h1 class="hero-name" id="heroName">GARVIT YAGGIK</h1>
-          <div class="hero-designation" id="heroDesignation"></div>
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-num" data-target="5">0</span>
-              <span class="stat-suffix">+</span>
-              <span class="stat-label">Years</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num" data-target="40">0</span>
-              <span class="stat-suffix">+</span>
-              <span class="stat-label">Clients</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num" data-target="100">0</span>
-              <span class="stat-suffix">+</span>
-              <span class="stat-label">Exhibitions</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CENTER -->
-        <div class="hero-center reveal">
-          <div class="character-wrap">
-            <div class="char-carousel" id="charCarousel">
-              <div class="char-slide active" data-index="0">
-                <img src="assets/character/01.png" alt="Garvit" class="character-img" />
-              </div>
-              <div class="char-slide" data-index="1">
-                <img src="assets/character/02.png" alt="Garvit" class="character-img" />
-              </div>
-              <div class="char-slide" data-index="2">
-                <img src="assets/character/03.png" alt="Garvit" class="character-img" />
-              </div>
-              <div class="char-slide" data-index="3">
-                <img src="assets/character/04.png" alt="Garvit" class="character-img" />
-              </div>
-              <div class="char-slide" data-index="4">
-                <img src="assets/character/05.png" alt="Garvit" class="character-img" />
-              </div>
-              <div class="char-slide" data-index="5">
-                <img src="assets/character/06.png" alt="Garvit" class="character-img" />
-              </div>
-            </div>
-
-            <div class="char-dots" id="charDots">
-              <span class="char-dot active"></span>
-              <span class="char-dot"></span>
-              <span class="char-dot"></span>
-              <span class="char-dot"></span>
-              <span class="char-dot"></span>
-              <span class="char-dot"></span>
-            </div>
-
-            <div class="char-glow"></div>
-          </div>
-        </div>
-
-        <!-- RIGHT -->
-        <div class="hero-right reveal">
-          <div class="available-badge">
-            <span class="available-dot"></span>
-            Available for opportunities
-          </div>
-          <p class="hero-bio">
-            Designer with <strong>5+ years</strong> building visual systems from brief to final output — brand, print, digital, events, and motion.<br><br>
-            Worked at <strong>Publicis Groupe</strong>, <strong>VVDN Technologies</strong>, and an early-stage startup. Full ownership at every role.<br><br>
-            My edge is <strong>business context</strong>: I understand what a design needs to do before deciding what it should look like.
-          </p>
-          <div class="hero-tags">
-            <span class="hero-tag">Figma</span>
-            <span class="hero-tag">Blender</span>
-            <span class="hero-tag">After Effects</span>
-            <span class="hero-tag">Midjourney</span>
-            <span class="hero-tag">Framer</span>
-            <span class="hero-tag">InDesign</span>
-            <span class="hero-tag">AI Tools</span>
-          </div>
-        </div>
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-meta">
+        <span class="status mono"><i></i>Available · Gurgaon / Pune / Remote</span>
+        <p class="hero-lede">Art director and graphic designer. I build brands, editorial systems and campaigns, <span class="serif">with AI in the toolkit.</span></p>
+        <a href="#work" class="arrow-link">See selected work</a>
       </div>
-
-      <!-- NAV -->
-      <nav class="hero-nav">
-        <span class="nav-logo">GY</span>
-        <div class="nav-links">
-          <a href="#hero" class="nav-link active">Home</a>
-          <a href="#work" class="nav-link">Work</a>
-          <a href="#journals" class="nav-link">Journal</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="pages/resume.html" class="nav-link">Resume</a>
-        </div>
-        <a href="#contact" class="nav-cta magnetic">Contact →</a>
-        <button class="nav-hamburger" id="navHamburger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
-      </nav>
+      <figure class="hero-figure" aria-label="Portrait of Garvit Yaggik, AI-rendered">
+        <span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>
+        <img src="assets/character/01.webp" alt="" class="on" width="800" height="1150" fetchpriority="high" />
+        <img src="assets/character/02.webp" alt="" loading="lazy" width="800" height="1150" />
+        <img src="assets/character/03.webp" alt="" loading="lazy" width="800" height="1150" />
+        <img src="assets/character/04.webp" alt="" loading="lazy" width="800" height="1150" />
+        <img src="assets/character/05.webp" alt="" loading="lazy" width="800" height="1150" />
+        <img src="assets/character/06.webp" alt="" loading="lazy" width="800" height="1150" />
+        <span class="frame-count" id="frameNo">FR 01 / 06</span>
+      </figure>
+    </div>
+    <h1 class="hero-name" aria-label="Garvit Yaggik">
+      <span class="line"><span>Garvit</span></span>
+      <span class="line"><span class="outline">Yaggik</span></span>
+    </h1>
+    <div class="hero-foot">
+      <div class="stat"><b>6<sup>+</sup></b><span class="mono">Years in design</span></div>
+      <div class="stat"><b>100k<sup>+</sup></b><span class="mono">Employees reached</span></div>
+      <div class="stat"><b>100<sup>+</sup></b><span class="mono">Global exhibitions</span></div>
+      <div class="stat"><b>40<sup>+</sup></b><span class="mono">Freelance clients</span></div>
+      <span class="scroll-cue mono">Scroll</span>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee-section">
-    <div class="marquee-track">
-      <span>Brand Identity</span><span class="dot">·</span>
-      <span>Art Direction</span><span class="dot">·</span>
-      <span>Spatial Design</span><span class="dot">·</span>
-      <span>Motion Graphics</span><span class="dot">·</span>
-      <span>3D Visualisation</span><span class="dot">·</span>
-      <span>UI/UX Design</span><span class="dot">·</span>
-      <span>AR/VR Interfaces</span><span class="dot">·</span>
-      <span>Creative Strategy</span><span class="dot">·</span>
-      <span>Brand Identity</span><span class="dot">·</span>
-      <span>Art Direction</span><span class="dot">·</span>
-      <span>Spatial Design</span><span class="dot">·</span>
-      <span>Motion Graphics</span><span class="dot">·</span>
-      <span>3D Visualisation</span><span class="dot">·</span>
-      <span>UI/UX Design</span><span class="dot">·</span>
-      <span>AR/VR Interfaces</span><span class="dot">·</span>
-      <span>Creative Strategy</span><span class="dot">·</span>
+  <!-- ================= TICKER ================= -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span>Publicis Groupe</span><span>126 agencies</span><span class="serif">CES · MWC · ISC West</span><span>VVDN Technologies</span><span>Editorial systems</span><span class="serif">AI-powered design</span><span>Brand identity</span><span>Large format</span>
+      <span>Publicis Groupe</span><span>126 agencies</span><span class="serif">CES · MWC · ISC West</span><span>VVDN Technologies</span><span>Editorial systems</span><span class="serif">AI-powered design</span><span>Brand identity</span><span>Large format</span>
     </div>
   </div>
 
-  <!-- JOURNALS -->
-  <section id="journals">
-    <div class="section-header reveal">
-      <div>
-        <p class="section-label">// Thinking out loud</p>
-        <h2 class="section-title">Journal</h2>
+  <!-- ================= WORK ================= -->
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="idx mono">(01) Selected work</span>
+          <h2 class="section-title">Work <span class="serif">2019 – now</span></h2>
+        </div>
+        <div class="filters" id="workFilters" role="toolbar" aria-label="Filter projects"></div>
       </div>
-      <a href="#journals" class="section-link">All entries →</a>
+      <div class="work-grid" id="workGrid">
+        <noscript><p class="dim">Turn on JavaScript to browse projects, or download my <a href="pages/resume.html" class="red">resume</a>.</p></noscript>
+      </div>
     </div>
-
-    <div class="journals-row reveal" id="journalsRow">
-
-      <a href="pages/journal.html?id=7" class="journal-card" data-id="7">
-        <span class="journal-featured-badge">Featured</span>
-        <div class="journal-banner" style="background:linear-gradient(135deg,#0f1a1a,#0a2020)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="90" r="50" stroke="#ff6b2b" stroke-width="1" opacity="0.3"/><circle cx="60" cy="90" r="30" stroke="#ff6b2b" stroke-width="0.5" opacity="0.2"/><path d="M110 90 L270 90" stroke="#0ea5e9" stroke-width="0.5" opacity="0.25" stroke-dasharray="4 4"/><polygon points="270,60 340,90 270,120" stroke="#0ea5e9" stroke-width="1" fill="none" opacity="0.2"/></svg>
-          <span class="journal-emoji">💡</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Process</p>
-          <h3 class="journal-title">Design Thinking and My Approach to Problem Solving</h3>
-          <p class="journal-excerpt">The best design solutions come from asking better questions, not from having better ideas.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">May 2025</span>
-          <span class="journal-read">7 min →</span>
-        </div>
-      </a>
-
-      <a href="pages/journal.html?id=1" class="journal-card" data-id="1">
-        <div class="journal-banner" style="background:linear-gradient(135deg,#0f0f1a,#1a1040)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="30" width="80" height="120" rx="4" stroke="#ff6b2b" stroke-width="0.8" opacity="0.25"/><rect x="50" y="45" width="60" height="8" rx="2" fill="#ff6b2b" opacity="0.12"/><path d="M160 90 L340 90" stroke="#0ea5e9" stroke-width="0.5" opacity="0.2" stroke-dasharray="6 3"/><circle cx="340" cy="90" r="20" stroke="#0ea5e9" stroke-width="0.8" opacity="0.2"/></svg>
-          <span class="journal-emoji">🧠</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Design Philosophy</p>
-          <h3 class="journal-title">Design is Business First, Aesthetics Second</h3>
-          <p class="journal-excerpt">Every brief has a business problem hiding inside it. The sooner you find it, the better the work gets.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">May 2025</span>
-          <span class="journal-read">5 min →</span>
-        </div>
-      </a>
-
-      <a href="pages/journal.html?id=2" class="journal-card" data-id="2">
-        <div class="journal-banner" style="background:linear-gradient(135deg,#0a1a0a,#0f2a10)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="40" width="100" height="100" rx="8" stroke="#0ea5e9" stroke-width="0.8" opacity="0.2"/><circle cx="110" cy="90" r="25" stroke="#ff6b2b" stroke-width="1" opacity="0.25"/><path d="M200 50 C240 50 240 90 280 90" stroke="#0ea5e9" stroke-width="0.8" opacity="0.3" fill="none"/></svg>
-          <span class="journal-emoji">⚡</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Workflow</p>
-          <h3 class="journal-title">AI as a Production Tool, Not a Replacement</h3>
-          <p class="journal-excerpt">Midjourney, Runway, Claude — I use them all. Here's how I actually integrate AI into real creative work.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">Apr 2025</span>
-          <span class="journal-read">7 min →</span>
-        </div>
-      </a>
-
-      <a href="pages/journal.html?id=3" class="journal-card" data-id="3">
-        <div class="journal-banner" style="background:linear-gradient(135deg,#1a0a00,#2a1500)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="100" y="50" width="30" height="100" rx="1" stroke="#ff6b2b" stroke-width="0.8" opacity="0.2"/><rect x="140" y="60" width="30" height="90" rx="1" stroke="#0ea5e9" stroke-width="0.8" opacity="0.2"/><rect x="180" y="40" width="30" height="110" rx="1" stroke="#ff6b2b" stroke-width="0.8" opacity="0.25"/><rect x="220" y="55" width="30" height="95" rx="1" stroke="#0ea5e9" stroke-width="0.8" opacity="0.15"/><rect x="260" y="45" width="30" height="105" rx="1" stroke="#ff6b2b" stroke-width="0.8" opacity="0.2"/></svg>
-          <span class="journal-emoji">🏛️</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Exhibition Design</p>
-          <h3 class="journal-title">100+ Exhibitions: What Global Events Teach You About Scale</h3>
-          <p class="journal-excerpt">CES, MWC, Auto Expo — designing for floors that hold thousands is a completely different craft.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">Mar 2025</span>
-          <span class="journal-read">6 min →</span>
-        </div>
-      </a>
-
-      <a href="pages/journal.html?id=4" class="journal-card" data-id="4">
-        <div class="journal-banner" style="background:linear-gradient(135deg,#0a0a1a,#10082a)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="190" cy="90" r="60" stroke="#6366f1" stroke-width="0.5" opacity="0.2"/><circle cx="190" cy="90" r="40" stroke="#6366f1" stroke-width="0.8" opacity="0.15"/><circle cx="190" cy="90" r="15" fill="#0ea5e9" opacity="0.08"/></svg>
-          <span class="journal-emoji">🌑</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Aesthetics</p>
-          <h3 class="journal-title">Dark &amp; Minimal: Why I Design the Way I Do</h3>
-          <p class="journal-excerpt">My father was a photographer. I was editing images before I was 10. Here's how that shapes every decision I make.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">Feb 2025</span>
-          <span class="journal-read">4 min →</span>
-        </div>
-      </a>
-
-      <a href="pages/journal.html?id=5" class="journal-card" data-id="5">
-        <div class="journal-banner" style="background:linear-gradient(135deg,#1a1000,#2a1e00)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="90" r="35" stroke="#ff6b2b" stroke-width="0.8" opacity="0.2"/><path d="M100 55 L100 125" stroke="#ff6b2b" stroke-width="0.5" opacity="0.3"/><path d="M65 90 L135 90" stroke="#ff6b2b" stroke-width="0.5" opacity="0.3"/><rect x="200" y="40" width="140" height="100" rx="6" stroke="#0ea5e9" stroke-width="0.5" opacity="0.15"/></svg>
-          <span class="journal-emoji">🔧</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Career</p>
-          <h3 class="journal-title">Sole Designer Survival Guide</h3>
-          <p class="journal-excerpt">No handoffs, no safety nets. Here's the system I built to stay sane and ship good work as the only designer.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">Jan 2025</span>
-          <span class="journal-read">8 min →</span>
-        </div>
-      </a>
-
-      <a href="pages/journal.html?id=6" class="journal-card" data-id="6">
-        <div class="journal-banner" style="background:linear-gradient(135deg,#1a0a10,#200818)">
-          <svg viewBox="0 0 380 180" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M50 130 Q110 40 190 90 Q270 140 330 50" stroke="#ff6b2b" stroke-width="1" opacity="0.25" fill="none"/><circle cx="50" cy="130" r="8" stroke="#ff6b2b" stroke-width="0.8" opacity="0.3"/><circle cx="190" cy="90" r="8" stroke="#0ea5e9" stroke-width="0.8" opacity="0.25"/><circle cx="330" cy="50" r="8" stroke="#ff6b2b" stroke-width="0.8" opacity="0.3"/></svg>
-          <span class="journal-emoji">🎯</span>
-        </div>
-        <div class="journal-body">
-          <p class="journal-tag">Process</p>
-          <h3 class="journal-title">My Approach — Instinct, Iteration, Intent</h3>
-          <p class="journal-excerpt">How instinct guides the first move, iteration sharpens the craft, and intent holds everything together.</p>
-        </div>
-        <div class="journal-foot">
-          <span class="journal-date">Dec 2024</span>
-          <span class="journal-read">6 min →</span>
-        </div>
-      </a>
-
-    </div>
-
   </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-grid">
-      <div class="about-visual reveal">
-        <div class="about-photo">
-          <img src="assets/images/about-bg.png" alt="Garvit Yaggik" id="aboutPhoto" />
+  <!-- ================= AI LAB ================= -->
+  <section class="section lab" id="lab">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="idx mono">(02) AI Lab</span>
+          <h2 class="section-title">Built, <span class="serif">not just prompted</span></h2>
         </div>
-        <div class="about-glass-label">
-          <span>About</span>
+        <p class="lab-intro">Side projects where I design the system, not only the output. Agents, scripts and pipelines that make creative work faster.</p>
+      </div>
+      <div class="lab-list" id="labList"></div>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="idx mono">(03) About</span>
+          <h2 class="section-title">The <span class="serif">person</span></h2>
         </div>
       </div>
-      <div class="about-content reveal">
-        <p class="section-label">// The person behind the work</p>
-        <h2 class="about-name">Garvit Yaggik</h2>
-        <p class="about-bio">
-          Designer with <strong>5+ years</strong> of experience building visual systems from brief to final output. Sole designer at every role — Publicis Groupe, VVDN Technologies, Digi2L.
-        </p>
-        <p class="about-bio">
-          My edge is <strong>business context</strong>: I understand what a design needs to do before deciding what it should look like. Grew up editing images — my father was a photographer.
-        </p>
-        <p class="about-bio">
-          Bangalore-based. Singer, content creator, photographer. Actively exploring <strong>Art Direction</strong> and <strong>Spatial Design</strong> opportunities.
-        </p>
-        <div class="about-skills">
-          <div class="skill-item"><span class="skill-dot"></span>Brand Identity</div>
-          <div class="skill-item"><span class="skill-dot"></span>Art Direction</div>
-          <div class="skill-item"><span class="skill-dot"></span>Motion Graphics</div>
-          <div class="skill-item"><span class="skill-dot"></span>3D Visualisation</div>
-          <div class="skill-item"><span class="skill-dot"></span>Spatial Design</div>
-          <div class="skill-item"><span class="skill-dot"></span>UI/UX Design</div>
-          <div class="skill-item"><span class="skill-dot"></span>Visual Systems</div>
-          <div class="skill-item"><span class="skill-dot"></span>Creative Strategy</div>
-        </div>
-        <div class="tools-section">
-          <p class="section-label">// Tools</p>
-          <div class="tools-row">
-            <span class="tool-badge">Figma</span>
-            <span class="tool-badge">Photoshop</span>
-            <span class="tool-badge">Illustrator</span>
-            <span class="tool-badge">Blender</span>
-            <span class="tool-badge">After Effects</span>
-            <span class="tool-badge">InDesign</span>
-            <span class="tool-badge">Framer</span>
-            <span class="tool-badge">Midjourney</span>
-            <span class="tool-badge">Runway ML</span>
-            <span class="tool-badge">Claude</span>
+      <div class="about-grid">
+        <figure class="about-photo reveal">
+          <div class="ph"><img src="assets/images/about.webp" alt="Garvit Yaggik" loading="lazy" width="900" height="1350" /></div>
+          <figcaption class="mono">Udaipur → Gurgaon → Bangalore</figcaption>
+        </figure>
+        <div class="about-body">
+          <p class="about-statement reveal">I grew up in my father's photo studio and started designing at 12. Today I am the <span class="serif">only designer</span> for a global team serving 126 agencies.</p>
+          <div class="about-copy reveal">
+            <p>Six years across a three-year freelance practice with <strong>40+ clients</strong>, a startup where I was the first designer, <strong>VVDN Technologies</strong> where I art directed 100+ international exhibitions and wrote the brand guidelines, and <strong>Publicis Groupe</strong>, where I started the internal newsletter that now reaches 100,000+ employees.</p>
+            <p>Every project starts with the brief and the business problem behind it. AI and automation are how I get more of that work shipped without dropping the craft.</p>
+            <p>Outside work I sing, make content and still shoot photographs.</p>
+          </div>
+          <div class="cap-grid reveal">
+            <div>
+              <h4 class="mono">Design</h4>
+              <ul><li>Art direction</li><li>Brand identity & guidelines</li><li>Editorial & layout</li><li>Campaign & social</li><li>Exhibition & large format</li></ul>
+            </div>
+            <div>
+              <h4 class="mono">Information</h4>
+              <ul><li>Presentation design</li><li>Infographics & data viz</li><li>Email & intranet design</li><li>Motion graphics</li><li>Print production</li></ul>
+            </div>
+            <div>
+              <h4 class="mono">AI & tools</h4>
+              <ul><li>Adobe CC · Figma · PowerPoint</li><li>Midjourney · Firefly · Runway</li><li>Veo / Flow · ElevenLabs</li><li>ExtendScript · Python · HTML</li><li>Claude · ChatGPT · Gemini</li></ul>
+            </div>
+          </div>
+          <div class="timeline reveal">
+            <div class="tl-row"><span class="mono dim">2024 – now</span><b>Publicis Groupe</b><span class="dim">Graphic Designer · Global IT Comms</span></div>
+            <div class="tl-row"><span class="mono dim">2022 – 2024</span><b>VVDN Technologies</b><span class="dim">Graphic Designer · Exhibitions & brand</span></div>
+            <div class="tl-row"><span class="mono dim">2022</span><b>Digi2L</b><span class="dim">Graphic & UI/UX Designer</span></div>
+            <div class="tl-row"><span class="mono dim">2019 – 2022</span><b>Freelance</b><span class="dim">40+ clients, India & international</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- WORK -->
-  <section id="work">
-    <div class="section-header reveal">
-      <div>
-        <p class="section-label">// Selected works</p>
-        <h2 class="section-title">Work</h2>
+  <!-- ================= JOURNAL ================= -->
+  <section class="section" id="journal" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="idx mono">(04) Journal</span>
+          <h2 class="section-title">Notes <span class="serif">on the work</span></h2>
+        </div>
       </div>
-    </div>
-
-    <div class="work-filters reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="brand">Brand &amp; Identity</button>
-      <button class="filter-btn" data-filter="spatial">Spatial &amp; Exhibitions</button>
-      <button class="filter-btn" data-filter="motion">Motion &amp; Editorial</button>
-      <button class="filter-btn" data-filter="uiux">UI/UX</button>
-      <button class="filter-btn" data-filter="3d">3D &amp; Renders</button>
-      <button class="filter-btn" data-filter="arvr">AR/VR</button>
-    </div>
-
-    <!-- Coming Soon placeholders (hidden by default, shown by filter JS) -->
-    <div class="coming-soon-state" id="comingSoon" style="display:none;">
-      <p class="coming-soon-title">Coming Soon</p>
-      <p class="coming-soon-sub">This section is being updated.</p>
-    </div>
-
-    <div class="projects-grid reveal" id="projectsGrid">
-
-      <!-- BRAND: Stratigen -->
-      <a class="project-card medium" data-category="brand" data-id="1" href="pages/project.html?id=1">
-        <div class="project-thumb" style="background:linear-gradient(135deg,#131313,#1e1e1e);display:flex;align-items:center;justify-content:center;">
-          <span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--text3);">Brand Identity</span>
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Brand &amp; Identity</p>
-          <h3 class="project-name">Stratigen</h3>
-          <p class="project-desc">Complete brand identity — logo, color system, moodboard, and branded mockups.</p>
-          <div class="project-tags"><span>Logo</span><span>Brand Identity</span><span>Moodboard</span><span>Mockups</span></div>
-        </div>
-      </a>
-
-      <!-- SPATIAL 1: LUXORA -->
-      <a class="project-card large" data-category="spatial" data-id="2" href="pages/project.html?id=2">
-        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/12yngtXzKvYkWvL-TODn4eNZ92YFJNLfz","https://lh3.googleusercontent.com/d/135SiSH_BnNLmAvTui1NcF503rT2eXnI5"]'>
-          <img src="https://lh3.googleusercontent.com/d/12yngtXzKvYkWvL-TODn4eNZ92YFJNLfz" alt="LUXORA" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">LUXORA — Premium Spatial Design</h3>
-          <p class="project-desc">High-end spatial environments for luxury retail, workspace, and residential clients.</p>
-          <div class="project-tags"><span>Spatial Design</span><span>Blender</span><span>Luxury</span></div>
-        </div>
-      </a>
-
-      <!-- SPATIAL 2: NEXA -->
-      <a class="project-card medium" data-category="spatial" data-id="3" href="pages/project.html?id=3">
-        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1svIlWdeqcMh9kQ2Owx9fnrp-dmsz96NB","https://lh3.googleusercontent.com/d/1xPVT5-YI3jop8mmr1RW_hN8tMbiwb7x5","https://lh3.googleusercontent.com/d/1FYhC1mi2zYbh2PH4i4MHBTDLYuI9mNrw","https://lh3.googleusercontent.com/d/1tnG9GzrwAUprvmdpfR6DER2Eojww5ziQ"]'>
-          <img src="https://lh3.googleusercontent.com/d/1svIlWdeqcMh9kQ2Owx9fnrp-dmsz96NB" alt="NEXA Spaces" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">NEXA Spaces — Immersive Experience</h3>
-          <p class="project-desc">Immersive spatial concepts for entertainment, hospitality, and brand activation.</p>
-          <div class="project-tags"><span>Immersive</span><span>Spatial</span><span>Blender</span></div>
-        </div>
-      </a>
-
-      <!-- SPATIAL 3: Corporate Exhibition -->
-      <a class="project-card half" data-category="spatial" data-id="4" href="pages/project.html?id=4">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/16YXaGD8yCLR843_vY8VZgvcv_8_VCarT" alt="Corporate Exhibition Booth" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">Corporate Exhibition Booth</h3>
-          <p class="project-desc">Material enhancement, realistic texturing, lighting refinement for exhibition showcase.</p>
-          <div class="project-tags"><span>Exhibition</span><span>Blender</span><span>3D</span></div>
-        </div>
-      </a>
-
-      <!-- SPATIAL 4: ISC West -->
-      <a class="project-card half" data-category="spatial" data-id="5" href="pages/project.html?id=5">
-        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1H1gcScgkUEhxmqlj5bM4mKbbyqHeyHM7","https://lh3.googleusercontent.com/d/1H-pciOuqOqJ8fU7GAKP5_5i9mu5Kliue","https://lh3.googleusercontent.com/d/1Gwhua-3oWgk5lR2dkfqPz3OAguU8Zbb4"]'>
-          <img src="https://lh3.googleusercontent.com/d/1H1gcScgkUEhxmqlj5bM4mKbbyqHeyHM7" alt="ISC West Booth" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">ISC West Booth</h3>
-          <p class="project-desc">End-to-end booth design — structure visualization, branding, large-format mockups.</p>
-          <div class="project-tags"><span>Exhibition</span><span>Booth</span><span>Large Format</span></div>
-        </div>
-      </a>
-
-      <!-- SPATIAL 5: IMC Booth -->
-      <a class="project-card half" data-category="spatial" data-id="6" href="pages/project.html?id=6">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1I45puK1bQkX8E9rVvH6tsTTOOiUnYTqa" alt="IMC Booth Design" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">IMC Booth Design</h3>
-          <p class="project-desc">Complete booth visualization and exhibition branding for IMC.</p>
-          <div class="project-tags"><span>Exhibition</span><span>Booth</span><span>Branding</span></div>
-        </div>
-      </a>
-
-      <!-- SPATIAL 6: Exhibition Graphics -->
-      <a class="project-card half" data-category="spatial" data-id="7" href="pages/project.html?id=7">
-        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK","https://lh3.googleusercontent.com/d/1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s","https://lh3.googleusercontent.com/d/1HFIb04e02njFJjXGaN74U3694fSrhIEO","https://lh3.googleusercontent.com/d/1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw"]'>
-          <img src="https://lh3.googleusercontent.com/d/1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK" alt="Exhibition Graphics" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Spatial &amp; Exhibitions</p>
-          <h3 class="project-name">Exhibition &amp; Event Graphics</h3>
-          <p class="project-desc">Exhibition branding across multiple shows — booth panels, standees, backdrops.</p>
-          <div class="project-tags"><span>Exhibition</span><span>Event</span><span>Large Format</span></div>
-        </div>
-      </a>
-
-      <!-- MOTION 1: Magazine Ads -->
-      <a class="project-card medium" data-category="motion" data-id="8" href="pages/project.html?id=8">
-        <div class="project-thumb thumb-carousel" data-images='["https://lh3.googleusercontent.com/d/1GrzBSSNWTih8I4Io8Jg7SBsBb0af7GZr","https://lh3.googleusercontent.com/d/1v-vD1dR6_hPwG9ys181lAcJzKJugPO5X"]'>
-          <img src="https://lh3.googleusercontent.com/d/1GrzBSSNWTih8I4Io8Jg7SBsBb0af7GZr" alt="Magazine Ads" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Motion &amp; Editorial</p>
-          <h3 class="project-name">Magazine Ads &amp; Print Campaign</h3>
-          <p class="project-desc">Magazine advertisements and print campaign creatives for brand communication.</p>
-          <div class="project-tags"><span>Print</span><span>Magazine</span><span>Layout</span></div>
-        </div>
-      </a>
-
-      <!-- MOTION 2: Corporate Magazine -->
-      <a class="project-card half" data-category="motion" data-id="9" href="pages/project.html?id=9">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1EOpVJNgfmJa9e-fFML42YI_naqmXR45n" alt="Corporate Magazine" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Motion &amp; Editorial</p>
-          <h3 class="project-name">Corporate Magazine Design</h3>
-          <p class="project-desc">Corporate magazine — editorial layouts, typography hierarchy, page composition.</p>
-          <div class="project-tags"><span>Editorial</span><span>InDesign</span><span>Magazine</span></div>
-        </div>
-      </a>
-
-      <!-- MOTION 3: Corporate Report -->
-      <a class="project-card half" data-category="motion" data-id="10" href="pages/project.html?id=10">
-        <div class="project-thumb">
-          <img src="https://lh3.googleusercontent.com/d/1U80yTOtr0jjGAHbCsRtl4V4Cgfx2tcMG" alt="Corporate Report" loading="lazy" crossorigin="anonymous" referrerpolicy="no-referrer" onerror="this.onerror=null;this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#131313,#1a1a1a)';" />
-          <div class="project-hover-overlay"><span>View Project →</span></div>
-        </div>
-        <div class="project-info">
-          <p class="project-cat">Motion &amp; Editorial</p>
-          <h3 class="project-name">Corporate Report Design</h3>
-          <p class="project-desc">Editorial composition, typography hierarchy, branding consistency, and professional presentation.</p>
-          <div class="project-tags"><span>Report</span><span>Editorial</span><span>Layout</span></div>
-        </div>
-      </a>
-
+      <div class="j-list" id="journalList"></div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-grid">
-      <div class="contact-left reveal">
-        <p class="section-label">// Let's build something</p>
-        <h2 class="contact-title">Get In<br><span class="grad-text">Touch.</span></h2>
-        <p class="contact-desc">Open to Art Direction, Creative Strategy, and Visual Design roles. Based in Bangalore — open to remote and relocation.</p>
-        <div class="contact-links">
-          <a href="mailto:garvityagnik@gmail.com" class="contact-link">
-            <span class="cl-icon">✉</span>
-            garvityagnik@gmail.com
-            <span class="cl-arrow">→</span>
-          </a>
-          <a href="https://linkedin.com/in/garvit-yaggik-5925b3114" class="contact-link" target="_blank" rel="noopener">
-            <span class="cl-icon">in</span>
-            linkedin.com/in/garvit-yaggik
-            <span class="cl-arrow">→</span>
-          </a>
-          <a href="https://behance.net/garvityagnik" class="contact-link" target="_blank" rel="noopener">
-            <span class="cl-icon">Be</span>
-            behance.net/garvityagnik
-            <span class="cl-arrow">→</span>
-          </a>
+  <!-- ================= CONTACT ================= -->
+  <section class="section contact" id="contact">
+    <div class="wrap">
+      <span class="idx mono red">(05) Contact</span>
+      <h2 class="contact-big">Let's make <span class="serif">something.</span></h2>
+      <div class="contact-grid">
+        <div>
+          <a href="mailto:garvityagnik@gmail.com" class="mail-link">garvityagnik@gmail.com</a>
+          <ul class="c-links mono">
+            <li><a href="https://linkedin.com/in/garvit-yaggik-5925b3114" target="_blank" rel="noopener">LinkedIn <span>↗</span></a></li>
+            <li><a href="https://behance.net/garvityagnik" target="_blank" rel="noopener">Behance <span>↗</span></a></li>
+            <li><a href="https://designai.garvityagnik.in" target="_blank" rel="noopener">AI portfolio <span>↗</span></a></li>
+            <li><a href="pages/resume.html">Resume <span>→</span></a></li>
+          </ul>
+          <p class="c-note">Open to Art Director, Senior Graphic Designer and Visual Designer roles. Based in Bangalore, relocating to Gurgaon or Pune, or remote. Notice period 30–45 days.</p>
         </div>
-      </div>
-      <div class="contact-form-wrap reveal">
-        <form class="contact-form" id="contactForm" novalidate>
-          <div class="form-group">
-            <label class="form-label">Your Name</label>
-            <input type="text" name="name" class="form-input" placeholder="Your Name" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-input" placeholder="Email" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Subject</label>
-            <input type="text" name="subject" class="form-input" placeholder="Subject" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea name="message" class="form-textarea" placeholder="Your message..." required></textarea>
-          </div>
-          <button type="submit" class="form-submit magnetic" id="formSubmitBtn">Send Message →</button>
-          <p class="form-status" id="formStatus" style="display:none;margin-top:12px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;"></p>
+        <form class="form" id="contactForm" novalidate>
+          <div class="field"><label class="mono" for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required /></div>
+          <div class="field"><label class="mono" for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label class="mono" for="f-sub">Subject</label><input id="f-sub" name="subject" type="text" /></div>
+          <div class="field"><label class="mono" for="f-msg">Message</label><textarea id="f-msg" name="message" required></textarea></div>
+          <button type="submit" class="submit">Send message</button>
+          <p class="form-status" id="formStatus" role="status"></p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="footer-logo">GARVIT YAGGIK</span>
-    <span class="footer-copy">© 2025 — Designed &amp; Built with intent</span>
-    <div class="footer-links">
-      <a href="https://behance.net/garvityagnik" target="_blank" rel="noopener">Behance</a>
-      <a href="https://linkedin.com/in/garvit-yaggik-5925b3114" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:garvityagnik@gmail.com">Email</a>
-    </div>
-    <div class="footer-nav">
-      <a href="#hero">Home</a>
-      <a href="#work">Work</a>
-      <a href="#journals">Journal</a>
-      <a href="#about">About</a>
-      <a href="pages/resume.html">Resume</a>
-    </div>
-  </footer>
-
 </main>
 
-<!-- Mobile Nav Overlay -->
-<div class="mobile-nav-overlay" id="mobileNavOverlay">
-  <button class="mobile-nav-close" id="mobileNavClose">✕</button>
-  <nav class="mobile-nav-links">
-    <a href="#hero" class="mobile-nav-link">Home</a>
-    <a href="#work" class="mobile-nav-link">Work</a>
-    <a href="#journals" class="mobile-nav-link">Journal</a>
-    <a href="#about" class="mobile-nav-link">About</a>
-    <a href="pages/resume.html" class="mobile-nav-link">Resume</a>
-    <a href="#contact" class="mobile-nav-link nav-cta-mobile">Contact →</a>
-  </nav>
-</div>
+<footer class="site-foot mono">
+  <span>© <span data-year>2026</span> Garvit Yaggik · Art directed by Garvit</span>
+  <nav><a href="#work">Work</a><a href="#lab">AI Lab</a><a href="#about">About</a><a href="pages/resume.html">Resume</a></nav>
+  <a href="#top">Back to top ↑</a>
+</footer>
 
-<!-- JS -->
-<script src="js/router.js"></script>
-<script src="js/cursor.js"></script>
-<script src="js/three-hero.js"></script>
-<script src="js/lenis-init.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/filters.js"></script>
-
-<script>
-// === Image fallback system ===
-document.querySelectorAll('img[src*="googleusercontent"]').forEach(img => {
-  const id = img.src.split('/d/')[1]?.split('?')[0];
-  if (!id) return;
-  const urls = [
-    `https://lh3.googleusercontent.com/d/${id}`,
-    `https://drive.google.com/thumbnail?id=${id}&sz=w1600`,
-    `https://drive.google.com/thumbnail?id=${id}&sz=w800`
-  ];
-  let urlIndex = 0;
-  img.onerror = function () {
-    urlIndex++;
-    if (urlIndex < urls.length) { this.src = urls[urlIndex]; }
-    else {
-      this.style.display = 'none';
-      const p = this.parentElement;
-      if (!p) return;
-      p.style.background = 'linear-gradient(135deg, #131313, #222)';
-    }
-  };
-  img.src = urls[0];
-});
-
-// === Thumbnail Carousel ===
-document.querySelectorAll('.thumb-carousel').forEach(thumb => {
-  const images = JSON.parse(thumb.dataset.images || '[]');
-  if (images.length < 2) return;
-  const img = thumb.querySelector('img');
-  let current = 0;
-  // Dots
-  const dotsWrap = document.createElement('div');
-  dotsWrap.className = 'thumb-dots';
-  images.forEach((_, i) => {
-    const d = document.createElement('span');
-    d.className = 'thumb-dot' + (i === 0 ? ' active' : '');
-    dotsWrap.appendChild(d);
-  });
-  thumb.appendChild(dotsWrap);
-  // Arrows
-  const arrowL = document.createElement('button');
-  arrowL.className = 'thumb-arrow thumb-arrow-l';
-  arrowL.innerHTML = '‹';
-  const arrowR = document.createElement('button');
-  arrowR.className = 'thumb-arrow thumb-arrow-r';
-  arrowR.innerHTML = '›';
-  thumb.appendChild(arrowL);
-  thumb.appendChild(arrowR);
-
-  function go(idx) {
-    current = (idx + images.length) % images.length;
-    img.style.opacity = '0';
-    setTimeout(() => {
-      img.src = images[current];
-      img.style.display = '';
-      img.style.opacity = '1';
-    }, 200);
-    dotsWrap.querySelectorAll('.thumb-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-  arrowL.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); go(current - 1); });
-  arrowR.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); go(current + 1); });
-  // Auto-cycle
-  let timer = setInterval(() => go(current + 1), 3000);
-  thumb.addEventListener('mouseenter', () => clearInterval(timer));
-  thumb.addEventListener('mouseleave', () => { timer = setInterval(() => go(current + 1), 3000); });
-});
-
-// === Formspree Contact Form ===
-const cForm = document.getElementById('contactForm');
-if (cForm) {
-  cForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('formSubmitBtn');
-    const status = document.getElementById('formStatus');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    try {
-      const res = await fetch('https://formspree.io/f/garvityagnik@gmail.com', {
-        method: 'POST',
-        body: new FormData(cForm),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        status.textContent = 'Thank you! I\'ll get back to you soon.';
-        status.style.color = '#22c55e';
-        cForm.reset();
-      } else {
-        status.textContent = 'Something went wrong. Please email me directly.';
-        status.style.color = '#ef4444';
-      }
-    } catch {
-      status.textContent = 'Something went wrong. Please email me directly.';
-      status.style.color = '#ef4444';
-    }
-    status.style.display = 'block';
-    btn.textContent = 'Send Message →';
-    btn.disabled = false;
-  });
-}
-
-// === Mobile Hamburger ===
-const hamburger = document.getElementById('navHamburger');
-const overlay = document.getElementById('mobileNavOverlay');
-const closeBtn = document.getElementById('mobileNavClose');
-if (hamburger && overlay) {
-  hamburger.addEventListener('click', () => overlay.classList.add('open'));
-  closeBtn.addEventListener('click', () => overlay.classList.remove('open'));
-  overlay.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => overlay.classList.remove('open'));
-  });
-}
-</script>
+<script src="js/data.js"></script>
+<script src="js/journal-data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
 </body>
 </html>
