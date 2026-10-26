@@ -101,8 +101,20 @@
   /* prints to develop: projects with real thumbnails first */
   const base = window.ASSET_BASE || '';
   const all = (window.PROJECTS || []);
-  const picks = all.filter(p => p.thumb).concat(all.filter(p => !p.thumb)).slice(0, mobile ? 5 : 8);
+  const FACTS = {
+    twelve: { fact: true, title: 'Started at 12', big: '12', label: 'AGE I STARTED DESIGNING', line: 'in my father\'s photo studio', text: 'I grew up in my father\'s photo studio in Udaipur and started designing there at 12. This darkroom is a nod to it.', bg: '#141210', ink: '#EDE6D6', accent: '#E5482A' },
+    agencies: { fact: true, title: 'One designer, 126 agencies', big: '126', label: 'AGENCIES · ONE DESIGNER', line: 'Publicis Groupe · Global IT', text: 'I am the only designer on Publicis Groupe\'s Global IT Communications team, supporting 126 agencies and 100,000+ employees.', bg: '#D8432B', ink: '#FFF6EE', accent: '#141210' },
+    shows: { fact: true, title: '100+ exhibitions', big: '100+', label: 'INTERNATIONAL EXHIBITIONS', line: 'CES · MWC · ISC West · Auto Expo', text: 'At VVDN I art directed booth and large-format graphics for 100+ shows, with 13–14 panels of 7–8 ft each.', bg: '#E9E3D6', ink: '#141210', accent: '#D8432B' },
+    agents: { fact: true, title: 'Nine AI agents', big: '9', label: 'AI AGENTS I BUILT', line: 'NEXUS AI · creative ops', text: 'NEXUS AI is my multi-agent system for ideas, copy, design, motion and social, with a live dashboard.', bg: '#0F1A2A', ink: '#EEF2F6', accent: '#3FD0C9' },
+    offclock: { fact: true, title: 'Off the clock', big: '♪', label: 'SINGER · SONGWRITER · PHOTOGRAPHER', line: 'still behind the camera', text: 'Outside work I sing, write music, make content and still shoot photographs.', bg: '#2A2420', ink: '#F2E9DC', accent: '#C9A15A' }
+  };
+  const bySlug = s => all.find(p => p.slug === s);
+  const order = mobile
+    ? ['twelve', 'it-newsletter', 'agencies', 'intranet-articles', 'shows', 'launch-campaigns', 'agents']
+    : ['twelve', 'it-newsletter', 'agencies', 'intranet-articles', 'shows', 'launch-campaigns', 'agents', 'it-updates-studio', 'offclock'];
+  const picks = order.map(k => FACTS[k] || bySlug(k)).filter(Boolean);
   const N = picks.length;
+  stage.style.setProperty('--stage-h', (110 + N * 42) + 'vh');
 
   /* ---- liquid surface ---- */
   const liquidMat = new T.ShaderMaterial({
@@ -149,7 +161,7 @@
   scene.add(new T.Line(lineGeo, new T.LineBasicMaterial({ color: 0x5a3a30 })));
 
   /* ---- prints ---- */
-  const PW = 3.2, PH = 2.4;
+  const PW = mobile ? 3.6 : 4.0, PH = PW * 0.75;
   const printVS = `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`;
   const printFS = `
     precision highp float; varying vec2 vUv;
@@ -169,11 +181,28 @@
       vec3 latent = mix(paper, paper * vec3(.86,.80,.74), smoothstep(.0, .3, uDev));
       vec3 im = mix(latent, img, dev);
       vec3 col = mix(paper, im, border);
-      col *= mix(vec3(1.), vec3(1., .58, .5), uWet * .55);
+      col *= mix(vec3(1.), vec3(1., .62, .56), uWet * .5);
       col += vec3(.25,.05,.03) * uWet * pow(1. - abs(uv.y - .5) * 2., 4.) * .25;
       gl_FragColor = vec4(col, 1.);
     }`;
   const loader = new T.TextureLoader();
+  function factTex(f) {
+    const c = document.createElement('canvas'); c.width = 1200; c.height = 900; const x = c.getContext('2d');
+    const draw = () => {
+      x.fillStyle = f.bg; x.fillRect(0, 0, 1200, 900);
+      const g = x.createRadialGradient(900, 220, 10, 900, 220, 620); g.addColorStop(0, f.accent + '88'); g.addColorStop(1, f.accent + '00');
+      x.fillStyle = g; x.fillRect(0, 0, 1200, 900);
+      x.strokeStyle = f.ink + '33'; x.lineWidth = 2; x.strokeRect(46, 46, 1108, 808);
+      x.fillStyle = f.accent; x.font = '500 30px "IBM Plex Mono", monospace'; x.fillText(f.label, 90, 130);
+      x.fillStyle = f.ink; x.font = '900 ' + (f.big.length > 3 ? 330 : 420) + 'px Archivo, "Arial Narrow", sans-serif';
+      x.fillText(f.big, 80, 690);
+      x.font = 'italic 56px "Instrument Serif", Georgia, serif'; x.fillText(f.line, 92, 790);
+    };
+    draw();
+    const t = new T.CanvasTexture(c);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { draw(); t.needsUpdate = true; });
+    return t;
+  }
   function coverTex(p, i) {
     const c = document.createElement('canvas'); c.width = 800; c.height = 600; const x = c.getContext('2d'); const cv = p.cover || {};
     x.fillStyle = cv.bg || '#201d1a'; x.fillRect(0, 0, 800, 600);
@@ -184,15 +213,15 @@
   }
   const prints = picks.map((p, i) => {
     const mat = new T.ShaderMaterial({
-      uniforms: { uTex: { value: coverTex(p, i) }, uDev: { value: 0 }, uWet: { value: 0 }, uTime: { value: 0 }, uHas: { value: 1 } },
+      uniforms: { uTex: { value: p.fact ? factTex(p) : coverTex(p, i) }, uDev: { value: 0 }, uWet: { value: 0 }, uTime: { value: 0 }, uHas: { value: 1 } },
       vertexShader: printVS, fragmentShader: printFS, side: T.DoubleSide
     });
-    if (p.thumb) loader.load(base + p.thumb, tex => { tex.minFilter = T.LinearFilter; mat.uniforms.uTex.value = tex; });
+    if (!p.fact && p.thumb) loader.load(base + p.thumb, tex => { tex.minFilter = T.LinearFilter; mat.uniforms.uTex.value = tex; });
     const m = new T.Mesh(new T.PlaneGeometry(PW, PH * 1.04, 1, 1), mat);
     const clip = new T.Mesh(new T.BoxGeometry(0.18, 0.34, 0.08), new T.MeshBasicMaterial({ color: 0x2b1b16 }));
     clip.position.set(0, PH * 0.52 + 0.08, 0.02); m.add(clip); clip.visible = false;
     const g = new T.Group(); g.add(m); g.visible = false; scene.add(g);
-    const slotX = (i - (N - 1) / 2) * (mobile ? 1.45 : 1.75);
+    const slotX = (i - (N - 1) / 2) * (mobile ? 1.22 : 1.42);
     g.userData = { p, i, mat, clip, slot: new T.Vector3(slotX, LINE_Y - 0.45, LINE_Z), seed: Math.random() * 6 };
     return g;
   });
@@ -229,8 +258,9 @@
   const L = (a, b, t) => a + (b - a) * t;
   const cl = v => Math.min(1, Math.max(0, v));
   const sm = v => v * v * (3 - 2 * v);
-  const TRAY = new T.Vector3(0, 0.03, 0.6);
-  let lastCap = -1;
+  const TRAY = new T.Vector3(mobile ? 0 : -1.9, 0.03, mobile ? 0.2 : 0.9);
+  let lastCap = -1, lastPanel = -1;
+  const pK = document.getElementById('dpKicker'), pT = document.getElementById('dpTitle'), pX = document.getElementById('dpText'), pL = document.getElementById('dpLink'), pN = document.getElementById('dpNum');
 
   function frame() {
     requestAnimationFrame(frame);
@@ -241,16 +271,16 @@
     lm.uMouse.value.lerp(target, 0.12);
 
     /* camera: a slow lean over the tray, rising toward the line */
-    const rise = sm(cl((prog - 0.03) / 0.45));
-    camera.position.set(mx * 0.9, L(mobile ? 9.5 : 8.2, mobile ? 8.2 : 6.8, rise) + my * 0.4, L(mobile ? 9.5 : 8.4, mobile ? 9 : 8.8, rise));
-    look.set(mx * 0.4, L(0.6, 1.75, rise), L(0.2, -0.9, rise));
+    const rise = sm(cl((prog - 0.02) / 0.1));
+    camera.position.set(mx * 0.7, L(mobile ? 10.5 : 8.6, mobile ? 9.6 : 7.4, rise) + my * 0.35, L(mobile ? 9 : 8.4, mobile ? 8.6 : 7.6, rise));
+    look.set(mx * 0.3, L(0.6, mobile ? 1.6 : 1.45, rise), L(0.2, mobile ? -0.9 : -0.5, rise));
     camera.lookAt(look);
 
     /* prints: enter, develop, lift, peg */
-    const span = 0.92 / N; let active = -1;
+    const span = 0.86 / N; let active = -1, panelIdx = -1, panelDev = 0;
     prints.forEach((g, i) => {
       const u = g.userData, m = g.children[0];
-      const f = (prog - 0.04 - i * span) / span;      // local 0..1 for this print
+      const f = (prog - 0.09 - i * span) / span;      // local 0..1 for this print
       u.mat.uniforms.uTime.value = t;
       if (f < -0.05) { g.visible = false; return; }
       g.visible = true;
@@ -262,28 +292,37 @@
       const hang = u.slot.clone(); hang.y += Math.sin(t * 0.9 + u.seed) * 0.03;
       const arc = Math.sin(lift * Math.PI) * 1.6;
       g.position.set(L(trayPos.x, hang.x, lift), L(trayPos.y, hang.y, lift) + arc, L(trayPos.z, hang.z, lift));
-      const sc = L(1, mobile ? 0.42 : 0.5, lift); g.scale.set(sc, sc, sc);
+      const sc = L(1, mobile ? 0.32 : 0.33, lift); g.scale.set(sc, sc, sc);
       m.rotation.set(L(-Math.PI / 2, 0, lift) + Math.sin(t * 0.8 + u.seed) * 0.02 * (1 - lift), 0, L(-0.06, Math.sin(t * 0.7 + u.seed) * 0.03, lift));
       u.mat.uniforms.uDev.value = dev;
-      u.mat.uniforms.uWet.value = (1 - lift) * enter * 0.9 + lift * 0.25;
+      u.mat.uniforms.uWet.value = (1 - lift) * enter * (0.75 - dev * 0.45) + lift * 0.15;
+      if (f >= 0.12 && f < 0.72) { panelIdx = i; panelDev = dev; }
       u.clip.visible = lift > 0.85;
     });
     renderer.render(scene, camera);
 
     /* DOM choreography */
-    const a = cl(prog / 0.12);
+    const a = cl(prog / 0.06);
     grid.style.opacity = 1 - a; grid.style.transform = `translate3d(0, ${-a * 50}px, 0)`;
-    foot.style.opacity = 1 - cl(prog / 0.08);
-    const b = cl(prog / 0.16);
+    foot.style.opacity = 1 - cl(prog / 0.05);
+    const b = cl(prog / 0.08);
     name.style.opacity = 1 - b;
     name.style.transform = `perspective(900px) translate3d(0, ${b * 80}px, ${-b * 200}px) rotateX(${-b * 35}deg)`;
     name.style.filter = `blur(${b * 6}px)`;
     root.classList.toggle('tunnel-on', active > -1 && prog > 0.08 && prog < 0.95);
     if (active > -1 && active !== lastCap) {
       lastCap = active; const p = prints[active].userData.p;
-      tcNum.textContent = 'DEVELOPING · GY–' + String(all.indexOf(p) + 1).padStart(2, '0'); tcTitle.textContent = p.title;
+      tcNum.textContent = 'DEVELOPING · ' + String(active + 1).padStart(2, '0') + '/' + String(N).padStart(2, '0'); tcTitle.textContent = p.title;
     }
     root.classList.toggle('tunnel-end', prog > 0.95);
+    root.classList.toggle('panel-on', panelIdx > -1 && panelDev > 0.35);
+    if (panelIdx > -1 && panelIdx !== lastPanel) {
+      lastPanel = panelIdx; const p = prints[panelIdx].userData.p;
+      pK.textContent = p.fact ? 'About me' : ((window.CATEGORIES || []).find(c => c.id === p.category) || {}).label || 'Project';
+      pT.textContent = p.title; pX.textContent = p.fact ? p.text : p.brief || p.kicker;
+      if (p.fact) { pL.hidden = true; } else { pL.hidden = false; pL.href = 'pages/project.html?p=' + p.slug; }
+      pN.textContent = String(panelIdx + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0');
+    }
   }
   root.classList.add('gl-ready');
   frame();
