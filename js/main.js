@@ -60,7 +60,7 @@
         i++;
         if (i < urls.length) { img.src = urls[i]; return; }
         const p = (window.PROJECTS || []).find(x => x.slug === img.dataset.slug);
-        if (p && img.closest('.card-media, .cs-cover')) img.outerHTML = renderCover(p, +img.dataset.idx || 0);
+        if (p && img.closest('.card-media, .cs-cover, .feat-media')) img.outerHTML = renderCover(p, +img.dataset.idx || 0);
         else img.remove();
       };
       img.addEventListener('error', fail);
