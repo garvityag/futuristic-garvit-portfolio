@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/play", "destination": "/play.html" },
+    { "source": "/play/", "destination": "/play.html" }
+  ],
+  "headers": [
+    { "source": "/play(.*)", "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }] }
+  ]
+}
