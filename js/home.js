@@ -20,6 +20,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  /* ---------- Featured strip ---------- */
+  const featRow = document.getElementById('featRow');
+  if (featRow && window.PROJECTS) {
+    const picks = ['it-newsletter', 'it-support-kit', 'intranet-articles', 'exhibition-graphics']
+      .map(s => PROJECTS.findIndex(p => p.slug === s)).filter(i => i > -1);
+    featRow.innerHTML = picks.map((i, n) => { const p = PROJECTS[i]; return `
+      <a class="feat reveal" href="pages/project.html?p=${p.slug}" data-cursor="view" style="--d:${n * .08}s">
+        <div class="feat-media">${mediaFor(p, i, 900)}</div>
+        <div class="feat-meta">
+          <span class="feat-n mono">0${n + 1}</span>
+          ${p.stat ? `<b class="feat-stat">${p.stat.value}</b>` : ''}
+          <h3>${p.title}</h3>
+          <p>${p.stat ? p.stat.label : p.kicker}</p>
+        </div>
+      </a>`; }).join('');
+    wireImageFallbacks(featRow);
+    observeReveals(featRow);
+  }
+
   /* ---------- Work grid ---------- */
   const grid = document.getElementById('workGrid');
   const filters = document.getElementById('workFilters');
