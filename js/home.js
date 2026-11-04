@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Featured strip ---------- */
   const featRow = document.getElementById('featRow');
   if (featRow && window.PROJECTS) {
-    const picks = ['it-newsletter', 'it-support-kit', 'intranet-articles', 'exhibition-graphics']
+    const picks = ['corporate-magazine', 'corporate-booth', 'it-newsletter', 'hannover-signage', 'corporate-brochure', 'ai-spec-campaign']
       .map(s => PROJECTS.findIndex(p => p.slug === s)).filter(i => i > -1);
     featRow.innerHTML = picks.map((i, n) => { const p = PROJECTS[i]; return `
       <a class="feat reveal" href="pages/project.html?p=${p.slug}" data-cursor="view" style="--d:${n * .08}s">
@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
       </a>`; }).join('');
     wireImageFallbacks(featRow);
     observeReveals(featRow);
+    const fa = document.getElementById('featAll');
+    if (fa) fa.textContent = `All ${PROJECTS.length} projects`;
   }
 
   /* ---------- Work grid ---------- */

@@ -265,25 +265,23 @@ window.PROJECTS = [
       'Managed press-ready files and colour across vendors in different countries.'
     ],
     outcome: 'Every new show became a configuration rather than a redesign, keeping the brand consistent across 100+ exhibitions.',
-    pdf: '1Z5aSkvRMjSGA0jIeFHua726WbyR0oH8e',
-    pdfLabel: 'Hannover Messe product signage',
     images: ['1IIj9wvWmJliE1QHh5fDCYw833K8XS2MK', '1HDHVDjGsJWhoZt_VHHssbomklXn1cp7s', '1HFIb04e02njFJjXGaN74U3694fSrhIEO', '1HXGqKa9lszg-lv9snxRE9bt03oRi4fHw',
       '1TaphvB0kALbIiTU0_FZhw8UPkN0tUJkH', '185UCdiq264fO6hqPjwQOdQqwl5O-SDlj', '1C305TmPrZMAAAK7m7a-MKKRqJ4Yp7YgV', '1YGL8D2jGySRFbb83AJ02GbVpnn84m_9E',
       '1DyctFCqkiEx4BHuJOziJxyeLByNRuJdD', '1aq2oxGtCBNQjIm36HN_aLstq5xYVYbHz', '18DpgtKuL73PQpwbRh20G9n6KYWtCgGfr', '13fHQ3Rzybj3XnZVPk7g-QY-23Mn0U2XL',
-      '1U4eJvnnVfnWRVsPT93LxnVMJE0cV8kqM', '16OkYHOJQuDajMj_4_kpkTwmfOEniEaM3', '1R8ZdMVpZaeKEG0JukV80z8mmxtEcXEwZ', '1pzDxsQWRAFDnyYsYHeRZkDkDygZN7bVd']
+      '1U4eJvnnVfnWRVsPT93LxnVMJE0cV8kqM', '16OkYHOJQuDajMj_4_kpkTwmfOEniEaM3']
   },
   {
     slug: 'product-brochures',
     thumb: 'assets/work/thumbs/product-brochures.webp',
-    title: 'Product Brochures',
-    kicker: 'Making 5G, Wi-Fi 7 and FPGA readable for buyers',
+    title: 'Product Flyers & Sell Sheets',
+    kicker: 'One-page sell sheets for cloud, power and automotive',
     category: 'editorial',
     size: 'lg',
     year: '2023 – 2024',
     client: 'VVDN Technologies',
     role: 'Graphic Designer',
     tools: 'InDesign, Illustrator, Photoshop',
-    stat: { value: '7+', label: 'product & service brochures' },
+    stat: { value: '7+', label: 'flyers and sell sheets' },
     cover: { bg: '#E9E3D6', ink: '#141210', accent: '#2B4BD8', motif: 'grid' },
     brief: 'Deeply technical products (5G radio units, lab kits, Wi-Fi 7, FPGA, cloud platforms) needed sales collateral that a buyer at a trade show could understand in seconds.',
     approach: [
@@ -292,17 +290,10 @@ window.PROJECTS = [
       'Designed print-ready four-pagers and web versions with QR links back to product pages.'
     ],
     outcome: 'A family of brochures used across sales and 100+ exhibitions, recognisably one brand across every product line.',
-    pdf: '1vGku3dgiUB81HdYh6fVMrkwVp02vPTTD',
-    pdfLabel: 'Corporate brochure',
-    docs: [
-      { label: '5G Lab Kit', id: '1DUOtMYgWx83aEBy7ieX_0EDBdMDzjYuA' },
-      { label: '5G Low Power Radio Unit', id: '1ryYAUBTUfu8MPWXAVtzNOXe68Du-2i6S' },
-      { label: 'Wi-Fi 7', id: '17MMEBp7p2dwofTYo3XQELAT6WyvWOrLG' },
-      { label: 'SoC / FPGA / ASIC', id: '1-PVGJaYNk88FhP4Pr0cUiMwDSSbQJ-7K' },
-      { label: 'Engineering services', id: '1PJG9ZNo0mSzrW9ZbXZZM9-ZDwLq5uNVH' },
-      { label: 'Ambarella platforms', id: '1cSQV844QiC6883kChcjg_4flqknECuK4' }
-    ],
-    images: ['1FZqmjWL5uQWqwueJyOXilMGjlruzx4ng', '1tKFL7MQ44PaGzgdkjZTQIp-hDKrqWTwN', '1QxX6bzA5svDrQZcTrx8Z_7aWgvG8EwWz', '1tW3kJrM3FTSsRv8h11oKn00Wbeosh_Mc', '1M4t_LXTHMBZMrC2rkRLl9MAeiIrBVpY5', '1135WzylIpFkv3RRK0sDSZP8B2TkhvF4_', '1e_LJlFoR9Uc29DM27QbtEoeFvGF_bniq']
+    pdf: '1-PVGJaYNk88FhP4Pr0cUiMwDSSbQJ-7K',
+    pdfLabel: 'SoC / FPGA / ASIC brochure',
+    docs: [{ label: 'Ambarella platforms brochure', id: '1cSQV844QiC6883kChcjg_4flqknECuK4' }],
+    images: ['1FZqmjWL5uQWqwueJyOXilMGjlruzx4ng', '1tKFL7MQ44PaGzgdkjZTQIp-hDKrqWTwN', '1QxX6bzA5svDrQZcTrx8Z_7aWgvG8EwWz', '1tW3kJrM3FTSsRv8h11oKn00Wbeosh_Mc', '1135WzylIpFkv3RRK0sDSZP8B2TkhvF4_', '1e_LJlFoR9Uc29DM27QbtEoeFvGF_bniq']
   },
   {
     slug: 'corporate-magazine',
@@ -327,7 +318,7 @@ window.PROJECTS = [
     pdf: '1jLfSpgh4IetZi35g1-GWZKgghlRFS_30',
     pdfLabel: 'Ensemble 2024',
     docs: [{ label: 'Ensemble 2023', id: '1L7EYYJpi5nPelLRSSo4-EzgSIXCHMHR4' }, { label: 'Ensemble 2022', id: '1fKnxhKQ6IK1YTiVxoVm0543KHoRHpffT' }],
-    images: ['1EOpVJNgfmJa9e-fFML42YI_naqmXR45n']
+    images: ['assets/work/ensemble/01.webp']
   },
   {
     slug: 'sunkonnect',
@@ -361,7 +352,7 @@ window.PROJECTS = [
     client: 'VVDN Technologies · Freelance',
     role: 'Graphic Designer',
     tools: 'Illustrator, Photoshop',
-    stat: { value: '8', label: 'event creatives' },
+    stat: { value: '5', label: 'event creatives' },
     cover: { bg: '#2A2420', ink: '#F2E9DC', accent: '#C9A15A', motif: 'frame' },
     brief: 'Annual parties, festive celebrations and HR wellness drives each needed an invite or campaign that felt special, not templated.',
     approach: [
@@ -369,7 +360,191 @@ window.PROJECTS = [
       'Created festive greetings and backdrops in a consistent brand voice.'
     ],
     outcome: 'Used across email, print and social for each event.',
-    images: ['1HHzQ7KI7X7RkdUaNVEK78ygkr8B0cJOj', '1zoon9k5pg9VCznVdB9SfUGajOCbCXhPj', '1tJsB1ICWKCxCm_CX48SaB1zCpgBSKawM', '1HZlAYnrwixSNwZS428naKNm6nwVw2Cvh', '1HY9muyNHqTiSuYV9A1wwH0U4_mAhTYda', '1VnrV3nL3MjgwjlRF-xtCZhz9wjLEH0SI', '1xPVxfxptoL_PsjboSxsm7Yw_FShTK1Jl', '1yliEuOLemzs3GspMC2JcyBfGVMhJ0P8b']
+    images: ['1HHzQ7KI7X7RkdUaNVEK78ygkr8B0cJOj', '1zoon9k5pg9VCznVdB9SfUGajOCbCXhPj', '1tJsB1ICWKCxCm_CX48SaB1zCpgBSKawM', '1HZlAYnrwixSNwZS428naKNm6nwVw2Cvh', '1HY9muyNHqTiSuYV9A1wwH0U4_mAhTYda']
+  },
+  {
+    slug: 'hannover-signage',
+    thumb: 'assets/work/thumbs/hannover-signage.webp',
+    title: 'Hannover Messe Product Signage',
+    kicker: '19 product cards for one booth',
+    category: 'spatial',
+    size: 'lg',
+    year: '2024',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'Illustrator, InDesign',
+    stat: { value: '19', label: 'product signage cards' },
+    cover: { bg: '#EEF3FA', ink: '#0E2A5C', accent: '#1F6FE5', motif: 'grid' },
+    brief: 'VVDN brought a wide product line to Hannover Messe, from thermal imaging cores and EV chargers to HPC servers and 5G radio units. Every product on the booth needed its own sign that a visitor could read from a step away.',
+    approach: [
+      'Built one card template: product name, partner logo, platform, highlights and use cases.',
+      'Kept the same reading order on every card so visitors could compare products quickly.',
+      'Added a QR code to each card that links to the product page.'
+    ],
+    outcome: 'Nineteen consistent cards for the booth, covering platforms from NVIDIA, Qualcomm, Intel, NXP, Ambarella and more.',
+    pdf: '1Z5aSkvRMjSGA0jIeFHua726WbyR0oH8e',
+    pdfLabel: 'All 19 signage cards',
+    images: ['assets/work/hannover/01.webp', 'assets/work/hannover/02.webp', 'assets/work/hannover/03.webp', 'assets/work/hannover/04.webp', 'assets/work/hannover/05.webp', 'assets/work/hannover/06.webp', 'assets/work/hannover/07.webp', 'assets/work/hannover/08.webp', 'assets/work/hannover/09.webp', 'assets/work/hannover/10.webp', 'assets/work/hannover/11.webp', 'assets/work/hannover/12.webp', 'assets/work/hannover/13.webp', 'assets/work/hannover/14.webp', 'assets/work/hannover/15.webp', 'assets/work/hannover/16.webp', 'assets/work/hannover/17.webp', 'assets/work/hannover/18.webp', 'assets/work/hannover/19.webp']
+  },
+  {
+    slug: 'corporate-brochure',
+    thumb: 'assets/work/thumbs/corporate-brochure.webp',
+    title: 'VVDN Corporate Brochure',
+    kicker: 'The company story in four pages',
+    category: 'editorial',
+    size: 'md',
+    year: '2023',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'InDesign, Illustrator, Photoshop',
+    stat: { value: '4', label: 'pages · print and web' },
+    cover: { bg: '#0E2A5C', ink: '#EEF3FA', accent: '#2FA8E0', motif: 'masthead' },
+    brief: 'Prospects meeting VVDN for the first time needed one printed piece that explained the whole company, from concept-to-commission engineering to manufacturing.',
+    approach: [
+      'Opened with a full-bleed campus photo to establish scale.',
+      'Organised capabilities by business line: 5G, data centre, networking, IoT, vision, automotive and cloud.',
+      'Closed with manufacturing facilities and a world map of the global footprint.'
+    ],
+    outcome: 'A four-page introduction used in sales meetings and at trade shows.',
+    pdf: '1vGku3dgiUB81HdYh6fVMrkwVp02vPTTD',
+    pdfLabel: 'Corporate brochure',
+    images: ['assets/work/corporate-brochure/01.webp', 'assets/work/corporate-brochure/02.webp', 'assets/work/corporate-brochure/03.webp', 'assets/work/corporate-brochure/04.webp']
+  },
+  {
+    slug: 'lab-kit-brochure',
+    thumb: 'assets/work/thumbs/lab-kit-brochure.webp',
+    title: '5G Lab Kit Brochure',
+    kicker: 'Selling a 5G lab to universities',
+    category: 'editorial',
+    size: 'sm',
+    year: '2023',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'InDesign, Photoshop, Illustrator',
+    stat: { value: '4', label: 'pages' },
+    cover: { bg: '#0B1E4A', ink: '#EEF3FA', accent: '#2FA8E0', motif: 'grid' },
+    brief: 'A 5G lab kit for universities and research institutes, sold in two variants. The brochure had to work for an academic buyer and a technical evaluator at once.',
+    approach: [
+      'Cover built around the kit inside a glowing 5G scene.',
+      'A labelled "what\'s inside the box" spread showing every component.',
+      'A side-by-side feature table comparing the two variants, plus a page on who the kit is for.'
+    ],
+    outcome: 'Four pages that take a buyer from "what is it" to "which version do I need".',
+    pdf: '1DUOtMYgWx83aEBy7ieX_0EDBdMDzjYuA',
+    pdfLabel: '5G Lab Kit brochure',
+    images: ['assets/work/lab-kit/01.webp', 'assets/work/lab-kit/02.webp', 'assets/work/lab-kit/03.webp', 'assets/work/lab-kit/04.webp']
+  },
+  {
+    slug: 'radio-unit-brochure',
+    thumb: 'assets/work/thumbs/radio-unit-brochure.webp',
+    title: '5G Low Power Radio Unit',
+    kicker: 'An ORAN radio unit, explained in four pages',
+    category: 'editorial',
+    size: 'sm',
+    year: '2023',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'InDesign, Illustrator',
+    stat: { value: '4', label: 'pages' },
+    cover: { bg: '#0B1E4A', ink: '#EEF3FA', accent: '#2FA8E0', motif: 'frame' },
+    brief: 'An indoor ORAN 7.2a radio unit for enterprise and private 5G. Dense spec content that buyers still had to grasp quickly.',
+    approach: [
+      'Product-led cover with the unit on a dark gradient.',
+      'Overview and highlights page with icon-led feature callouts.',
+      'Architecture diagram and a clean spec table for evaluators.'
+    ],
+    outcome: 'A four-pager that moves from the pitch to the specs without losing either reader.',
+    pdf: '1ryYAUBTUfu8MPWXAVtzNOXe68Du-2i6S',
+    pdfLabel: 'Low Power Radio Unit brochure',
+    images: ['assets/work/lpru/01.webp', 'assets/work/lpru/02.webp', 'assets/work/lpru/03.webp', 'assets/work/lpru/04.webp']
+  },
+  {
+    slug: 'wifi7-datasheet',
+    thumb: 'assets/work/thumbs/wifi7-datasheet.webp',
+    title: 'Wi-Fi 7 Access Point',
+    kicker: 'A two-page product datasheet',
+    category: 'editorial',
+    size: 'sm',
+    year: '2023',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'InDesign, Photoshop',
+    stat: { value: '2', label: 'pages' },
+    cover: { bg: '#0B1E4A', ink: '#EEF3FA', accent: '#2FA8E0', motif: 'frame' },
+    brief: 'Launch collateral for a Wi-Fi 7 access point, used at shows and sent to prospects.',
+    approach: [
+      'Hero cover with the product render and a strong launch headline.',
+      'Spec table and three offerings (licensing, customisation, manufacturing) on the back.'
+    ],
+    outcome: 'A two-sided sheet that sells the product and answers the first technical questions.',
+    pdf: '17MMEBp7p2dwofTYo3XQELAT6WyvWOrLG',
+    pdfLabel: 'Wi-Fi 7 datasheet',
+    images: ['assets/work/wifi7/01.webp', 'assets/work/wifi7/02.webp']
+  },
+  {
+    slug: 'engineering-services',
+    thumb: 'assets/work/thumbs/engineering-services.webp',
+    title: 'Engineering Services Two-Pager',
+    kicker: 'Every service line on two pages',
+    category: 'editorial',
+    size: 'sm',
+    year: '2023',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'InDesign, Illustrator',
+    stat: { value: '2', label: 'pages' },
+    cover: { bg: '#0B1E4A', ink: '#EEF3FA', accent: '#2FA8E0', motif: 'grid' },
+    brief: 'Product engineering, software, cloud and manufacturing services needed one overview that a sales team could hand out anywhere.',
+    approach: [
+      'Grouped services into clear blocks: 5G, semiconductor, networking, IoT, vision and data centre.',
+      'Back page covers manufacturing services with facility numbers and industry icons.'
+    ],
+    outcome: 'A compact overview of the full service catalogue.',
+    pdf: '1PJG9ZNo0mSzrW9ZbXZZM9-ZDwLq5uNVH',
+    pdfLabel: 'Engineering services',
+    images: ['assets/work/eng-services/01.webp', 'assets/work/eng-services/02.webp']
+  },
+  {
+    slug: 'office-culture',
+    thumb: 'assets/work/thumbs/office-culture.webp',
+    title: 'Festive & Culture Posts',
+    kicker: 'Diwali greetings and team meetups',
+    category: 'campaign',
+    size: 'sm',
+    year: '2025',
+    client: 'Publicis Re:Sources',
+    role: 'Graphic Designer',
+    tools: 'Illustrator, Photoshop',
+    stat: { value: '3', label: 'internal creatives' },
+    cover: { bg: '#1A1208', ink: '#F2E9DC', accent: '#E0A43A', motif: 'frame' },
+    brief: 'Internal posts for festivals and informal team meetups across the office.',
+    approach: [
+      'Two Diwali greetings, one warm and traditional, one dark and modern.',
+      'A neon-style "Coffee, Chats and No Work Talk" invite for a team meetup.'
+    ],
+    outcome: 'Shared on internal channels and screens around the office.',
+    images: ['assets/work/office-culture/01.webp', 'assets/work/office-culture/02.webp', 'assets/work/office-culture/03.webp']
+  },
+  {
+    slug: 'standees',
+    thumb: 'assets/work/thumbs/standees.webp',
+    title: 'Standees & Table Displays',
+    kicker: 'Print that lives in the office',
+    category: 'spatial',
+    size: 'sm',
+    year: '2023',
+    client: 'VVDN Technologies',
+    role: 'Graphic Designer',
+    tools: 'Illustrator, Photoshop',
+    stat: { value: '4', label: 'printed pieces' },
+    cover: { bg: '#141210', ink: '#EDE6D6', accent: '#2FA8E0', motif: 'frame' },
+    brief: 'Roll-up standees and acrylic table displays for the office, reception and product demos.',
+    approach: [
+      'Bold brand-led roll-ups readable from across a room.',
+      'Product table tents that sit next to demo units.'
+    ],
+    outcome: 'Printed and installed across the office and demo areas.',
+    images: ['assets/work/standees/01.webp', 'assets/work/standees/02.webp']
   },
   {
     slug: 'luxora',
@@ -548,7 +723,7 @@ window.PROJECTS = [
     pdf: '1c_tu98HbvXSbYMJH0gg9NKD67WFopARx',
     pdfLabel: 'Sports management deck',
     docs: [{ label: 'Software company deck', id: '1OoOSke51CJVPSbp7n-cxRIyQSDCcA9pu' }],
-    images: ['1c_tu98HbvXSbYMJH0gg9NKD67WFopARx', '1OoOSke51CJVPSbp7n-cxRIyQSDCcA9pu']
+    images: ['assets/work/pitch-decks/01.webp', 'assets/work/pitch-decks/02.webp', 'assets/work/pitch-decks/03.webp', 'assets/work/pitch-decks/04.webp']
   },
   {
     slug: 'magazine-ads',
