@@ -225,6 +225,7 @@ window.PROJECTS = [
   },
   {
     slug: 'isc-west',
+    thumb: 'assets/work/thumbs/isc-west.webp',
     title: 'ISC West Booth',
     kicker: 'Booth design for a major international security expo',
     category: 'spatial',
@@ -246,6 +247,7 @@ window.PROJECTS = [
   },
   {
     slug: 'exhibition-graphics',
+    thumb: 'assets/work/thumbs/exhibition-graphics.webp',
     title: 'Exhibition & Event Graphics',
     kicker: 'One system across 100+ international shows',
     category: 'spatial',
@@ -272,6 +274,7 @@ window.PROJECTS = [
   },
   {
     slug: 'product-brochures',
+    thumb: 'assets/work/thumbs/product-brochures.webp',
     title: 'Product Brochures',
     kicker: 'Making 5G, Wi-Fi 7 and FPGA readable for buyers',
     category: 'editorial',
@@ -303,6 +306,7 @@ window.PROJECTS = [
   },
   {
     slug: 'corporate-magazine',
+    thumb: 'assets/work/thumbs/corporate-magazine.webp',
     title: 'Ensemble · Corporate Magazine',
     kicker: 'A 50+ page company magazine, edition after edition',
     category: 'editorial',
@@ -327,6 +331,7 @@ window.PROJECTS = [
   },
   {
     slug: 'sunkonnect',
+    thumb: 'assets/work/thumbs/sunkonnect.webp',
     title: 'SunKonnect · Energy Storage NA',
     kicker: 'Social countdown for a US trade show',
     category: 'campaign',
@@ -347,6 +352,7 @@ window.PROJECTS = [
   },
   {
     slug: 'event-creatives',
+    thumb: 'assets/work/thumbs/event-creatives.webp',
     title: 'Event & Culture Creatives',
     kicker: 'Invites and campaigns for company celebrations',
     category: 'campaign',
@@ -367,6 +373,7 @@ window.PROJECTS = [
   },
   {
     slug: 'luxora',
+    thumb: 'assets/work/thumbs/luxora.webp',
     title: 'LUXORA',
     kicker: 'Premium spatial concepts',
     category: 'spatial',
@@ -383,6 +390,7 @@ window.PROJECTS = [
   },
   {
     slug: 'office-branding',
+    thumb: 'assets/work/thumbs/office-branding.webp',
     title: 'Office Branding',
     kicker: 'Wall graphics for a global innovation campus',
     category: 'spatial',
@@ -404,6 +412,7 @@ window.PROJECTS = [
   },
   {
     slug: 'stratigen',
+    thumb: 'assets/work/thumbs/stratigen.webp',
     title: 'Stratigen',
     kicker: 'Brand identity from a blank page',
     category: 'editorial',
@@ -421,6 +430,7 @@ window.PROJECTS = [
   },
   {
     slug: 'cyber-posters',
+    thumb: 'assets/work/thumbs/cyber-posters.webp',
     title: 'Cyber Awareness Posters',
     kicker: 'Making security rules stick on office walls',
     category: 'campaign',
@@ -437,6 +447,7 @@ window.PROJECTS = [
   },
   {
     slug: 'stationery',
+    thumb: 'assets/work/thumbs/stationery.webp',
     title: 'Cards & Stationery',
     kicker: 'Business cards, letterheads and invitation cards',
     category: 'editorial',
@@ -453,6 +464,7 @@ window.PROJECTS = [
   },
   {
     slug: 'freelance-social',
+    thumb: 'assets/work/thumbs/freelance-social.webp',
     title: 'Freelance Posters & Social',
     kicker: 'Retail, live music and gaming creatives',
     category: 'campaign',
@@ -469,6 +481,7 @@ window.PROJECTS = [
   },
   {
     slug: 'imc-booth',
+    thumb: 'assets/work/thumbs/imc-booth.webp',
     title: 'IMC Booth Design',
     kicker: 'Booth visualisation and branding',
     category: 'spatial',
@@ -485,6 +498,7 @@ window.PROJECTS = [
   },
   {
     slug: 'corporate-booth',
+    thumb: 'assets/work/thumbs/corporate-booth.webp',
     title: 'Corporate Exhibition Booth',
     kicker: 'Photoreal materials and lighting for a tech showcase',
     category: 'spatial',
@@ -501,6 +515,7 @@ window.PROJECTS = [
   },
   {
     slug: 'nexa-spaces',
+    thumb: 'assets/work/thumbs/nexa-spaces.webp',
     title: 'NEXA Spaces',
     kicker: 'Immersive brand environments',
     category: 'spatial',
@@ -517,6 +532,7 @@ window.PROJECTS = [
   },
   {
     slug: 'pitch-decks',
+    thumb: 'assets/work/thumbs/pitch-decks.webp',
     title: 'Pitch Decks',
     kicker: 'Presentation templates for a sports-tech and a software client',
     category: 'editorial',
@@ -536,6 +552,7 @@ window.PROJECTS = [
   },
   {
     slug: 'magazine-ads',
+    thumb: 'assets/work/thumbs/magazine-ads.webp',
     title: 'Magazine Ads & Print',
     kicker: 'Trade-magazine ads that stand out',
     category: 'campaign',
@@ -552,6 +569,7 @@ window.PROJECTS = [
   },
   {
     slug: 'corporate-report',
+    thumb: 'assets/work/thumbs/corporate-report.webp',
     title: 'Corporate Report',
     kicker: 'Complex content, premium document',
     category: 'editorial',
